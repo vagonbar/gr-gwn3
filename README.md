@@ -32,8 +32,8 @@ The last command runs a test on an example flowgraph involving three blocks:
 
 ```  msg_source --> msg_passer --> msg_sink```
 
-The source block emits messages at regular intervals, the passer block allows them to pass for some time, interrpust passing for another interval, the restarts passing to the sink block, which receives the messages and show their content.
-This very simple flowgraph shows handling of GWN messages as Python dictionaries, the use of input and output ports to send and receive thes type of messages, and the use of timers and timeouts to generate the messages and to interrupt or continue passing them. These are the main features of GWN, the handling of data messages and the use of time, a feature not present in GNU Radio.
+The source block emits messages at regular intervals, the passer block allows them to pass for some time, interrupts passing for another interval, then restarts passingmessages to the sink block, which receives the messages and shows their content.
+This very simple flowgraph shows handling of GWN messages as Python dictionaries, the use of input and output ports to send and receive these type of messages or any other, and the use of timers and timeouts to generate the messages and to interrupt or continue passing them. These are the main features of GWN, the handling of data messages and the use of time, a feature not present in GNU Radio.
 
 
 
