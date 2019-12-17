@@ -10,19 +10,18 @@ The purpose of this site is then, twofold:
 
 Please visit [gr-gwncppvgb](https://github.com/vagonbar/gr-gwncppvgb) for full documentation on the project.
 
-Please remember this is a work in progress.
+Please consider this version as a work in progress.
 
 ## Installation
 
-This version of GWN requires GNU Radio 3.8. This instructions asume GNU Radio is installed in /home/GNURadio/gnuradio-3.8.
-
-The following instructions assume gr-gwn3 is cloned in the user's home directory under subdirectory GNURadio, and GNU Radio 3.8 is installed in /home/GNURadio/gnuradio-3.8.
+This version of GWN requires GNU Radio 3.8. The following instructions assume gr-gwn3 is cloned in the user's home directory under subdirectory GNURadio, and GNU Radio 3.8 is installed in /home/gnuradio-3.8.
 
 ```
   cd
   cd GNURadio/gr-gwn3
-  rm -rf build; mkdir build; cd build    # to get rid of old versions
-  cmake -DCMAKE_INSTALL_PREFIX=/home/GNURadio/gnuradio-3.8 ../
+  rm -rf build; mkdir build      # only to get rid of old builds
+  cd build
+  cmake -DCMAKE_INSTALL_PREFIX=/home/gnuradio-3.8 ../
   make
   make install
   python3 ../python/qa_msg_passer.py 
@@ -32,8 +31,8 @@ The last command runs a test on an example flowgraph involving three blocks:
 
 ```  msg_source --> msg_passer --> msg_sink```
 
-The source block emits messages at regular intervals, the passer block allows them to pass for some time, interrupts passing for another interval, then restarts passingmessages to the sink block, which receives the messages and shows their content.
-This very simple flowgraph shows handling of GWN messages as Python dictionaries, the use of input and output ports to send and receive these type of messages or any other, and the use of timers and timeouts to generate the messages and to interrupt or continue passing them. These are the main features of GWN, the handling of data messages and the use of time, a feature not present in GNU Radio.
+The source block emits messages at regular intervals, the passer block allows them to pass for some time, interrupts passing for another interval, then restarts passing messages to the sink block, which receives the messages and shows their content.
+This very simple flowgraph shows handling of GWN messages as Python dictionaries (may by other structures), the use of input and output ports to send and receive messages, and the use of timers and timeouts to generate the messages and to interrupt or continue passing them. These are the main features of GWN, the handling of data messages and the use of time, a feature not present in GNU Radio.
 
 
 
