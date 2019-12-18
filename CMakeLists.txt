@@ -85,8 +85,8 @@ ENDIF()
 ########################################################################
 # Install directories
 ########################################################################
-find_package(Gnuradio "3.9" REQUIRED)   # VGB works with 3.8
-#find_package(Gnuradio "3.8" REQUIRED)
+#find_package(Gnuradio "3.9" REQUIRED)   # VGB works with 3.8
+find_package(Gnuradio "3.8" REQUIRED)
 include(GrVersion)
 
 include(GrPlatform) #define LIB_SUFFIX
