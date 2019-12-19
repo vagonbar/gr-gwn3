@@ -1,4 +1,4 @@
-# GGWN : GNU Wireless Network, version 3
+# GWN : GNU Wireless Network, version 3
 
 
 GWN, the GNU Wireless Network, is a network development toolkit compatible with GNU Radio.
@@ -14,7 +14,7 @@ Please consider this version as a work in progress.
 
 ## Installation
 
-This version of GWN requires GNU Radio 3.8. The following instructions assume gr-gwn3 is cloned in the user's home directory under subdirectory GNURadio, and GNU Radio 3.8 is installed in /home/gnuradio-3.8.
+This version of GWN requires GNU Radio 3.8. The following instructions assume gr-gwn3 is cloned in the user's home directory under subdirectory ```~/GNURadio```, and GNU Radio 3.8 is installed in ```/home/gnuradio-3.8```.
 
 ```
   cd
