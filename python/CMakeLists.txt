@@ -35,7 +35,8 @@ GR_PYTHON_INSTALL(
     gwnblock_py.py
     msg_source.py
     msg_sink.py
-    msg_passer.py DESTINATION ${GR_PYTHON_DIR}/gwn3
+    msg_passer.py
+    gr_block.py DESTINATION ${GR_PYTHON_DIR}/gwn3
 )
 
 ########################################################################
@@ -49,3 +50,4 @@ GR_ADD_TEST(qa_gwnblock_py ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_g
 GR_ADD_TEST(qa_msg_source ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_msg_source.py)
 GR_ADD_TEST(qa_msg_sink ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_msg_sink.py)
 GR_ADD_TEST(qa_msg_passer ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_msg_passer.py)
+GR_ADD_TEST(qa_gr_block ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_gr_block.py)

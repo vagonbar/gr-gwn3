@@ -21,18 +21,24 @@
 # 
 # 
 
+###
+#  gwnblock_py_temp_qa : a template for new GWN block creation in Python
+#      This is the template for the QA code.
+###
+
+
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
 from gwnblock_py import gwnblock_py
-from msg_sink import msg_sink
-from msg_source import msg_source
+from <BLOCK_NAME> import <BLOCK_NAME>
 
+# GWN imports
 import pmt
 import time
-from gwnblock_py import mutex_prt
+from gwnblock_py import mutex_prt     # for mutually exclusive printing
 
 
-class qa_msg_sink (gr_unittest.TestCase):
+class qa_<BLOCK_NAME> (gr_unittest.TestCase):
 
     def setUp (self):
         self.tb = gr.top_block ()
@@ -40,38 +46,24 @@ class qa_msg_sink (gr_unittest.TestCase):
     def tearDown (self):
         self.tb = None
 
-    def test_msg_strobe(self):
-        print("\n===  Test 1, with GNU Radio message_strobe\n")
-        tst_msg = "--- FROM message strobe TO msg_sink"
-        src = blocks.message_strobe(pmt.intern(tst_msg), 1000)
-        blk_sink = msg_sink()
+    def test_<BLOCK_NAME>(self):
 
-        self.tb.msg_connect( 
-            (src, "strobe"), 
-            (blk_sink, blk_sink.ports_in[0].port) )
+        ### EXAMPLE CODE  
+        #...
+        #new_blk = <BLOCK_NAME>(<BLOCK_PARS>)
+        #...
 
-        #self.tb.run()  # for flowgraphs that will stop on its own!
-        self.tb.start() 
-        time.sleep(5)
-        self.tb.stop()
-        self.tb.wait()
+        #self.tb.msg_connect( 
+        #    (<emitter_block>, <out_port), 
+        #    (<receiver_block>, <in_port>) )
 
-        return
-
-    def test_msg_source(self):
-        print("\n===  Test 2,  with GWN msg_source\n")
-        tst_msg = "--- FROM message source TO msg_sink"
-        blk_src = msg_source(msg_count=4, interval=1.0)
-        blk_sink = msg_sink()
-
-        self.tb.msg_connect( 
-            (blk_src, blk_src.ports_out[0].port), 
-            (blk_sink, blk_sink.ports_in[0].port) )
 
         #self.tb.run()  # for flowgraphs that will stop on its own!
         self.tb.start() 
+        #mutex_prt(self.tb.msg_edge_list())
+        #print tb.dump()
 
-        time.sleep(5)
+        #time.sleep(8)
 
         self.tb.stop()
         self.tb.wait()
@@ -80,6 +72,6 @@ class qa_msg_sink (gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
-    gr_unittest.run(qa_msg_sink)
+    gr_unittest.run(qa_<BLOCK_NAME>)
 
 

@@ -14,7 +14,7 @@ Please consider this version as a work in progress.
 
 ## Installation
 
-This version of GWN requires GNU Radio 3.8. The following instructions assume gr-gwn3 is cloned in the user's home directory under subdirectory ```~/GNURadio```, and GNU Radio 3.8 is installed in ```/home/gnuradio-3.8```.
+This version of GWN requires GNU Radio 3.8. The following instructions assume gr-gwn3 is cloned in the user's home directory under subdirectory ```~/GNURadio```, and GNU Radio 3.8 is installed in ```/home/gnuradio-3.8```, and ```/home/gnuradio-3.8/setup_env.sh``` has been sourced to make paths to GNU Radio available (command ```source /home/gnuradio-3.8/setup_env.sh``` or included in ```.bashrc``` file).
 
 ```
   cd
@@ -34,9 +34,30 @@ The last command runs a test on an example flowgraph involving three blocks:
 The source block emits messages at regular intervals, the passer block allows them to pass for some time, interrupts passing for another interval, then restarts passing messages to the sink block, which receives the messages and shows their content.
 This very simple flowgraph shows handling of GWN messages as Python dictionaries (may by other structures), the use of input and output ports to send and receive messages, and the use of timers and timeouts to generate the messages and to interrupt or continue passing them. These are the main features of GWN, the handling of data messages and the use of time, a feature not present in GNU Radio.
 
+## Creating a new GWN block
 
+After cloning this repository, a new GWN block can be easily created using Python script ```gwn_modtool_py.py```. This script must be executed from the ```build``` subdirectory of your project.
 
+The following positional parameters may be given:
 
+```<new_block_name> <nr_in> <nr_out> <nr_timers> <nr_timeouts>```
 
+These indicate the new block name, and the numbers of input ports, output ports, timers and timeouts. If invoked with no positional parameters, the script will ask for them. These parameters define the new block construction; they are not visible to block users. 
 
+Next, the script will ask for the new block's own parameters, a list of Python parameters such as 
+
+```msg_count, interval=100, payload="an example payload"```
+
+After confirmation, the script will create the new block, with all parameters included, for the programmer to customize. This typically includes:
+
+- in the new block python code, code initialization in constructor and code for processing in the ```process_data``` function.
+- in the new block QA, inports for additional block, adjustment of parameters, and interconneting block in a flowgraph to test the new block capabilities.
+- to make the new block available in GRC (GNU Radio Companion), adjustment of the corresponding YAML file in the ```grc``` subdirectory.
+
+## Publications
+
+* V. González-Barbone, P. Belzarena, and F. Larroca. _Software Defined Radio: From Theory to Real World Communications_. Proc. IEEE Technologies Applied to
+Electronics Teaching Conf., Tenerife, Spain, 20–22 June 2018.
+
+* Víctor González Barbone, Pablo Belzarena, Federico Larroca, Martín Randall, Paola Romero, Mariana Gelós. _GWN : A framework for packet radio and medium access control in GNU radio_.   Wireless Innovation Forum Conference on Wireless Communications Technologies and Software Defined Radio (WInnComm 17), San Diego, CA, USA, 13-17 nov, page 1--10 - 2017 [PDF](https://iie.fing.edu.uy/publicaciones/2017/GBLRRG17/GBLRRG17.pdf)
 

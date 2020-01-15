@@ -21,5 +21,6 @@ install(FILES
     gwn3_gwnblock_py.block.yml
     gwn3_msg_source.block.yml
     gwn3_msg_sink.block.yml
-    gwn3_msg_passer.block.yml DESTINATION share/gnuradio/grc/blocks
+    gwn3_msg_passer.block.yml
+    gwn3_gr_block.block.yml DESTINATION share/gnuradio/grc/blocks
 )
