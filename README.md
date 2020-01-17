@@ -51,8 +51,18 @@ Next, the script will ask for the new block's own parameters, a list of Python p
 After confirmation, the script will create the new block, with all parameters included, for the programmer to customize. This typically includes:
 
 - in the new block python code, code initialization in constructor and code for processing in the ```process_data``` function.
-- in the new block QA, inports for additional block, adjustment of parameters, and interconneting block in a flowgraph to test the new block capabilities.
+- in the new block QA, inports for additional blocks, adjustment of parameters, and interconneting blocks in a flowgraph to test the new block capabilities.
 - to make the new block available in GRC (GNU Radio Companion), adjustment of the corresponding YAML file in the ```grc``` subdirectory.
+
+For example, the block msg_passer was created with the following command:
+
+```../libgwn/gwn_modtool_py.py msg_passer 1 1 0 2```
+
+This indicates one input port, one output port, no timers, two timeouts. When the script asks for the blocks own parameters, the following was entered:
+
+```tout_stop=5.0, tout_restart=8.0```
+
+After confirmation, the script creates the new block through its files, with names and parameters as indicated by the user.
 
 ## Publications
 
