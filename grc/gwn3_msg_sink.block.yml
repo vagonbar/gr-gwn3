@@ -1,10 +1,10 @@
 id: gwn3_msg_sink
-label: Mmssage sink
+label: Message sink
 category: '[gwn3]'
 
 templates:
   imports: import gwn3
-  make: gwn3.msg_sink(${none})
+  make: gwn3.msg_sink()
 
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
@@ -29,8 +29,8 @@ templates:
 inputs:
 - domain: message
   id: in_port_0
-#  label: in_port_0
-#  dtype: ...
+  label: in_port_0
+  dtype: message
 #  vlen: ...
   optional: true
 

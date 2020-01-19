@@ -1,10 +1,10 @@
 id: gwn3_msg_passer
-label: msg_passer
+label: Message passer
 category: '[gwn3]'
 
 templates:
   imports: import gwn3
-  make: gwn3.msg_passer(${none})
+  make: gwn3.msg_passer(${tout_stop},${tout_restart})
 
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
@@ -12,12 +12,12 @@ templates:
 #     * label (label shown in the GUI)
 #     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 parameters:
-- id: ...
-  label: ...
-  dtype: ...
-- id: ...
-  label: ...
-  dtype: ...
+- id: tout_stop
+  label: Timeout stop
+  dtype: float
+- id: tout_restart
+  label: Timeout restart
+  dtype: float
 
 #  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
 #  Keys include:
@@ -27,18 +27,18 @@ parameters:
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
-- label: ...
-  domain: ...
-  dtype: ...
-  vlen: ...
-  optional: ...
+- label: in_port_0
+  domain: message
+  dtype: message
+#  vlen: ...
+  optional: true
 
 outputs:
-- label: ...
-  domain: ...
-  dtype: ...
-  vlen: ...
-  optional: ...
+- label: out_port_0
+  domain: message
+  dtype: message
+#  vlen: ...
+  optional: true
 
 #  'file_format' specifies the version of the GRC yml format used in the file
 #  and should usually not be changed.

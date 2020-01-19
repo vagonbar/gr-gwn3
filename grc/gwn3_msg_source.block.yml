@@ -4,17 +4,23 @@ category: '[gwn3]'
 
 templates:
   imports: import gwn3
-  make: gwn3.msg_source(${none})
+  make: gwn3.msg_source(${msg_count},${interval},${payload})
 
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
 #     * id (makes the value accessible as \$keyname, e.g. in the make entry)
 #     * label (label shown in the GUI)
 #     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
-#parameters:
-#- id: ...
-#  label: ...
-#  dtype: ...
+parameters:
+- id: msg_count
+  label: Message count
+  dtype: int
+- id: interval
+  label: Interval
+  dtype: float
+- id: payload
+  label: Payload
+  dtype: string
 #- id: ...
 #  label: ...
 #  dtype: ...
