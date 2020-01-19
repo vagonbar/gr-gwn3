@@ -34,6 +34,10 @@ The last command runs a test on an example flowgraph involving three blocks:
 The source block emits messages at regular intervals, the passer block allows them to pass for some time, interrupts passing for another interval, then restarts passing messages to the sink block, which receives the messages and shows their content.
 This very simple flowgraph shows handling of GWN messages as Python dictionaries (may by other structures), the use of input and output ports to send and receive messages, and the use of timers and timeouts to generate the messages and to interrupt or continue passing them. These are the main features of GWN, the handling of data messages and the use of time, a feature not present in GNU Radio.
 
+This flowgraph is available in GRC by opening  ```examples/msg_passer_example.grc```.
+
+![Message passer example in GRC](./libgwn/Images/msg_passer_example.jpg)
+
 ## Creating a new GWN block
 
 After cloning this repository, a new GWN block can be easily created using Python script ```gwn_modtool_py.py```. This script must be executed from the ```build``` subdirectory of your project.
