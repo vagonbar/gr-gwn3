@@ -27,7 +27,7 @@ import sys  # to capture parameters
 import time
 
 ### adjust for your own use:
-COPYRIGHT='"IIE FIng UdelaR"'
+COPYRIGHT="'IIE FIng UdelaR'"
 LICENSE_FILE="LICENSE"
 
 
@@ -85,10 +85,12 @@ GWNBLOCK_PARS += "number_timeouts=" + NR_TIMEOUTS
 
 
 ### get values for new block own parameters
-BLOCK_PARS = input("    New block own parameter list: ")
+#BLOCK_PARS = input("    New block own parameter list: ")
+BLOCK_PARS=""   # to correct, gr_modtool is not taking this
 
 
 ### confirm block creation
+"""
 print("... Ready to create new block, please verify:")
 print("    New block name:", BLOCK_NAME)
 print("    GWN block parameters:", GWNBLOCK_PARS)
@@ -99,18 +101,19 @@ if ANSWER != "y" and ANSWER != "Y":
   print("    Answer was not 'y' nor 'Y'.")
   print("... gwn_modtool_py aborted, no new block created.")
   sys.exit()
-
+"""
 
 ### create new GNU RAdio block with gr_modtool
-GR_MODTOOL = os.popen("which gr_modtool").read()
+#GR_MODTOOL = os.popen("which gr_modtool").read()
 
 print("... gr_modtool: creating block " + BLOCK_NAME)
 GR_MODTOOL_CMD = "cd ..; "
 GR_MODTOOL_CMD += "gr_modtool add "
 GR_MODTOOL_CMD += "--block-type sync --lang python --add-python-qa "
-GR_MODTOOL_CMD += "--copyright " + COPYRIGHT + " --license-file " + LICENSE_FILE 
-GR_MODTOOL_CMD += " --argument-list new_block_arglist " + BLOCK_NAME + "; "
-GR_MODTOOL_CMD += "cd " + CURDIR
+GR_MODTOOL_CMD += "--copyright " + COPYRIGHT + " --license-file " + LICENSE_FILE + " " + BLOCK_NAME + ";"
+#GR_MODTOOL_CMD += "--argument-list " + BLOCK_PARS + " " + BLOCK_NAME + ";"
+#GR_MODTOOL_CMD += BLOCK_NAME + "; "
+GR_MODTOOL_CMD += "cd " + CURDIR + ";"
 #GR_MODTOOL_CMD += " --argument-list=new_block_arglist 2>/dev/null; "
 # stderr to /dev/null to avoid message of no identified consequence:
 #   close failed in file object destructor:
@@ -119,9 +122,13 @@ GR_MODTOOL_CMD += "cd " + CURDIR
 print("gr_modtool command: " + GR_MODTOOL_CMD)    # for debug
 
 try:
-  os.popen(GR_MODTOOL_CMD)
-  print("... Waiting for gr_modtool to create new block.")
-  time.sleep(3)
+  # os.popen(GR_MODTOOL_CMD)
+  ret_code = os.system(GR_MODTOOL_CMD)
+  if ret_code != 0:
+    print("... ERROR while executing gr_modtool")
+    sys.exit()
+  #print("... Waiting for gr_modtool to create new block.")
+  #time.sleep(5)
   pass
 except:
   print("... gr_modtool: an EXCEPTION occured.")

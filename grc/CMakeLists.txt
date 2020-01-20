@@ -22,5 +22,5 @@ install(FILES
     gwn3_msg_source.block.yml
     gwn3_msg_sink.block.yml
     gwn3_msg_passer.block.yml
-    DESTINATION share/gnuradio/grc/blocks
+    gwn3_virtual_channel.block.yml DESTINATION share/gnuradio/grc/blocks
 )

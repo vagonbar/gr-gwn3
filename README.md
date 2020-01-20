@@ -52,7 +52,8 @@ Next, the script will ask for the new block's own parameters, a list of Python p
 
 ```msg_count, interval=100, payload="an example payload"```
 
-After confirmation, the script will create the new block, with all parameters included, for the programmer to customize. This typically includes:
+Then the script will create the new block, with all parameters included, for the programmer to customize. This typically includes:
+
 
 - in the new block python code, code initialization in constructor and code for processing in the ```process_data``` function.
 - in the new block QA, inports for additional blocks, adjustment of parameters, and interconneting blocks in a flowgraph to test the new block capabilities.
