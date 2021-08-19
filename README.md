@@ -3,7 +3,7 @@
 
 GWN, the GNU Wireless Network, is a network development toolkit compatible with GNU Radio.
 
-The main site of the project, [gr-gwncppvgb](https://github.com/vagonbar/gr-gwncppvgb) is developed both in Python and C++. GNU Radio imposes limitations on C++ inheritance, which makes development in C++ more difficult and involved. This is a significant drawback for using this toolkit in teaching and prototyping. In this site we are developing the project mainly in Python, specifically in Python 3, which will be de default in coming versions of GNU Radio.
+The main site of the project, [gr-gwncppvgb](https://github.com/vagonbar/gr-gwncppvgb) is developed both in Python and C++. GNU Radio imposes limitations on C++ inheritance, which makes development in C++ more difficult and involved. This is a significant drawback for using this toolkit in teaching and prototyping. In this site we are developing the project mainly in Python, specifically in Python 3, which will be the default in coming versions of GNU Radio.
 The purpose of this site is then, twofold:
 - to keep GWN simple to use and enhance with new user developed blocks.
 - to bring the code to Python 3.
