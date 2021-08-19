@@ -30,6 +30,8 @@ try:
     from .gwn3_swig import *
 except ImportError:
     pass
+except:
+    pass
 
 # import any pure python here
 from .gwnblock_py import gwnblock_py
