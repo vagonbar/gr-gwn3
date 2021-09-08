@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>gr-gwn3.libgwn.gwn_modtool_py : API documentation</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">
+            GWN 3 API Documentation
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="showPrivate">
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="module"><code>gr-gwn3.libgwn.gwn_modtool_py</code> <small>module documentation</small></h1>
+
+        <span id="partOf">
+          Part of <code><a href="gr-gwn3.html" class="code" data-type="Package">gr-gwn3</a>.<a href="gr-gwn3.libgwn.html" class="code" data-type="Package">libgwn</a></code>
+          
+          
+        </span>
+      </div>
+
+      <div class="extrasDocstring">
+        
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p>GWN3 new block creation script.</p><p>Creates a new GWN3 block with input ports, output ports, timers and timeouts according to given positional parameters, plus a list of user-defined parameters.</p></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id8">
+  
+  <tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#COPYRIGHT" class="code" data-type="Variable">COPYRIGHT</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#LICENSE_FILE" class="code" data-type="Variable">LICENSE_FILE</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#HELP_MSG" class="code" data-type="Variable">HELP_MSG</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#CURDIR" class="code" data-type="Variable">CURDIR</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#BLOCK_NAME" class="code" data-type="Variable">BLOCK_NAME</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#NR_IN" class="code" data-type="Variable">NR_IN</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#NR_OUT" class="code" data-type="Variable">NR_OUT</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#NR_TIMERS" class="code" data-type="Variable">NR_TIMERS</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#NR_TIMEOUTS" class="code" data-type="Variable">NR_TIMEOUTS</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#GWNBLOCK_PARS" class="code" data-type="Variable">GWNBLOCK_PARS</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#BLOCK_PARS" class="code" data-type="Variable">BLOCK_PARS</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#GR_MODTOOL_CMD" class="code" data-type="Variable">GR_MODTOOL_CMD</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#ret_code" class="code" data-type="Variable">ret_code</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#FILE_NAME" class="code" data-type="Variable">FILE_NAME</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#FILE_NAME_QA" class="code" data-type="Variable">FILE_NAME_QA</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#f" class="code" data-type="Variable">f</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwn_modtool_py.html#block_code" class="code" data-type="Variable">block_code</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.COPYRIGHT">
+    
+  </a>
+  <a name="COPYRIGHT">
+    
+  </a>
+  <div class="functionHeader">
+    COPYRIGHT =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>str</code>)
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.LICENSE_FILE">
+    
+  </a>
+  <a name="LICENSE_FILE">
+    
+  </a>
+  <div class="functionHeader">
+    LICENSE_FILE =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>str</code>)
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.HELP_MSG">
+    
+  </a>
+  <a name="HELP_MSG">
+    
+  </a>
+  <div class="functionHeader">
+    HELP_MSG =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>str</code>)
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.CURDIR">
+    
+  </a>
+  <a name="CURDIR">
+    
+  </a>
+  <div class="functionHeader">
+    CURDIR =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.BLOCK_NAME">
+    
+  </a>
+  <a name="BLOCK_NAME">
+    
+  </a>
+  <div class="functionHeader">
+    BLOCK_NAME =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.NR_IN">
+    
+  </a>
+  <a name="NR_IN">
+    
+  </a>
+  <div class="functionHeader">
+    NR_IN =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.NR_OUT">
+    
+  </a>
+  <a name="NR_OUT">
+    
+  </a>
+  <div class="functionHeader">
+    NR_OUT =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.NR_TIMERS">
+    
+  </a>
+  <a name="NR_TIMERS">
+    
+  </a>
+  <div class="functionHeader">
+    NR_TIMERS =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.NR_TIMEOUTS">
+    
+  </a>
+  <a name="NR_TIMEOUTS">
+    
+  </a>
+  <div class="functionHeader">
+    NR_TIMEOUTS =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.GWNBLOCK_PARS">
+    
+  </a>
+  <a name="GWNBLOCK_PARS">
+    
+  </a>
+  <div class="functionHeader">
+    GWNBLOCK_PARS =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.BLOCK_PARS">
+    
+  </a>
+  <a name="BLOCK_PARS">
+    
+  </a>
+  <div class="functionHeader">
+    BLOCK_PARS =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>str</code>)
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.GR_MODTOOL_CMD">
+    
+  </a>
+  <a name="GR_MODTOOL_CMD">
+    
+  </a>
+  <div class="functionHeader">
+    GR_MODTOOL_CMD =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>str</code>)
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.ret_code">
+    
+  </a>
+  <a name="ret_code">
+    
+  </a>
+  <div class="functionHeader">
+    ret_code =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.FILE_NAME">
+    
+  </a>
+  <a name="FILE_NAME">
+    
+  </a>
+  <div class="functionHeader">
+    FILE_NAME =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.FILE_NAME_QA">
+    
+  </a>
+  <a name="FILE_NAME_QA">
+    
+  </a>
+  <div class="functionHeader">
+    FILE_NAME_QA =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.f">
+    
+  </a>
+  <a name="f">
+    
+  </a>
+  <div class="functionHeader">
+    f =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwn_modtool_py.block_code">
+    
+  </a>
+  <a name="block_code">
+    
+  </a>
+  <div class="functionHeader">
+    block_code =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div>
+
+      </div>
+      <address>
+        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-09-05 20:17:34.
+      </address>
+
+    </div>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

@@ -36,11 +36,11 @@ This very simple flowgraph shows handling of GWN messages as Python dictionaries
 
 This flowgraph is available in GRC by opening  ```examples/msg_passer_example.grc```.
 
-![Message passer example in GRC](./libgwn/Images/msg_passer_example.jpg)
+![Message passer example in GRC](./libgwn/images/msg_passer_example.jpg)
 
 ## Creating a new GWN block
 
-After cloning this repository, a new GWN block can be easily created using Python script ```gwn_modtool_py.py```. This script must be executed from the ```build``` subdirectory of your project.
+After cloning this repository, a new GWN block can be easily created using Python script ```gwn_modtool.py```. This script must be executed from the ```build``` subdirectory of your project.
 
 The following positional parameters may be given:
 
@@ -59,9 +59,12 @@ Then the script will create the new block, with all parameters included, for the
 - in the new block QA, inports for additional blocks, adjustment of parameters, and interconneting blocks in a flowgraph to test the new block capabilities.
 - to make the new block available in GRC (GNU Radio Companion), adjustment of the corresponding YAML file in the ```grc``` subdirectory.
 
-For example, the block msg_passer was created with the following command:
+For example, the block msg_passer was created with the following commands:
 
-```../libgwn/gwn_modtool_py.py msg_passer 1 1 0 2```
+```
+cd build    # script must be executed from the build directory
+../libgwn/gwn_modtool.py msg_passer 1 1 0 2
+```
 
 This indicates one input port, one output port, no timers, two timeouts. When the script asks for the blocks own parameters, the following was entered:
 

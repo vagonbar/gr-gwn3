@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 # 
-# Copyright 2015-2019
+# Copyright 2015-2021
 #   Instituto de Ingenieria Electrica, Facultad de Ingenieria,
 #   Universidad de la Republica, Uruguay.
 # 
@@ -21,10 +21,11 @@
 # 
 # 
 
-###
-#  gwnblock_py_temp : a template for new GWN block creation in Python
-#      This is the template for the block code.
-###
+'''
+A template for a new GWN block creation.
+
+This is the template for the new block code.
+'''
 
 
 import numpy

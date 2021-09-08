@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+#-*- coding: utf-8 -*-
 # 
-# Copyright 2015-2019
+# Copyright 2015-2021
 #   Instituto de Ingenieria Electrica, Facultad de Ingenieria,
 #   Universidad de la Republica, Uruguay.
 # 
@@ -21,10 +21,11 @@
 # 
 # 
 
-###
-#  gwnblock_py_temp_qa : a template for new GWN block creation in Python
-#      This is the template for the QA code.
-###
+'''
+A template for new GWN block creation in Python, QA.
+
+This is the template for the new block QA code.
+'''
 
 
 from gnuradio import gr, gr_unittest
@@ -39,7 +40,9 @@ from gwnblock_py import mutex_prt     # for mutually exclusive printing
 
 
 class qa_<BLOCK_NAME> (gr_unittest.TestCase):
-
+    '''
+    QA for new GWN block in Python, created from template.
+    '''
     def setUp (self):
         self.tb = gr.top_block ()
 

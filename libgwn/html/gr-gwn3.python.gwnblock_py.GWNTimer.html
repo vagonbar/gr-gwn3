@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>gr-gwn3.python.gwnblock_py.GWNTimer : API documentation</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">
+            GWN 3 API Documentation
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="showPrivate">
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code>gr-gwn3.python.gwnblock_py.GWNTimer(<a href="gr-gwn3.python.gwnblock_py.GWNPort.html" class="code" data-type="Class">GWNPort</a>, <span title="threading.Thread">threading.Thread</span>)</code> <small>class documentation</small></h1>
+
+        <span id="partOf">
+          Part of <code><a href="gr-gwn3.html" class="code" data-type="Package">gr-gwn3</a>.<a href="gr-gwn3.python.html" class="code" data-type="Package">python</a>.<a href="gr-gwn3.python.gwnblock_py.html" class="code" data-type="Module">gwnblock_py</a></code>
+          
+          <a href="classIndex.html#gr-gwn3.python.gwnblock_py.GWNTimer">(View In Hierarchy)</a>
+        </span>
+      </div>
+
+      <div class="extrasDocstring">
+        
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p>A timer class to implement timeouts inside GWN blocks.</p><p>Objects of this class can attached to a gwnblock to act as internal timers. An object of this class sends messages to the block to which it is attached, at regular intervals. It sends a certain message for an specified number of times, then a final second message to indicate the first series has exhausted.</p></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id17">
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#__init__" class="code" data-type="Method">__init__</a></td>
+    <td><span>Constructor.</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#block" class="code" data-type="Instance Variable">block</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#port" class="code" data-type="Instance Variable">port</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#port_nr" class="code" data-type="Instance Variable">port_nr</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#interrupt" class="code" data-type="Instance Variable">interrupt</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#interval" class="code" data-type="Instance Variable">interval</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#retry" class="code" data-type="Instance Variable">retry</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#msg_dc_1" class="code" data-type="Instance Variable">msg_dc_1</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#msg_dc_2" class="code" data-type="Instance Variable">msg_dc_2</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#counter" class="code" data-type="Instance Variable">counter</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#exit_flag" class="code" data-type="Instance Variable">exit_flag</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#debug" class="code" data-type="Instance Variable">debug</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#set_interrupt" class="code" data-type="Method">set_interrupt</a></td>
+    <td><span>Interrupts generation of timer messages.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#stop" class="code" data-type="Method">stop</a></td>
+    <td><span>Stops timer thread... or intends to.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#reset" class="code" data-type="Method">reset</a></td>
+    <td><span>Resets counter to 0, starts timing again.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#run" class="code" data-type="Method">run</a></td>
+    <td><span>Runs timer thread, uses time.sleep.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#post_message" class="code" data-type="Method">post_message</a></td>
+    <td><span>Creates a timer message and posts it on block port.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#handle_msg" class="code" data-type="Method">handle_msg</a></td>
+    <td><span>Timer message handler, regenerates event, passes to process_data.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.gwnblock_py.GWNTimer.html#__str__" class="code" data-type="Method">__str__</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    __init__(self, block, port, port_nr, interrupt=(False), interval=1.0, retry=1, msg_dc_1={}, msg_dc_2={}):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <a href="gr-gwn3.python.gwnblock_py.GWNPort.html#__init__" class="code" data-type="Method">gr-gwn3.python.gwnblock_py.GWNPort.__init__</a></div>
+    
+    <div><p>Constructor.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">block</td><td>block reference to which this instance is attached.</td></tr><tr><td></td><td class="fieldArg">port</td><td>tag of port to which messages will be posted.</td></tr><tr><td></td><td class="fieldArg">port_nr</td><td>port number, an index in list of ports in block.</td></tr><tr><td></td><td class="fieldArg">interrupt</td><td>if True, timer is interrupted, i.e. does not send any messages.</td></tr><tr><td></td><td class="fieldArg">interval</td><td>time between messages to send.</td></tr><tr><td></td><td class="fieldArg">retry</td><td>how many times to send message 1, then send message 2 once.</td></tr><tr><td></td><td class="fieldArg">msg_dc_1</td><td>additional information for event to send at regular intervals for retry times (as message 1).</td></tr><tr><td></td><td class="fieldArg">msg_dc_2</td><td>additional information for event to send when retries have exhausted (as message 2).</td></tr></table></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.block">
+    
+  </a>
+  <a name="block">
+    
+  </a>
+  <div class="functionHeader">
+    block =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.port">
+    
+  </a>
+  <a name="port">
+    
+  </a>
+  <div class="functionHeader">
+    port =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.port_nr">
+    
+  </a>
+  <a name="port_nr">
+    
+  </a>
+  <div class="functionHeader">
+    port_nr =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.interrupt">
+    
+  </a>
+  <a name="interrupt">
+    
+  </a>
+  <div class="functionHeader">
+    interrupt =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>bool</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.interval">
+    
+  </a>
+  <a name="interval">
+    
+  </a>
+  <div class="functionHeader">
+    interval =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.retry">
+    
+  </a>
+  <a name="retry">
+    
+  </a>
+  <div class="functionHeader">
+    retry =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.msg_dc_1">
+    
+  </a>
+  <a name="msg_dc_1">
+    
+  </a>
+  <div class="functionHeader">
+    msg_dc_1 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>Dict[str, str]</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.msg_dc_2">
+    
+  </a>
+  <a name="msg_dc_2">
+    
+  </a>
+  <div class="functionHeader">
+    msg_dc_2 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>Dict[str, str]</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.counter">
+    
+  </a>
+  <a name="counter">
+    
+  </a>
+  <div class="functionHeader">
+    counter =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.exit_flag">
+    
+  </a>
+  <a name="exit_flag">
+    
+  </a>
+  <div class="functionHeader">
+    exit_flag =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>bool</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.debug">
+    
+  </a>
+  <a name="debug">
+    
+  </a>
+  <div class="functionHeader">
+    debug =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>bool</code>)
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.set_interrupt">
+    
+  </a>
+  <a name="set_interrupt">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_interrupt(self, interrupt):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Interrupts generation of timer messages.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">interrupt</td><td>if True, timer is interrupted, i.e. does not send any messages.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.stop">
+    
+  </a>
+  <a name="stop">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    stop(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Stops timer thread... or intends to.</p><p>There is no clear way to stop a thread in Python. Here, interrupt is set to True; no messages will be sent, but thread remains alive.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.reset">
+    
+  </a>
+  <a name="reset">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    reset(self, retry=None):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Resets counter to 0, starts timing again.</p><p>Sets interrupt to False and starts timing again, from 0 count.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">retry</td><td>new retry value, optional; default None to keep former value.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.run">
+    
+  </a>
+  <a name="run">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    run(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Runs timer thread, uses time.sleep.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.post_message">
+    
+  </a>
+  <a name="post_message">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    post_message(self, final):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Creates a timer message and posts it on block port.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">final</td><td>if False, send message with msg_dc_1; if True, send last message with msg_dc_2.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.handle_msg">
+    
+  </a>
+  <a name="handle_msg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    handle_msg(self, pmt_msg):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Timer message handler, regenerates event, passes to process_data.</p><p>Receives message in PMT format, converts to a Python data type, and passes it to the process_data function.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">pmt_msg</td><td>the received PMT message.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.gwnblock_py.GWNTimer.__str__">
+    
+  </a>
+  <a name="__str__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    __str__(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overrides <a href="gr-gwn3.python.gwnblock_py.GWNPort.html#__str__" class="code" data-type="Method">gr-gwn3.python.gwnblock_py.GWNPort.__str__</a></div>
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div>
+
+      </div>
+      <address>
+        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-09-05 20:17:34.
+      </address>
+
+    </div>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

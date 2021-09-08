@@ -19,9 +19,11 @@
 # The presence of this file turns this directory into a Python package
 
 '''
-This is the GNU Radio GWN3 module. Place your Python package
-description here (python/__init__.py).
+GNU Radio GWN3 Python blocks and tests.
+
+For the GWN3 library, please see the libgwn directory.
 '''
+
 from __future__ import unicode_literals
 
 # import swig generated symbols into the gwn3 namespace
@@ -38,6 +40,33 @@ from .gwnblock_py import gwnblock_py
 from .msg_source import msg_source
 from .msg_sink import msg_sink
 from .msg_passer import msg_passer
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
