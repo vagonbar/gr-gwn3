@@ -1,4 +1,6 @@
-# GWN3. Installation
+[GWN3, GNU Wireless Network 3](https://github.com/vagonbar/gr-gwn3)
+
+# Installation
 
 This version of GWN requires GNU Radio 3.8. The following instructions assume gr-gwn3 is cloned in the user's home directory under subdirectory ```~/GNURadio```, and GNU Radio 3.8 is installed in ```/home/gnuradio-3.8```, and ```/home/gnuradio-3.8/setup_env.sh``` has been sourced to make paths to GNU Radio available (command ```source /home/gnuradio-3.8/setup_env.sh``` or included in ```.bashrc``` file).
 

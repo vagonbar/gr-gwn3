@@ -3,7 +3,7 @@
           "DTD/xhtml1-strict.dtd">
 <html>
   <head>
-    <title>gr-gwn3.python.msg_sink.msg_sink : API documentation</title>
+    <title>gr-gwn3.python.virtual_channel.virtual_channel : API documentation</title>
 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
@@ -28,12 +28,12 @@
     <div class="container">
 
       <div class="page-header">
-        <h1 class="class"><code>gr-gwn3.python.msg_sink.msg_sink(<a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html" class="code" data-type="Class">gwnblock_py</a>)</code> <small>class documentation</small></h1>
+        <h1 class="class"><code>gr-gwn3.python.virtual_channel.virtual_channel(<a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html" class="code" data-type="Class">gwnblock_py</a>)</code> <small>class documentation</small></h1>
 
         <span id="partOf">
-          Part of <code><a href="gr-gwn3.html" class="code" data-type="Package">gr-gwn3</a>.<a href="gr-gwn3.python.html" class="code" data-type="Package">python</a>.<a href="gr-gwn3.python.msg_sink.html" class="code" data-type="Module">msg_sink</a></code>
+          Part of <code><a href="gr-gwn3.html" class="code" data-type="Package">gr-gwn3</a>.<a href="gr-gwn3.python.html" class="code" data-type="Package">python</a>.<a href="gr-gwn3.python.virtual_channel.html" class="code" data-type="Module">virtual_channel</a></code>
           
-          <a href="classIndex.html#gr-gwn3.python.msg_sink.msg_sink">(View In Hierarchy)</a>
+          <a href="classIndex.html#gr-gwn3.python.virtual_channel.virtual_channel">(View In Hierarchy)</a>
         </span>
       </div>
 
@@ -42,29 +42,29 @@
       </div>
 
       <div class="moduleDocstring">
-        <div><p>Receives a message and shows its content.</p><p>This block receives a message on its input port and shows its content.</p></div>
+        <div><p>New GWN block in Python, created from template.</p></div>
       </div>
 
       <div id="splitTables">
-        <table class="children sortable" id="id23">
+        <table class="children sortable" id="id39">
   
   <tr class="method">
     
     <td>Method</td>
-    <td><a href="gr-gwn3.python.msg_sink.msg_sink.html#__init__" class="code" data-type="Method">__init__</a></td>
-    <td><span>Message sink constructor.</span></td>
+    <td><a href="gr-gwn3.python.virtual_channel.virtual_channel.html#__init__" class="code" data-type="Method">__init__</a></td>
+    <td><span>The GWN basic block constructor.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a href="gr-gwn3.python.msg_sink.msg_sink.html#process_data" class="code" data-type="Method">process_data</a></td>
-    <td><span>Sends received message, if timeout stops.</span></td>
+    <td><a href="gr-gwn3.python.virtual_channel.virtual_channel.html#process_data" class="code" data-type="Method">process_data</a></td>
+    <td><span>Where message processing happens.</span></td>
   </tr>
 </table>
         
           <p class="inheritedFrom">
             Inherited from <a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html" class="code" data-type="Class">gwnblock_py</a>:
           </p>
-          <table class="children sortable" id="id24">
+          <table class="children sortable" id="id40">
   
   <tr class="baseinstancevariable">
     
@@ -167,7 +167,7 @@
 
         <div class="basemethod">
   
-  <a name="gr-gwn3.python.msg_sink.msg_sink.__init__">
+  <a name="gr-gwn3.python.virtual_channel.virtual_channel.__init__">
     
   </a>
   <a name="__init__">
@@ -176,17 +176,17 @@
   <div class="functionHeader">
     
     def
-    __init__(self):
+    __init__(self, prob_loss=0.0, name="""vchan"""):
     
   </div>
   <div class="docstring functionBody">
     <div class="interfaceinfo">overrides <a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html#__init__" class="code" data-type="Method">gr-gwn3.python.gwnblock_py.gwnblock_py.__init__</a></div>
     
-    <div><p>Message sink constructor.</p></div>
+    <div><p>The GWN basic block constructor.</p><p>The GWN basic block implements facilites used by all GWN blocks. A descendent of this class may call this constructor to fix the number of ports, timers and timeouts.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">name</td><td>a name for this block.</td></tr><tr><td></td><td class="fieldArg">number_in</td><td>number of input ports.</td></tr><tr><td></td><td class="fieldArg">number_out</td><td>number of output ports.</td></tr><tr><td></td><td class="fieldArg">number_timers</td><td>number of internal timers.</td></tr><tr><td></td><td class="fieldArg">number_timeouts</td><td>number of internal timeouts.</td></tr></table></div>
   </div>
 </div><div class="basemethod">
   
-  <a name="gr-gwn3.python.msg_sink.msg_sink.process_data">
+  <a name="gr-gwn3.python.virtual_channel.virtual_channel.process_data">
     
   </a>
   <a name="process_data">
@@ -201,7 +201,7 @@
   <div class="docstring functionBody">
     <div class="interfaceinfo">overrides <a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html#process_data" class="code" data-type="Method">gr-gwn3.python.gwnblock_py.gwnblock_py.process_data</a></div>
     
-    <div><p>Sends received message, if timeout stops.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">py_msg</td><td>message, a Python data type.</td></tr></table></div>
+    <div><p>Where message processing happens.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">py_msg</td><td>message, a Python data type; GWN uses dict.</td></tr></table></div>
   </div>
 </div>
 

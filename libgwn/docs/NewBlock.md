@@ -1,3 +1,5 @@
+GWN3, GNU Wireless Network version 3
+
 ## Creating a new GWN block
 
 After cloning this repository, a new GWN block can be easily created using Python script ```gwn_modtool.py```. This script must be executed from the ```build``` subdirectory of your project.

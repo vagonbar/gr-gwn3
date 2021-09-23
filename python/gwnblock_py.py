@@ -265,7 +265,7 @@ class GWNTimeout(GWNPort):
 
 
 class GWNTimer(GWNPort, threading.Thread):
-    '''A timer class to implement timeouts inside GWN blocks.
+    '''A timer class to implement timers inside GWN blocks.
 
     Objects of this class can attached to a gwnblock to act as internal timers. An object of this class sends messages to the block to which it is attached, at regular intervals. It sends a certain message for an specified number of times, then a final second message to indicate the first series has exhausted.
     '''
