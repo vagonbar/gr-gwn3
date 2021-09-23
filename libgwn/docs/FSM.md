@@ -77,6 +77,51 @@ This module builds an FSM for testing. The example FSM is described in the follo
 
 ![Example FSM](../images/gwnfsm_test.png)
 
+The following commands run an FSM example test. The creation of the FSM machine acccording to the rules given in the example code is first described; then the user may input events (characters) to see the machine move from one state to the other. A sequence of symbols trying all the transitions may also be inserted all at once.
+
+```
+$ cd libgwn/fsm/
+victor@uma:~/GNURadio/gr-gwn3/libgwn/fsm$ python3 gwnfsm_test.py 
+Input events (symbols, characters).
+To test all functions at once, plese input
+    jsjsgrgjrwrsgrwrsgrcrsgrs
+Some symbols produce no action, please see FSM diagram.
+To finish, press Enter without any symbol.
+
+--- FSM created, show state
+    FSM initial_state: INIT
+    FSM state_transitions:
+      INIT --- s | show --> INIT
+        cond = None
+      INIT --- g | fn_goA --> State A
+        cond = self.where=='A'
+      INIT --- g | fn_goB --> State B
+        cond = self.where=='B'
+      INIT --- g | ['fn_goA', 'fn_goB'] --> State C
+        cond = ["self.where=='C'", <function cn_toc at 0x7fd105e00b80>]
+      State A --- r | fn_init --> INIT
+        cond = None
+      State B --- r | fn_init --> INIT
+        cond = None
+      State C --- r | fn_init --> INIT
+        cond = None
+      INIT --- w | fn_chgwhr --> Chg Where
+        cond = None
+      INIT --- c | fn_chgtoC --> Chg ToC
+        cond = None
+      Chg Where --- r | fn_init --> INIT
+        cond = None
+      Chg ToC --- r | fn_init --> INIT
+        cond = None
+    FSM state_transitions_any:
+     ('INIT', [(None, 'INIT', None)])
+     ('State A', [(<function fn_none at 0x7fd105eb7c10>, 'State A', None)])
+    FSM default_transition:
+     [(<function fn_error at 0x7fd105e00af0>, 'INIT', None)]
+
+Event:
+```
+From this on, the user may insert characters one by one, several together, or the proposed sequence to test all transitions at once.
 
 
 [Back to README](../../README.md)
