@@ -81,7 +81,7 @@ The following commands run an FSM example test. The creation of the FSM machine 
 
 ```
 $ cd libgwn/fsm/
-victor@uma:~/GNURadio/gr-gwn3/libgwn/fsm$ python3 gwnfsm_test.py 
+$ python3 gwnfsm_test.py 
 Input events (symbols, characters).
 To test all functions at once, plese input
     jsjsgrgjrwrsgrwrsgrcrsgrs
