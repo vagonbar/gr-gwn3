@@ -138,6 +138,7 @@ if __name__ == '__main__':
         parser.add_option ('-v', '--verbose', action='store_true', default=False, help='verbose output')
         (options, args) = parser.parse_args()
         if options.verbose: print(time.asctime() )
+        print()
         print('=== FSM, Finite State Machine example ===')
         print('Input events (symbols, characters).')
         print('To test all functions at once, plese input')

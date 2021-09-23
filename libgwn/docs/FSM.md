@@ -65,7 +65,7 @@ If no transition is defined for an input symbol, the FSM will raise an exception
 
 The action function receives a reference to the FSM as a parameter, hence the action function has access to all attributes in the FSM, such as current_state, input_symbol or memory.
 
-The GWN Finite State Machine implementation is an extension of Noah Spurrier's FSM 20020822, C{http://www.noah.org/python/FSM/}.
+The GWN Finite State Machine implementation is an extension of [Noah Spurrier's FSM 20020822](http://www.noah.org/python/FSM/).
 
 Please see the code documentation, in the FSM module.
 - [Code documentation](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/index.html)
@@ -82,6 +82,8 @@ The following commands run an FSM example test. The creation of the FSM machine 
 ```
 $ cd libgwn/fsm/
 $ python3 gwnfsm_test.py 
+
+=== FSM, Finite State Machine example ===
 Input events (symbols, characters).
 To test all functions at once, plese input
     jsjsgrgjrwrsgrwrsgrcrsgrs
