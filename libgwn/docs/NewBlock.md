@@ -1,4 +1,4 @@
-GWN3, GNU Wireless Network version 3
+[GWN3, GNU Wireless Network 3](https://github.com/vagonbar/gr-gwn3)
 
 ## Creating a new GWN block
 
@@ -34,5 +34,8 @@ This indicates one input port, one output port, no timers, two timeouts. When th
 
 After confirmation, the script creates the new block through its files, with names and parameters as indicated by the user.
 
+User defined behavior is then coded into the block, mainly by adapting the process_data function. The user defined parameters will be available in the constructor ```__init__```.
+
+To make the new block available in GRC (GNU Radio Companion), the corresponding YAML file must be edited. The YAML file corresponding to the ```msg_passer``` block recently created may be found in ```grc/gwn3_msg_passer.block.yml```.
 
 [Back to README](../../README.md)

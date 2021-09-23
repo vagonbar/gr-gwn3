@@ -1,6 +1,7 @@
 [GWN3, GNU Wireless Network 3](https://github.com/vagonbar/gr-gwn3)
 
-# A GWN3 block
+# GWN3 block characteristics
+
 
 ## GWN messages and ports
 

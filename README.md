@@ -22,6 +22,7 @@ Ths project started several years ago, evolutioning through different stages. Th
 ## Documentation
 
 - [Installation](libgwn/docs/Installation.md)
+- [GWN block characteristics](libgwn/docs/GWN3Block.md)
 - [Creating a new GWN block](libgwn/docs/NewBlock.md)
 - [Code documentation](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/index.html)
 
