@@ -38,4 +38,9 @@ User defined behavior is then coded into the block, mainly by adapting the proce
 
 To make the new block available in GRC (GNU Radio Companion), the corresponding YAML file must be edited. The YAML file corresponding to the ```msg_passer``` block recently created may be found in ```grc/gwn3_msg_passer.block.yml```.
 
+To make a pure Python blocks available as a module `in gwn3` package, it must be included in file `gr-gwn3/python/__init__.py` in a line like this:
+```from .msg_passer import msg_passer```
+After this, the usual `make; make install` command sequence completes the job.
+
+
 [Back to README](../../README.md)

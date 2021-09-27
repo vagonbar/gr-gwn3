@@ -1,6 +1,6 @@
 options:
   parameters:
-    author: ''
+    author: victor
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: ''
@@ -10,7 +10,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: pasador2
+    id: virtual_channel_test
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -21,7 +21,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Not titled yet
+    title: Virtual channel
     window_size: ''
   states:
     bus_sink: false
@@ -44,23 +44,6 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
-- name: gwn3_msg_passer_0
-  id: gwn3_msg_passer
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    tout_restart: '7'
-    tout_stop: '4'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [490, 281]
-    rotation: 0
-    state: true
 - name: gwn3_msg_sink_0
   id: gwn3_msg_sink
   parameters:
@@ -71,7 +54,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [801, 258]
+    coordinate: [534, 142]
     rotation: 0
     state: true
 - name: gwn3_msg_source_0
@@ -80,22 +63,38 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    interval: '1'
+    interval: '1.0'
     maxoutbuf: '0'
     minoutbuf: '0'
     msg_count: '10'
-    payload: El Mensaje
+    payload: A payload to be lost
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [156, 253]
+    coordinate: [11, 122]
+    rotation: 0
+    state: true
+- name: gwn3_virtual_channel_0
+  id: gwn3_virtual_channel
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    prob_loss: '0.5'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [279, 138]
     rotation: 0
     state: true
 
 connections:
-- [gwn3_msg_passer_0, out_port_0, gwn3_msg_sink_0, in_port_0]
-- [gwn3_msg_source_0, out_port_0, gwn3_msg_passer_0, in_port_0]
+- [gwn3_msg_source_0, out_0, gwn3_virtual_channel_0, in_0]
+- [gwn3_virtual_channel_0, out_0, gwn3_msg_sink_0, in_0]
 
 metadata:
   file_format: 1

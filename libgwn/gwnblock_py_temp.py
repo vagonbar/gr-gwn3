@@ -28,7 +28,6 @@ This is the template for the new block code.
 '''
 
 
-import numpy
 from gnuradio import gr
 
 # GWN imports

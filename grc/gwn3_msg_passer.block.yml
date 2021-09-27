@@ -27,15 +27,17 @@ parameters:
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
-- label: in_port_0
+- id: in_0
+  label: in_0
   domain: message
   dtype: message
 #  vlen: ...
   optional: true
 
 outputs:
-- label: out_port_0
-  domain: message
+- id: out_0
+  label: out_0
+  domai: message
   dtype: message
 #  vlen: ...
   optional: true

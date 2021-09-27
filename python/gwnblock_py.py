@@ -27,7 +27,6 @@
 The GWN block is an extension of the GNU Radio gr.basic_block; it inherits from gr.basic_block.
 '''
 
-#import numpy
 from gnuradio import gr
 
 import sys
@@ -478,7 +477,7 @@ class gwnblock_py(gr.basic_block):
         @param number_in: the number of input message connections.
         '''
         for i in list(range(0, number_in)):
-            in_port = 'in_port_' + str(i)
+            in_port = 'in_' + str(i)
             myport = GWNInPort(self, in_port, i)
             self.ports_in.append(myport)
             if self.debug:
@@ -495,7 +494,7 @@ class gwnblock_py(gr.basic_block):
         @param number_out: the number of output message connections.
         '''
         for i in list(range(0, number_out)):
-            out_port = 'out_port_' + str(i)
+            out_port = 'out_' + str(i)
             myport = GWNOutPort(self, out_port, i)
             self.ports_out.append(myport)
             if self.debug:

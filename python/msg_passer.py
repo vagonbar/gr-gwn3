@@ -20,9 +20,9 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
+'''A message passer block; receives and sends messages with two timeouts.'''
 
 
-import numpy
 from gnuradio import gr
 
 # GWN imports

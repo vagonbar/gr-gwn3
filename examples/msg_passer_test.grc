@@ -10,7 +10,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: P11
+    id: msg_passer_example
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -21,7 +21,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: pasador
+    title: Not titled yet
     window_size: ''
   states:
     bus_sink: false
@@ -52,13 +52,13 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    tout_restart: '6'
+    tout_restart: '7'
     tout_stop: '4'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [548, 142]
+    coordinate: [269, 102]
     rotation: 0
     state: true
 - name: gwn3_msg_sink_0
@@ -71,7 +71,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [804, 211]
+    coordinate: [509, 115]
     rotation: 0
     state: true
 - name: gwn3_msg_source_0
@@ -80,22 +80,22 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    interval: '1'
+    interval: '1.0'
     maxoutbuf: '0'
     minoutbuf: '0'
     msg_count: '10'
-    payload: '"mensaje"'
+    payload: '"Test Message"'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [264, 185]
+    coordinate: [8, 95]
     rotation: 0
     state: true
 
 connections:
-- [gwn3_msg_passer_0, out_port_0, gwn3_msg_sink_0, in_port_0]
-- [gwn3_msg_source_0, out_port_0, gwn3_msg_passer_0, in_port_0]
+- [gwn3_msg_passer_0, out_0, gwn3_msg_sink_0, in_0]
+- [gwn3_msg_source_0, out_0, gwn3_msg_passer_0, in_0]
 
 metadata:
   file_format: 1

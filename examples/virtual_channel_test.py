@@ -5,7 +5,8 @@
 # SPDX-License-Identifier: GPL-3.0
 #
 # GNU Radio Python Flow Graph
-# Title: Not titled yet
+# Title: Virtual channel
+# Author: victor
 # GNU Radio version: 3.8.1.0
 
 from distutils.version import StrictVersion
@@ -31,12 +32,12 @@ from gnuradio import eng_notation
 import gwn3
 from gnuradio import qtgui
 
-class msg_passer_example(gr.top_block, Qt.QWidget):
+class virtual_channel_test(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Not titled yet")
+        gr.top_block.__init__(self, "Virtual channel")
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Not titled yet")
+        self.setWindowTitle("Virtual channel")
         qtgui.util.check_set_qss()
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
@@ -54,7 +55,7 @@ class msg_passer_example(gr.top_block, Qt.QWidget):
         self.top_grid_layout = Qt.QGridLayout()
         self.top_layout.addLayout(self.top_grid_layout)
 
-        self.settings = Qt.QSettings("GNU Radio", "msg_passer_example")
+        self.settings = Qt.QSettings("GNU Radio", "virtual_channel_test")
 
         try:
             if StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
@@ -72,20 +73,20 @@ class msg_passer_example(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
-        self.gwn3_msg_source_0 = gwn3.msg_source(10,1.0,"Test Message")
+        self.gwn3_virtual_channel_0 = gwn3.virtual_channel(0.5)
+        self.gwn3_msg_source_0 = gwn3.msg_source(10,1.0,'A payload to be lost')
         self.gwn3_msg_sink_0 = gwn3.msg_sink()
-        self.gwn3_msg_passer_0 = gwn3.msg_passer(4,7)
 
 
 
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.gwn3_msg_passer_0, 'out_port_0'), (self.gwn3_msg_sink_0, 'in_port_0'))
-        self.msg_connect((self.gwn3_msg_source_0, 'out_port_0'), (self.gwn3_msg_passer_0, 'in_port_0'))
+        self.msg_connect((self.gwn3_msg_source_0, 'out_0'), (self.gwn3_virtual_channel_0, 'in_0'))
+        self.msg_connect((self.gwn3_virtual_channel_0, 'out_0'), (self.gwn3_msg_sink_0, 'in_0'))
 
     def closeEvent(self, event):
-        self.settings = Qt.QSettings("GNU Radio", "msg_passer_example")
+        self.settings = Qt.QSettings("GNU Radio", "virtual_channel_test")
         self.settings.setValue("geometry", self.saveGeometry())
         event.accept()
 
@@ -97,7 +98,7 @@ class msg_passer_example(gr.top_block, Qt.QWidget):
 
 
 
-def main(top_block_cls=msg_passer_example, options=None):
+def main(top_block_cls=virtual_channel_test, options=None):
 
     if StrictVersion("4.5.0") <= StrictVersion(Qt.qVersion()) < StrictVersion("5.0.0"):
         style = gr.prefs().get_string('qtgui', 'style', 'raster')

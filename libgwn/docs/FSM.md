@@ -24,9 +24,7 @@ uates to False, the transition is not performed, and its related action is not e
 xecuted.
 
 The FSM is defined through tables of transitions. In a current state, for a give
-n input symbol, the process() method uses these tables to decide which action to
- call and which the next state will be, if and only if the condition evaluates t
-o True; otherwise, nothing happens.
+n input symbol, the ```process()``` method uses these tables to decide which action to call and which the next state will be, if and only if the condition evaluates to True; otherwise, nothing happens.
 
 The table of transitions defines the following associations::
 ```
@@ -34,8 +32,8 @@ The table of transitions defines the following associations::
 ```
 
 where action is a function, symbols and states can be any objects, and condition
- is a function or an expression whith returns a boolean. This table is maintaine
-d through the FSM methods add_transition() and add_transition_list().
+ is a function or an expression which returns a boolean. This table is maintaine
+d through the FSM methods ```add_transition()``` and ```add_transition_list()```.
 
 A second table of transitions defines another kind of association::
 ```
@@ -43,12 +41,12 @@ A second table of transitions defines another kind of association::
 ```
 
 This allows to add transitions valid for any input symbol. The table of any symb
-ol transitions is maintained through the FSM method add_transition_any().
+ol transitions is maintained through the FSM method ```add_transition_any()```.
 
 The FSM has also one default transition not associated with any specific
 input_symbol or state. The default transition matches any symbol on any state, a
 nd may be used as a catch-all transition. The default transition is set through 
-the set_default_transition() method. There can be only one default transition.
+the ```set_default_transition()``` method. There can be only one default transition.
 
 On receiving a symbol, the FSM looks in the transition tables in the following o
 rder::
@@ -67,7 +65,7 @@ The action function receives a reference to the FSM as a parameter, hence the ac
 
 The GWN Finite State Machine implementation is an extension of [Noah Spurrier's FSM 20020822](http://www.noah.org/python/FSM/).
 
-Please see the code documentation, in the FSM module.
+Please see the code documentation, in the FSM module, for a more detailed description.
 - [Code documentation](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/index.html)
 
 

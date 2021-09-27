@@ -1,10 +1,10 @@
-id: gwn3_msg_source
-label: Message source
+id: gwn3_virtual_channel
+label: Virtual channel
 category: '[gwn3]'
 
 templates:
   imports: import gwn3
-  make: gwn3.msg_source(${msg_count},${interval},${payload})
+  make: gwn3.virtual_channel(${prob_loss}) 
 
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
@@ -12,18 +12,9 @@ templates:
 #     * label (label shown in the GUI)
 #     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 parameters:
-- id: msg_count
-  label: Message count
-  dtype: int
-- id: interval
-  label: Interval
+- id: prob_loss
+  label: Probability loss
   dtype: float
-- id: payload
-  label: Payload
-  dtype: string
-#- id: ...
-#  label: ...
-#  dtype: ...
 
 #  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
 #  Keys include:
@@ -32,12 +23,13 @@ parameters:
 #      * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
-#inputs:
-#- label: ...
-#  domain: ...
-#  dtype: ...
+inputs:
+- id: in_0
+  label: in_0
+  domain: message
+  dtype: message
 #  vlen: ...
-#  optional: ...
+  optional: true
 
 outputs:
 - id: out_0

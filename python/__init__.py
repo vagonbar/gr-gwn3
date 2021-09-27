@@ -45,36 +45,8 @@ from .gwnblock_py import gwnblock_py
 from .msg_source import msg_source
 from .msg_sink import msg_sink
 from .msg_passer import msg_passer
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+from .test_block import test_block
+from .virtual_channel import virtual_channel
 
 
 #

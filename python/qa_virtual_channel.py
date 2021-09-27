@@ -20,29 +20,23 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
-
-
-'''
-A template for new GWN block creation in Python, QA.
-
-This is the template for the new block QA code.
-'''
-
+'''QA for virtual channel block.'''
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-from gwnblock_py import gwnblock_py
+#from gwnblock_py import gwnblock_py
+
 from virtual_channel import virtual_channel
+from msg_source import msg_source
+from msg_sink import msg_sink
 
 # GWN imports
-import pmt
-import time
+from time import sleep
 from gwnblock_py import mutex_prt     # for mutually exclusive printing
 
 
 class qa_virtual_channel (gr_unittest.TestCase):
-    '''
-    QA for new GWN block in Python, created from template.
+    '''QA for virtual channel block.
     '''
     def setUp (self):
         self.tb = gr.top_block ()
@@ -50,29 +44,52 @@ class qa_virtual_channel (gr_unittest.TestCase):
     def tearDown (self):
         self.tb = None
 
-    def test_virtual_channel(self):
+    def run_test(self, prob_loss):
+        '''Timer Source to Virtual Channel to Event Sink, with loss.
+        '''
+        msg_count = 10   # number of messages to send 
+        ### blocks Timer Source --> Virtual Channel --> Event Sink
+        blk_src = msg_source(msg_count, interval=1.0)
+        blk_src.timers[0].debug = False    # True
 
-        ### EXAMPLE CODE  
-        #...
-        #new_blk = virtual_channel(prob_loss=0.0,name="vchan")
-        #...
+        blk_vchan = virtual_channel(prob_loss)
+        #blk_vchan.debug = True  # to see probability of loss
+        blk_snk = msg_sink()
 
-        #self.tb.msg_connect( 
-        #    (<emitter_block>, <out_port), 
-        #    (<receiver_block>, <in_port>) )
+        self.tb.msg_connect(blk_src, blk_src.ports_out[0].port, 
+            				blk_vchan, blk_vchan.ports_in[0].port )
+        self.tb.msg_connect(blk_vchan, blk_vchan.ports_out[0].port, 
+                            blk_snk, blk_snk.ports_in[0].port)
 
-
+        secs = 12
+        mutex_prt('\n=== Testing with ' + str(prob_loss) + ' probability loss===')
+        mutex_prt('--- sends %d messages, waits %d secs\n' % (msg_count, secs,))
         #self.tb.run()  # for flowgraphs that will stop on its own!
         self.tb.start() 
         #mutex_prt(self.tb.msg_edge_list())
-        #print tb.dump()
+        sleep(secs)
 
-        #time.sleep(8)
-
+        blk_src.stop_timers()
+        mutex_prt('--- sender, timers stopped')
+        
         self.tb.stop()
         self.tb.wait()
-
+        mutex_prt('--- top block stopped')
+        
         return
+
+    def test_1(self):
+        '''Test with 0.5 prob loss.'''
+        self.run_test(0.5)
+
+    def test_no_loss(self):
+        '''Test with 0.0 prob loss, no loss.'''
+        self.run_test(0.0)
+
+    def test_total_loss(self):
+        '''Test with 1.0 prob loss, total loss.'''
+        self.run_test(1.0)
+
 
 
 if __name__ == '__main__':

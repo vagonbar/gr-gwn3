@@ -175,6 +175,14 @@ for fname in [FILE_NAME, FILE_NAME_QA]:
   f.write(block_code)
   f.close()
 
+
+### copy gwnblock_py YAML template
+print("... Copying YAML template file")
+subprocess.run(["cp", "../grc/gwnblock_py.block_temp.yml", 
+    "../grc/gwn3_" + BLOCK_NAME + ".block.yml"])
+
+
+
 print("\n... New block created.")
 print("    To make available in GRC, please edit corresponding YAML file.")
 

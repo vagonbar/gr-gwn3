@@ -21,7 +21,6 @@
 #
 
 
-import numpy
 from gnuradio import gr
 
 # GWN imports

@@ -20,16 +20,11 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
-
-'''
-A template for a new GWN block creation.
-
-This is the template for the new block code.
-'''
+'''A virtual channel block; receives and sends messages with probability loss.'''
 
 
-import numpy
 from gnuradio import gr
+from random import random
 
 # GWN imports
 from gwnblock_py import gwnblock_py        # for all GWN blocks
@@ -37,35 +32,35 @@ from gwnblock_py import mutex_prt          # for tests
 
 
 class virtual_channel(gwnblock_py):
-    '''New GWN block in Python, created from template.
+    '''Receives and resends a message with a probability loss.
 
     '''
-    def __init__(self, prob_loss=0.0,name="vchan"):
+
+    def __init__(self, prob_loss=0.0, debug=False):
+      '''Virtual channel constructor.
+
+      @param prob_loss: probability of not resending the received message.
+      '''
       gwnblock_py.__init__(self, name='virtual_channel', number_in=1, number_out=1, number_timers=0, number_timeouts=0)
-
-      ### EXAMPLE CODE
-
-      ## initialize timeouts, start
-      #self.timeouts[0].timeout = 5
-      #self.timeouts[0].start()
-      
-      ## initialize timers, start
-      #self.timers[0].retry = 5
-      #self.timers[0].interval = 1.0
-      #self.timers[0].start()
-      #...
-
+      self.prob_loss = float(prob_loss)
+      self.debug = False     # True
       return
 
 
     def process_data(self, py_msg):
-      '''Where message processing happens.
+      '''Receives a message, outputs with probability loss.
 
       @param py_msg: message, a Python data type; GWN uses dict.
       '''
-      if py_msg == None:
-        print("No message received")
+      rand_nr = random()
+      
+      if self.debug:
+          dbg_msg = '--- Virtual Channel, prob_loss={0}; rand_nr={1}'.\
+              format(self.prob_loss, rand_nr)
+          mutex_prt(dbg_msg)
+      if rand_nr <= self.prob_loss:
+          pass					# no output
       else:
-        print("Message received:", py_msg)
+          self.write_out(py_msg)		# write event on output
       return
 
