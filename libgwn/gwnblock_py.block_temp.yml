@@ -1,11 +1,10 @@
-id: gwn3_<BLOCK_NAME>      # adjust for block python file
-label: <BLOCK_NAME>        # adjust for block python file
+id: gwn3_<BLOCK_NAME>
+label: <BLOCK_LABEL>
 category: '[gwn3]'
 
 templates:
   imports: import gwn3
-  make: gwn3.<BLOCK_NAME>(${none})    # adjust for block name and parameters
-  #make: gwn3.msg_passer(${<PAR1>},${<PAR2>}) 
+  make: gwn3.<BLOCK_NAME>(<BLOCK_PARS>)
 
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:

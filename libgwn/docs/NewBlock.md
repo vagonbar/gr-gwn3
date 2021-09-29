@@ -1,5 +1,9 @@
 [GWN3, GNU Wireless Network 3](https://github.com/vagonbar/gr-gwn3)
 
+# The gwn_modtool.py script.
+
+The C{gwn_modtool.py} allows to easily create and delete GWN blocks, in a way similar to the GNU Radio C{gr_modtool} script.
+
 ## Creating a new GWN block
 
 After cloning this repository, a new GWN block can be easily created using Python script ```gwn_modtool.py```. This script must be executed from the ```build``` subdirectory of your project.
@@ -25,7 +29,7 @@ For example, the block msg_passer was created with the following commands:
 
 ```
 cd build    # script must be executed from the build directory
-../libgwn/gwn_modtool.py msg_passer 1 1 0 2
+../libgwn/gwn_modtool.py add msg_passer 1 1 0 2
 ```
 
 This indicates one input port, one output port, no timers, two timeouts. When the script asks for the blocks own parameters, the following was entered:
@@ -36,11 +40,23 @@ After confirmation, the script creates the new block through its files, with nam
 
 User defined behavior is then coded into the block, mainly by adapting the process_data function. The user defined parameters will be available in the constructor ```__init__```.
 
+
 To make the new block available in GRC (GNU Radio Companion), the corresponding YAML file must be edited. The YAML file corresponding to the ```msg_passer``` block recently created may be found in ```grc/gwn3_msg_passer.block.yml```.
 
 To make a pure Python blocks available as a module `in gwn3` package, it must be included in file `gr-gwn3/python/__init__.py` in a line like this:
+
 ```from .msg_passer import msg_passer```
+
 After this, the usual `make; make install` command sequence completes the job.
+
+
+## Removing a GWN block
+
+A GWN block can be removed with the same script:
+```
+cd build    # script must be executed from the build directory
+../libgwn/gwn_modtool.py rm blk_to_remove
+```
 
 
 [Back to README](../../README.md)

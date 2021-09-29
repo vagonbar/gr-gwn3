@@ -42,7 +42,7 @@
       </div>
 
       <div class="moduleDocstring">
-        <div><p>New GWN block in Python, created from template.</p></div>
+        <div><p>Receives and resends a message with a probability loss.</p></div>
       </div>
 
       <div id="splitTables">
@@ -52,12 +52,22 @@
     
     <td>Method</td>
     <td><a href="gr-gwn3.python.virtual_channel.virtual_channel.html#__init__" class="code" data-type="Method">__init__</a></td>
-    <td><span>The GWN basic block constructor.</span></td>
+    <td><span>Virtual channel constructor.</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.virtual_channel.virtual_channel.html#prob_loss" class="code" data-type="Instance Variable">prob_loss</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.virtual_channel.virtual_channel.html#debug" class="code" data-type="Instance Variable">debug</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
     <td><a href="gr-gwn3.python.virtual_channel.virtual_channel.html#process_data" class="code" data-type="Method">process_data</a></td>
-    <td><span>Where message processing happens.</span></td>
+    <td><span>Receives a message, outputs with probability loss.</span></td>
   </tr>
 </table>
         
@@ -90,11 +100,6 @@
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html#finished" class="code" data-type="Instance Variable">finished</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="baseinstancevariable">
-    
-    <td>Instance Variable</td>
-    <td><a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html#debug" class="code" data-type="Instance Variable">debug</a></td>
     <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="basemethod">
     
@@ -176,13 +181,41 @@
   <div class="functionHeader">
     
     def
-    __init__(self, prob_loss=0.0, name="""vchan"""):
+    __init__(self, prob_loss=0.0, debug=(False)):
     
   </div>
   <div class="docstring functionBody">
     <div class="interfaceinfo">overrides <a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html#__init__" class="code" data-type="Method">gr-gwn3.python.gwnblock_py.gwnblock_py.__init__</a></div>
     
-    <div><p>The GWN basic block constructor.</p><p>The GWN basic block implements facilites used by all GWN blocks. A descendent of this class may call this constructor to fix the number of ports, timers and timeouts.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">name</td><td>a name for this block.</td></tr><tr><td></td><td class="fieldArg">number_in</td><td>number of input ports.</td></tr><tr><td></td><td class="fieldArg">number_out</td><td>number of output ports.</td></tr><tr><td></td><td class="fieldArg">number_timers</td><td>number of internal timers.</td></tr><tr><td></td><td class="fieldArg">number_timeouts</td><td>number of internal timeouts.</td></tr></table></div>
+    <div><p>Virtual channel constructor.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">prob_loss</td><td>probability of not resending the received message.</td></tr></table></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.virtual_channel.virtual_channel.prob_loss">
+    
+  </a>
+  <a name="prob_loss">
+    
+  </a>
+  <div class="functionHeader">
+    prob_loss =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.virtual_channel.virtual_channel.debug">
+    
+  </a>
+  <a name="debug">
+    
+  </a>
+  <div class="functionHeader">
+    debug =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>bool</code>)
   </div>
 </div><div class="basemethod">
   
@@ -201,13 +234,13 @@
   <div class="docstring functionBody">
     <div class="interfaceinfo">overrides <a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html#process_data" class="code" data-type="Method">gr-gwn3.python.gwnblock_py.gwnblock_py.process_data</a></div>
     
-    <div><p>Where message processing happens.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">py_msg</td><td>message, a Python data type; GWN uses dict.</td></tr></table></div>
+    <div><p>Receives a message, outputs with probability loss.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">py_msg</td><td>message, a Python data type; GWN uses dict.</td></tr></table></div>
   </div>
 </div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-09-23 11:11:29.
+        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-09-29 19:47:58.
       </address>
 
     </div>

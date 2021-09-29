@@ -27,6 +27,11 @@
 GNU Radio GWN3 Python blocks and tests.
 
 For the GWN3 library, please see the libgwn directory.
+Pure Python blocks require an import in this file __init__.py, of the form::
+
+    from .block_name import block_name
+
+This is necessary to have the new block included in the C{gwn3} package.
 '''
 
 from __future__ import unicode_literals
@@ -45,8 +50,13 @@ from .gwnblock_py import gwnblock_py
 from .msg_source import msg_source
 from .msg_sink import msg_sink
 from .msg_passer import msg_passer
-from .test_block import test_block
+
 from .virtual_channel import virtual_channel
+
+
+
+
+
 
 
 #
