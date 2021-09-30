@@ -2,7 +2,7 @@
 
 # The gwn_modtool.py script.
 
-The C{gwn_modtool.py} allows to easily create and delete GWN blocks, in a way similar to the GNU Radio C{gr_modtool} script.
+The `gwn_modtool.py` allows to easily create and delete GWN blocks, in a way similar to the GNU Radio C{gr_modtool} script.
 
 ## Creating a new GWN block
 
@@ -10,7 +10,7 @@ After cloning this repository, a new GWN block can be easily created using Pytho
 
 The following positional parameters may be given:
 
-```<new_block_name> <nr_in> <nr_out> <nr_timers> <nr_timeouts>```
+```add <new_block_name> <nr_in> <nr_out> <nr_timers> <nr_timeouts>```
 
 These indicate the new block name, and the numbers of input ports, output ports, timers and timeouts. If invoked with no positional parameters, the script will ask for them. These parameters define the new block construction; they are not visible to block users. 
 
