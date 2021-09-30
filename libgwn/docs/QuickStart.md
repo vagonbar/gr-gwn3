@@ -2,17 +2,19 @@
 
 # GWN3 Quick Start
 GR: [GNU Radio](https://www.gnuradio.org/). Version 3.8 required.
+
 GRC: GNU Radio Companion, the GR graphic environment.
+
 To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.php/InstallingGR).
 
 ## Install GWN3
 1. Clone the project.
-```
+  ```
 	cd <your_install_directory>
 	git clone https://github.com/vagonbar/gr-gwn3.git  
-```
+  ```
 2.Build the project.
-```
+  ```
 	cd gr-gwn3
 	mkdir build  
 	cd build  
@@ -23,16 +25,29 @@ To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.p
 	make
 	sudo make install  
 	sudo ldconfig   # on Debian/Ubuntu based distributions
-```
-3. Run a test example:
-```
+  ```
+3. Adjust environment variables.
+  To make `gr-gwn3` accesible you may have to add some lines to the `~/.bashrc` file. For a system wide GNU Radio installation, something like the following:
+  ```
+  export PYTHONPATH=/usr/local/lib/python3/dist-packages:/usr/local/lib/python3/dist-packages/gwn3:$PYTHONPATH
+  export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+  ```
+  The exact form may depend on the GR installation. To verify, `import gwn3` must work in a Python environment:
+  ```
+  $ python3
+  >>> import gwn3
+  >>> dir(gwn3)
+  ```
+  The list shown must contain the GWN blocks defined.
+4. Run a test example:
+  ```
 	python3 ../python/qa_msg_passer.py 
-```
-4. Run an example GRC flowgrtaph:
+  ```
+5. Run an example GRC flowgrtaph:
 	1. Open GRC. In a terminal,
 		```gnuradio-companion```
 	2. In GRC, open file `gr-gwn3/examples/msg_passer_test.grc`.
-5. Now you are ready to create your own GWN blocks.
+6. Now you are ready to create your own GWN blocks.
 
 ## Create a new GWN block
 The following procedure creates a block called `my_block` with 1 input port, 1 output port, 0 timers, and 2 timeouts; this example is similar to the `msg_passer` block. The new block is created through the GWN `gwn_modtool` script, similar to GR `gr_motdool`. Please note the script must be run from the project's `build` directory, usually `gr-gwn3/build`.
