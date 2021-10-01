@@ -39,6 +39,7 @@ To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.p
   >>> dir(gwn3)
   ```
   The list shown must contain the GWN blocks defined.
+
 4. Run a test example:
   ```
 	python3 ../python/qa_msg_passer.py 
@@ -58,9 +59,9 @@ The following procedure creates a block called `my_block` with 1 input port, 1 o
 	python3 ../libgwn/gwn_modtool.py add my_block 1 1 0 2
 	```
 	The script will ask for
-	-	an optional list of user defined parameters, e.g. `nr_times=12,payload="This is my payload`
+	-	an optional list of user defined parameters, e.g. `nr_times=12,payload="This is my payload"`
 	-	a label to name the new block in GRC., e.g. `Message passer`.
-2. Edit the new block files, refferred from the `build` directory;
+2. Edit the new block files, referred from the `build` directory;
 	-	`../python/my_block_py`, add your own processing code.
 	-	`../python/qa_my_block_py`, write your test code for the new block.
 	-	`../grc/gwn3_my_block.block.yml`, adjust for GRC visibility.

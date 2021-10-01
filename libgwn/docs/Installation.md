@@ -2,7 +2,12 @@
 
 # Installation
 
-This version of GWN requires GNU Radio 3.8. The following instructions assume gr-gwn3 is cloned in the user's home directory under subdirectory ```~/GNURadio```, and GNU Radio 3.8 is installed in ```/home/gnuradio-3.8```, and ```/home/gnuradio-3.8/setup_env.sh``` has been sourced to make paths to GNU Radio available (command ```source /home/gnuradio-3.8/setup_env.sh``` or included in ```.bashrc``` file).
+These notes offer some additional information on installation, as a complement to the [Quick Start page](QuickStart.md).
+
+This version of GWN requires GNU Radio 3.8.  To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.php/InstallingGR).
+
+The following instructions assume gr-gwn3 is cloned in the user's home directory under subdirectory `~/GNURadio`, and GNU Radio 3.8 is installed in `/home/gnuradio-3.8`. It also asumes `/home/gnuradio-3.8/setup_env.sh` has been sourced to make paths to GNU Radio available (command `source /home/gnuradio-3.8/setup_env.sh`, or its content has been included in the  `.bashrc` file.
+
 
 ```
   cd
@@ -25,6 +30,12 @@ This very simple flowgraph shows handling of GWN messages as Python dictionaries
 This flowgraph is available in GRC by opening  `examples/msg_passer_test.grc`.
 
 ![Message passer example in GRC](../images/msg_passer_example.jpg)
+
+To use GWN in GRC, you must ensure the PYTHONPATH environment variable contains the route to the GWN files, using a command such as:
+```
+  export PYTHONPATH=$PYTHONPATH:/home/GNURadio/gr-gwn3
+```
+This command may be included in your `.bashrc` file.
 
 
 [Back to README](../../README.md)
