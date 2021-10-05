@@ -44,12 +44,12 @@ lock_obj = threading.Lock()
 ###
 
 
-def pdu_to_msg(pdu, debug=False):
-    '''Extracts message from PDU.
+def pdu_to_msg(pdu):
+    '''Extracts message from a PDU.
 
+    Extracts message (cdr) from a PDU, deserializes bytes with pickle into a Python data type, returns (car, cdr) from the PDU.
     @param pdu: a PDU.
-    @param debug: print additional information, default False.
-    @return: (metadata, message string).
+    @return: a pair (metadata, message data).
     '''
     # code taken from chat_blocks in GNURadio tutorial 5
     # collect metadata, convert to Python format:
@@ -60,32 +60,25 @@ def pdu_to_msg(pdu, debug=False):
     if not pmt.is_u8vector(msg):
         print("[ERROR] Received invalid message type.\n")
         return ('', '')
-    # convert to string:
-    msg_str = "".join([chr(x) for x in pmt.u8vector_elements(msg)])
-    if debug:
-        if meta is None:
-            msg_dbg = "[METADATA]: None, [CONTENTS]: " + msg_str 
-        else:
-            msg_dbg = "[METADATA]: " + meta + ", [CONTENTS]: " + msg_str 
-        mutex_prt (msg_dbg)
-    return (meta, msg_str)
+    # recover pickle serialized data
+    msg_bytes = bytes(pmt.u8vector_elements(msg))
+    msg_data = pickle.loads(msg_bytes)
+    return (meta, msg_data)
 
 
-def msg_to_pdu(msg_str, debug=False):
-    '''Inserts string message into a PDU.
+def msg_to_pdu(msg_data):
+    '''Inserts message data into a PDU.
 
-    @param msg: a string to insert as content of the PDU.
-    @param debug: print additional information, default False.
+    Serializes received data into bytes with pickle, creates a PMT u8vector and inserts bytes into it, creates a PDU with the u8vector.
+    @param msg_data: data to insert as content of the PDU.
     @return: a PDU, a pair (metadata, content) in PMT data types; metadata is None.
     '''
+    msg_bytes = pickle.dumps(msg_data, protocol=1)
     # create an empty PMT (contains only spaces):
-    send_pmt = pmt.make_u8vector(len(msg_str), ord(' '))
+    send_pmt = pmt.make_u8vector(len(msg_bytes), ord(' '))
     # copy all characters to the u8vector:
-    for i in range(len(msg_str)):
-        pmt.u8vector_set(send_pmt, i, ord(msg_str[i]))
-    if debug:
-        mutex_prt('[PMT message]')
-        mutex_prt(send_pmt)
+    for i in range(len(msg_bytes)):
+        pmt.u8vector_set(send_pmt, i, msg_bytes[i])
     pdu = pmt.cons(pmt.PMT_NIL, send_pmt) 
     return pdu
 

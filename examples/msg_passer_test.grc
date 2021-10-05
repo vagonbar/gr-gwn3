@@ -84,7 +84,7 @@ blocks:
     maxoutbuf: '0'
     minoutbuf: '0'
     msg_count: '10'
-    payload: '"Test Message"'
+    payload: '{"type":"tipo 1"}'
   states:
     bus_sink: false
     bus_source: false
