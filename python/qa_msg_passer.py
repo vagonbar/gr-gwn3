@@ -20,6 +20,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
+'''QA for message passer block.'''
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
@@ -36,6 +37,7 @@ from gwnblock_py import mutex_prt
 
 
 class qa_msg_passer (gr_unittest.TestCase):
+    '''QA for message passer block.'''
 
     def setUp (self):
         self.tb = gr.top_block ()

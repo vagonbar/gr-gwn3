@@ -24,5 +24,8 @@ install(FILES
     gwn3_msg_passer.block.yml
     gwn3_virtual_channel.block.yml
     gwn3_ev_to_pdu.block.yml
-    gwn3_pdu_to_ev.block.yml DESTINATION share/gnuradio/grc/blocks
+    gwn3_pdu_to_ev.block.yml
+    gwn3_event_source.block.yml
+    gwn3_event_sink.block.yml
+    gwn3_event_router.block.yml DESTINATION share/gnuradio/grc/blocks
 )

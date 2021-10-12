@@ -1,6 +1,6 @@
 options:
   parameters:
-    author: victor
+    author: ''
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: ''
@@ -10,7 +10,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: virtual_channel_test
+    id: event_source_test
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -21,7 +21,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Virtual channel
+    title: Not titled yet
     window_size: ''
   states:
     bus_sink: false
@@ -44,35 +44,36 @@ blocks:
     coordinate: [184, 12]
     rotation: 0
     state: enabled
-- name: gwn3_msg_sink_0
-  id: gwn3_msg_sink
+- name: gwn3_event_sink_0
+  id: gwn3_event_sink
   parameters:
     affinity: ''
     alias: ''
     comment: ''
+    ev_count: 'True'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [534, 142]
+    coordinate: [565, 148]
     rotation: 0
     state: true
-- name: gwn3_msg_source_0
-  id: gwn3_msg_source
+- name: gwn3_event_source_0
+  id: gwn3_event_source
   parameters:
     affinity: ''
     alias: ''
     comment: ''
+    ev_count: '10'
+    ev_dc: '{''Type'':''Data'', ''Sutbtype'':''TestData'', ''seq_nr'':0}'
     interval: '1.0'
     maxoutbuf: '0'
     minoutbuf: '0'
-    msg_count: '10'
-    payload: A payload to be lost
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [11, 122]
+    coordinate: [17, 132]
     rotation: 0
     state: true
 - name: gwn3_virtual_channel_0
@@ -88,13 +89,13 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [279, 138]
+    coordinate: [296, 148]
     rotation: 0
     state: true
 
 connections:
-- [gwn3_msg_source_0, out_0, gwn3_virtual_channel_0, in_0]
-- [gwn3_virtual_channel_0, out_0, gwn3_msg_sink_0, in_0]
+- [gwn3_event_source_0, out_0, gwn3_virtual_channel_0, in_0]
+- [gwn3_virtual_channel_0, out_0, gwn3_event_sink_0, in_0]
 
 metadata:
   file_format: 1

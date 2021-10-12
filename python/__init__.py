@@ -54,6 +54,9 @@ from .msg_passer import msg_passer
 from .virtual_channel import virtual_channel
 from .ev_to_pdu import ev_to_pdu
 from .pdu_to_ev import pdu_to_ev
+from .event_source import event_source
+from .event_sink import event_sink
+from .event_router import event_router
 
 
 

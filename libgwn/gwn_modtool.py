@@ -120,7 +120,7 @@ def get_pars(given_args, debug=False):
     GWNBLOCK_PARS += "number_timers=" + NR_TIMERS + ", " 
     GWNBLOCK_PARS += "number_timeouts=" + NR_TIMEOUTS 
     ### get values for new block own parameters
-    BLOCK_PARS = input("    New block own parameter list: ")
+    BLOCK_PARS = input("    New block own parameter list (no spaces): ")
     BLOCK_LABEL = input("    New block label for GRC: ")
     if debug:
         print("    BLOCK_NAME   :", BLOCK_NAME)
@@ -295,7 +295,9 @@ if __name__ == "__main__":
     #print(sys.argv)
     #sys.exit()
     verify_dir()
-    if sys.argv[1] == "add":            # add block  
+    if len(sys.argv) == 1:                # no option given
+        show_help()
+    elif sys.argv[1] == "add":            # add block  
         get_pars(sys.argv)
         create_block(False)
         #create_block(debug=True)
@@ -309,7 +311,7 @@ if __name__ == "__main__":
         print(end_msg)
     elif sys.argv[1] == "rm":           # remove block
         rm_block()
-        #rm_block(True)
+        #rm_block(debug=True)
         sys.exit()
     else:                               # go on to create block
         #get_pars(sys.argv, True)

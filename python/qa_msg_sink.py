@@ -21,6 +21,8 @@
 #
 
 
+'''QA for message sink block.'''
+
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
 from gwnblock_py import gwnblock_py
@@ -33,6 +35,7 @@ from gwnblock_py import mutex_prt
 
 
 class qa_msg_sink (gr_unittest.TestCase):
+    '''QA for message sink block.'''
 
     def setUp (self):
         self.tb = gr.top_block ()

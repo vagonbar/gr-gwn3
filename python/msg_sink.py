@@ -20,6 +20,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
+'''A message sink block, prints messages received.'''
 
 
 from gnuradio import gr
@@ -42,7 +43,7 @@ class msg_sink(gwnblock_py):
 
 
     def process_data(self, py_msg):
-        '''Sends received message, if timeout stops.
+        '''Prints received message.
 
         @param py_msg: message, a Python data type.
         '''

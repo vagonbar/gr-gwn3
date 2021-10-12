@@ -20,6 +20,8 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
+'''A message source block, emits messages at regular intervals.'''
+
 
 from gnuradio import gr
 
@@ -30,7 +32,6 @@ from gwnblock_py import mutex_prt          # for tests
 
 class msg_source(gwnblock_py):
     '''Emits a number of messages at regular intervals.
-
     '''
     def __init__(self, msg_count=10, interval=1.0, payload=""):
       '''Message source constructor.
@@ -56,7 +57,7 @@ class msg_source(gwnblock_py):
 
 
     def process_data(self, py_msg):
-        '''Sends received message from timer.
+        '''Sends message receivedfrom timer.
 
         @param py_msg: message, a Python data type.
         '''

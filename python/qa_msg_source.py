@@ -21,6 +21,9 @@
 #
 
 
+'''QA for message source block.  '''
+
+
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
 from gwnblock_py import gwnblock_py
@@ -32,6 +35,7 @@ from gwnblock_py import mutex_prt
 
 
 class qa_msg_source (gr_unittest.TestCase):
+    '''QA for message source block.'''
 
     def setUp (self):
         self.tb = gr.top_block ()
