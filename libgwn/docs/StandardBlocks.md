@@ -47,26 +47,31 @@ Receives messages and shows them. If message is a GWN event (a dictionary) all k
 
 ## Event and channel blocks
 
-### Event source, `ev_source`
+### Event source, [`ev_source`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.ev_source.html)
 
 Emits a number of user defined events (dictionaries) at certain intervals. Type, subtype and other fields included in the message are entirely defined by the user.
 
-### Event sink, `ev_sink`
+### Event sink, [`ev_sink`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.ev_sink)
+ 
 Receives messages (events or other Python data type) and prints them. Optionally counts messages received.
 
-### Virtual channel, `virtual_channel`
+### Virtual channel, [`virtual_channel`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.virtual_channel.html)
 
 Receives a message (event or other Python data type) and retransmits with a user defined probability loss.
 
-### Event router, `event_router`
+### Event router, [`event_router`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.event_router.html)
 
 Receives an event on its input port, sends event on either output port 0 or 1, according to parameters field_nm_0, field_val_0, field_nm_1, field_val_1. An event which contains {field_nm_0:field_val_0} is sent on output port 0; an event with {field_nm_1:field_val_1} is sent on output port 1. If event does not meet any of those criteria, no event is sent on either output port.
 
 ## Conversion blocks
 
-### Event to PDU, `ev_to_pdu`
+### Event to PDU, [`ev_to_pdu`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.ev_to_pdu.html)
 
-### PDU to event, `pdu_to_ev`
+Converts an event (string or dictionary) into a PDU (Protocol Data Unit).
+
+### PDU to event, [pdu_to_ev`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.pdu_to_ev.html)
+
+Converta a PDU (Protocol Data Unit) into an event (string or dictionary).
 
 ### PSK transmit, `hier_tx_psk`
 
