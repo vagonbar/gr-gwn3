@@ -1,10 +1,10 @@
-id: gwn3_event_router
-label: Event router
+id: gwn3_l1_framer
+label: L1 framer
 category: '[gwn3]'
 
 templates:
   imports: import gwn3
-  make: gwn3.event_router(${field_nm_0},${field_val_0},${field_nm_1},${field_val_1})
+  make: gwn3.l1_framer(${in_type})
 
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
@@ -12,18 +12,12 @@ templates:
 #     * label (label shown in the GUI)
 #     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 parameters:
-- id: field_nm_0
-  label: Field name 0
-  dtype: string
-- id: field_val_0
-  label: Field value 0
-  dtype: string
-- id: field_nm_1
-  label: Field name 1
-  dtype: string
-- id: field_val_1
-  label: Field value 1
-  dtype: string
+- id: ...
+  label: ...
+  dtype: ...
+- id: ...
+  label: ...
+  dtype: ...
 
 #  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
 #  Keys include:
@@ -33,23 +27,18 @@ parameters:
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
-- label: in_0
-  domain: message
-  dtype: message
-#  vlen: 
-  optional: true
+- label: ...
+  domain: ...
+  dtype: ...
+  vlen: ...
+  optional: ...
 
 outputs:
-- label: out_0
-  domain: message
-  dtype: message
-#  vlen: 
-  optional: true
-- label: out_1
-  domain: message
-  dtype: message
-#  vlen: ...
-  optional: true
+- label: ...
+  domain: ...
+  dtype: ...
+  vlen: ...
+  optional: ...
 
 #  'file_format' specifies the version of the GRC yml format used in the file
 #  and should usually not be changed.

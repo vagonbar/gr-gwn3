@@ -41,7 +41,11 @@ GR_PYTHON_INSTALL(
     pdu_to_ev.py
     event_source.py
     event_sink.py
-    event_router.py DESTINATION ${GR_PYTHON_DIR}/gwn3
+    event_router.py
+    hier_tx_psk.py
+    hier_rx_psk.py
+    l1_framer.py
+    l1_deframer.py DESTINATION ${GR_PYTHON_DIR}/gwn3
 )
 
 ########################################################################
@@ -61,3 +65,7 @@ GR_ADD_TEST(qa_pdu_to_ev ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_pdu
 GR_ADD_TEST(qa_event_source ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_event_source.py)
 GR_ADD_TEST(qa_event_sink ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_event_sink.py)
 GR_ADD_TEST(qa_event_router ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_event_router.py)
+GR_ADD_TEST(qa_hier_tx_psk ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_hier_tx_psk.py)
+GR_ADD_TEST(qa_hier_rx_psk ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_hier_rx_psk.py)
+GR_ADD_TEST(qa_l1_framer ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_l1_framer.py)
+GR_ADD_TEST(qa_l1_deframer ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_l1_deframer.py)

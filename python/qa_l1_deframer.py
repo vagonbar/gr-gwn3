@@ -20,51 +20,49 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
-'''QA for message passer block.'''
+
+'''QA for l1_deframer block.'''
+
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
 from gwnblock_py import gwnblock_py
-from msg_passer import msg_passer
+from l1_deframer import l1_deframer
 
-from msg_sink import msg_sink
-from msg_source import msg_source
-
-import sys
+# GWN imports
 import pmt
 import time
 from gwnblock_py import mutex_prt     # for mutually exclusive printing
 
 
-class qa_msg_passer (gr_unittest.TestCase):
-    '''QA for message passer block.'''
-
+class qa_l1_deframer (gr_unittest.TestCase):
+    '''QA for l1_deframer block.
+    '''
     def setUp (self):
         self.tb = gr.top_block ()
 
     def tearDown (self):
         self.tb = None
 
-    def test_msg_passer(self):
-        print ("\n=== Test message passing, interrupt, continue")
-        print ("   Running python version " + (sys.version) + "\n")
-        blk_src = msg_source(msg_count=12, interval=1.0)
-        blk_src.timers[0].debug = False     # True
+    def test_l1_deframer(self):
 
-        blk_pass = msg_passer(tout_stop=4.0, tout_restart=7.0)
-        blk_sink = msg_sink()
+        ### EXAMPLE CODE  
+        #...
+        #new_blk = l1_deframer(out_type='event')
+        #...
 
-        self.tb.msg_connect( 
-            (blk_src, blk_src.ports_out[0].port), 
-            (blk_pass, blk_pass.ports_in[0].port) )
-        self.tb.msg_connect( 
-            (blk_pass, blk_pass.ports_out[0].port), 
-            (blk_sink, blk_sink.ports_in[0].port) )
+        #self.tb.msg_connect( 
+        #    (<emitter_block>, <out_port), 
+        #    (<receiver_block>, <in_port>) )
 
 
         #self.tb.run()  # for flowgraphs that will stop on its own!
         self.tb.start() 
-        time.sleep(14)
+        #mutex_prt(self.tb.msg_edge_list())
+        #print tb.dump()
+
+        #time.sleep(8)
+
         self.tb.stop()
         self.tb.wait()
 
@@ -72,6 +70,6 @@ class qa_msg_passer (gr_unittest.TestCase):
 
 
 if __name__ == '__main__':
-    gr_unittest.run(qa_msg_passer)
+    gr_unittest.run(qa_l1_deframer)
 
 

@@ -1,0 +1,99 @@
+id: gwn3_hier_rx_psk
+label: hier_rx_psk
+category: '[gwn3]'
+
+templates:
+  imports: import gwn3
+  make: gwn3.hier_rx_psk(${bw_clock_sync}, ${bw_fll}, ${bw_costas}, ${n_filts}, ${len_sym_srrc}, ${constellation}, ${1-1j}, ${1+1j}, ${-1+1j]}, ${[]}, ${4}, ${1).base()}, ${samp_per_sym}, ${alfa}, ${bits_per_sym}, ${agc_attack_rate}, ${agc_decay_rate}, ${agc_reference}, ${agc_gain}, ${alpha_probe}, ${th_probe})
+
+#  Make one 'parameters' list entry for every parameter you want settable from the GUI.
+#     Keys include:
+#     * id (makes the value accessible as \$keyname, e.g. in the make entry)
+#     * label (label shown in the GUI)
+#     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
+parameters:
+- id: bw_clock_sync
+  label: bw_clock_sync
+  default: 2*3.14/100
+  dtype: float
+- id: bw_fll
+  label: bw_fll
+  default: 3.14/1600
+  dtype: float
+- id: bw_costas
+  label: bw_costas
+  default: 2*3.14/100
+  dtype: float
+- id: n_filts
+  label: Number filters bank
+  default: 32
+  dtype: int
+- id: len_sym_srrc
+  label: Length in symbols of SRRC
+  default: 7
+  dtype: int
+- id: constellation
+  label: Constellation points
+  #default:       #[-1-1j, -1+1j, 1+1j, 1-1j] 
+  dtype:         #complex_vector
+- id: samp_per_sym
+  label: Samples per symbol
+  default: 5
+  dtype: int
+- id: alpha
+  label: Excess bandwidth
+  default: 0.35
+  dtype: float
+- id: bits_per_sym
+  label: Bits per symbol
+  default: 2
+  dtype: int
+- id: agc_attack_rate
+  label: AGC attack rate
+  default: 0.1    # = 1e-1
+  dtype: float
+- id: agc_decay_rate
+  label: AGC decay rate
+  default: 0.01  # = 1e-2
+  dtype: float
+- id: agc_reference
+  label: AGC reference
+  default: 1.0
+  dtype: float
+- id: agc_gain
+  label: AGC gain
+  default: 15.0    # 1.0 in block code
+  dtype: float
+- id: alpha_probe
+  label: alpha_probe
+  default: 0.1
+  dtype: float
+- id: th_probe
+  label: th_probe
+  default: 0.0
+  dtype: float
+
+#  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
+#  Keys include:
+#      * label (an identifier for the GUI)
+#      * domain (optional - stream or message. Default is stream)
+#      * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
+#      * vlen (optional - data stream vector length. Default is 1)
+#      * optional (optional - set to 1 for optional inputs. Default is 0)
+inputs:
+- label: in
+#  domain: ...
+  dtype: complex
+#  vlen: ...
+#  optional: ...
+
+outputs:
+- label: out
+#  domain: ...
+  dtype: byte
+#  vlen: ...
+#  optional: ...
+
+#  'file_format' specifies the version of the GRC yml format used in the file
+#  and should usually not be changed.
+file_format: 1

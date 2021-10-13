@@ -1,0 +1,157 @@
+options:
+  parameters:
+    author: ''
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: ev_router_example
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Event router example
+    window_size: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '32000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: gwn3_event_router_0
+  id: gwn3_event_router
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    field_nm_0: Subtype
+    field_nm_1: Subtype
+    field_val_0: Pass_0
+    field_val_1: Pass_1
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [348, 139]
+    rotation: 0
+    state: true
+- name: gwn3_event_sink_0
+  id: gwn3_event_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ev_count: 'True'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [616, 133]
+    rotation: 0
+    state: true
+- name: gwn3_event_sink_1
+  id: gwn3_event_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ev_count: 'True'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [616, 198]
+    rotation: 0
+    state: true
+- name: gwn3_event_source_0
+  id: gwn3_event_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ev_count: '10'
+    ev_dc: '{''Type'':''Data'',''Subtype'':''Pass_0''}'
+    interval: '0.5'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [41, 108]
+    rotation: 0
+    state: true
+- name: gwn3_event_source_1
+  id: gwn3_event_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ev_count: '5'
+    ev_dc: '{''Type'':''Data'',''Subtype'':''Pass_1''}'
+    interval: '1.0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [38, 196]
+    rotation: 0
+    state: true
+- name: gwn3_event_source_2
+  id: gwn3_event_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ev_count: '5'
+    ev_dc: '{''Type'':''Data'',''Subtype'':''NoPass''}'
+    interval: '1.0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [35, 289]
+    rotation: 0
+    state: true
+
+connections:
+- [gwn3_event_router_0, out_0, gwn3_event_sink_0, in_0]
+- [gwn3_event_router_0, out_1, gwn3_event_sink_1, in_0]
+- [gwn3_event_source_0, out_0, gwn3_event_router_0, in_0]
+- [gwn3_event_source_1, out_0, gwn3_event_router_0, in_0]
+- [gwn3_event_source_2, out_0, gwn3_event_router_0, in_0]
+
+metadata:
+  file_format: 1

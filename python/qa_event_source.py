@@ -46,6 +46,7 @@ class qa_event_source (gr_unittest.TestCase):
         blk_src = event_source(ev_count=4, interval=1.0, \
           ev_dc={'Type':'Data', 'Subtype':'TestData', \
                  'payload':'Testing Event source block', 'seq_nr':0} )
+        #blk_src = event_source(ev_count=4, interval=1.0, ev_dc="TEST")
         blk_src.timers[0].debug = False     # True
         #blk_src.timers[0].start()
         blk_dbg = blocks.message_debug()

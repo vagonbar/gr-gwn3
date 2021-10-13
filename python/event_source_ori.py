@@ -39,7 +39,7 @@ class event_source(gwnblock_py):
       Events are Python dictionaries with keys and values defined by user.
       @param ev_count: the number of events to emit.
       @param interval: the lapse of time between events, in seconds.
-      @param ev_dc: usually a dictionary, the user defined events to generate, may also be a string.
+      @param ev_dc: a dictionary, the user defined events to generate.
       '''
       gwnblock_py.__init__(self, name='event_source', number_in=0, number_out=1, number_timers=1, number_timeouts=0)
 

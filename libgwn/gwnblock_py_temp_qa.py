@@ -21,11 +21,7 @@
 #
 
 
-'''
-A template for new GWN block creation in Python, QA.
-
-This is the template for the new block QA code.
-'''
+'''QA for <BLOCK_NAME> block.'''
 
 
 from gnuradio import gr, gr_unittest
@@ -40,8 +36,7 @@ from gwnblock_py import mutex_prt     # for mutually exclusive printing
 
 
 class qa_<BLOCK_NAME> (gr_unittest.TestCase):
-    '''
-    QA for new GWN block in Python, created from template.
+    '''QA for <BLOCK_NAME> block.
     '''
     def setUp (self):
         self.tb = gr.top_block ()
