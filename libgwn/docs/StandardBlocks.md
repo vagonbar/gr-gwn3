@@ -17,14 +17,23 @@ Data, Control, and Management are usual categories in data networks, with subtyp
 A list of suggested and usual fields follows:: 
 
   `type` = { Internal, Data, Control, Management }` (not mandatory).
+
   `subtype` : according to type and protocol.
+
   `src_addr` : source address, format according to protocol.
+
   `dst_addr` : destination address, format according to protocol.
+
   `duration` : float, a lapse of time.
+
   `frm_pkt : frame packet, bytes, a binary packed string.
+
   `frm_len` : int, frame length,
+
   `payload` : string, information to transmit.
+
   `port : a port number, to identify port of origin, in Internal types.
+
   `retry` : boolean, or int for number of retries DEFINE. 
 
 
