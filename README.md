@@ -22,7 +22,7 @@ Ths project started several years ago, evolutioning through different stages. Th
 ## Documentation
 
 - [Quick start](libgwn/docs/QuickStart.md)
-- [Standard blocks](libgwn/docs/StandarBlocks.md)
+- [Standard blocks](libgwn/docs/StandardBlocks.md)
 - [Installation](libgwn/docs/Installation.md)
 - [GWN block characteristics](libgwn/docs/GWN3Block.md)
 - [Creating a new GWN block](libgwn/docs/NewBlock.md)
