@@ -16,7 +16,7 @@ Data, Control, and Management are usual categories in data networks, with subtyp
 
 A list of suggested and usual fields follows:: 
 
-  `type` = { Internal, Data, Control, Management }` (not mandatory).
+  `type` = { Internal, Data, Control, Management } (not mandatory).
 
   `subtype` : according to type and protocol.
 
@@ -32,7 +32,7 @@ A list of suggested and usual fields follows::
 
   `payload` : string, information to transmit.
 
-  `port : a port number, to identify port of origin, in Internal types.
+  `port` : a port number, to identify port of origin, in Internal types.
 
   `retry` : boolean, or int for number of retries DEFINE. 
 

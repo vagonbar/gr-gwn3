@@ -94,7 +94,7 @@ class l1_framer(gwnblock_py):
             self._pad_for_usrp,
             self._whitener_offset)
 
-        pdu = ev_to_pdu(send_pkt) #, debug=self.debug)
+        pdu = msg_to_pdu(send_pkt) #, debug=self.debug)
         self.message_port_pub( pmt.intern('pdu'), pdu)
 
         return

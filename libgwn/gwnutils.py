@@ -38,7 +38,13 @@ import struct
 
 def gen_and_append_crc32(s):
     crc = digital.crc32(s)
-    return s  + struct.pack(">I", gru.hexint(crc) & 0xFFFFFFFF)
+    #return s  + struct.pack(">I", gru.hexint(crc) & 0xFFFFFFFF)
+    # >I : big endian std size and align, unsigned int.
+    hx = gru.hexint(crc) & 0xFFFFFFFF                      # int
+    bhx = struct.pack(">I", gru.hexint(crc) & 0xFFFFFFFF)  # bytes
+    sbhx = str( struct.pack(">I", gru.hexint(crc) & 0xFFFFFFFF) ) # string
+    ssbhx = s + sbhx
+    return ssbhx
 
 def check_crc32(s, debug=True):
     if len(s) < 4:
@@ -52,12 +58,10 @@ def check_crc32(s, debug=True):
     return (actual == expected, msg)
 
 
-
-
-
 ###
 ### gwnutils
 ###
+
 def conv_packed_binary_string_to_1_0_string(s):
     """
     '\xAF' --> '10101111'
@@ -70,6 +74,7 @@ def conv_packed_binary_string_to_1_0_string(s):
             r.append(t)
 
     return ''.join(map(lambda x: chr(x + ord('0')), r))
+
 
 def conv_1_0_string_to_packed_binary_string(s):
     """
@@ -108,6 +113,7 @@ default_access_code = \
 default_preamble = \
   conv_packed_binary_string_to_1_0_string('\xA4\xF2'*80)
 
+
 def is_1_0_string(s):
     if not isinstance(s, str):
         return False
@@ -116,23 +122,28 @@ def is_1_0_string(s):
             return False
     return True
 
+
 def string_to_hex_list(s):
     return map(lambda x: hex(ord(x)), s)
 
 
 def whiten(s, o):
-    sa = numpy.fromstring(s, numpy.uint8)
+    #sa = numpy.fromstring(s, numpy.uint8)   # DEPRECATED
+    sa = numpy.frombuffer(bytes(s, 'utf-8'), numpy.uint8)
     z = sa ^ random_mask_vec8[o:len(sa)+o]
     return z.tostring()
 
+
 def dewhiten(s, o):
     return whiten(s, o)        # self inverse
+
 
 def make_header(payload_len, whitener_offset=0):
     # Upper nibble is offset, lower 12 bits is len
     val = ((whitener_offset & 0xf) << 12) | (payload_len & 0x0fff)
     #print "offset =", whitener_offset, " len =", payload_len, " val=", val
     return struct.pack('!HH', val, val)
+
 
 def make_packet(payload, samples_per_symbol, bits_per_symbol,
                 preamble=default_preamble, access_code=default_access_code,
@@ -158,8 +169,10 @@ def make_packet(payload, samples_per_symbol, bits_per_symbol,
     if not whitener_offset >=0 and whitener_offset < 16:
         raise ValueError("whitener_offset must be between 0 and 15, inclusive (%i)" % (whitener_offset,) )
 
-    (packed_access_code, padded) = conv_1_0_string_to_packed_binary_string(access_code)
-    (packed_preamble, ignore) = conv_1_0_string_to_packed_binary_string(preamble)
+    (packed_access_code, padded) = \
+        conv_1_0_string_to_packed_binary_string(access_code)
+    (packed_preamble, ignore) = \
+        conv_1_0_string_to_packed_binary_string(preamble)
     
     payload_with_crc = gen_and_append_crc32(payload)
     #print "outbound crc =", string_to_hex_list(payload_with_crc[-4:])
@@ -170,18 +183,34 @@ def make_packet(payload, samples_per_symbol, bits_per_symbol,
         raise ValueError("len(payload) must be in [0, %d]" % (MAXLEN,) )
 
     if whitening:
-        pkt = ''.join((packed_preamble, packed_access_code, make_header(L, whitener_offset),
-                       whiten(payload_with_crc, whitener_offset), '\x55'*10))
+        #pkt = ''.join((packed_preamble, packed_access_code, make_header(L, whitener_offset),
+        #               whiten(payload_with_crc, whitener_offset), '\x55'*10))
+        print("=== check types:")
+        print("packed_preamble", type(packed_preamble))
+        print("packed_access_code", type(packed_access_code))
+        print("make_header", type(make_header(L, whitener_offset)))
+        print("payload_with_crc", type(whiten(payload_with_crc, whitener_offset)))
+        pkt = ''.join(
+          (packed_preamble, packed_access_code, 
+              str ( make_header(L, whitener_offset) ),
+              str ( whiten(payload_with_crc, whitener_offset) ),
+              '\x55'*10)
+          )
     else:
-        pkt = ''.join((packed_preamble, packed_access_code, make_header(L, whitener_offset),
-                       (payload_with_crc), '\x55'*10))
-
+        pkt = ''.join(
+                   packed_preamble, packed_access_code, 
+                   make_header(L, whitener_offset),
+                   (payload_with_crc), '\x55'*10 )
     if pad_for_usrp:
-        pkt = pkt + (_npadding_bytes(len(pkt), int(samples_per_symbol), bits_per_symbol) * '\x55')
-	
+        #print(type(_npadding_bytes(len(pkt), int(samples_per_symbol), bits_per_symbol) ) )
+        #pkt = pkt + (_npadding_bytes(len(pkt), int(samples_per_symbol), bits_per_symbol) * '\x55')
+        pkt = pkt + \
+          int(_npadding_bytes(len(pkt), int(samples_per_symbol), bits_per_symbol) )\
+           * '\x55'     ### VERIFY
 
     #print "make_packet: len(pkt) =", len(pkt)
     return pkt
+
 
 def _npadding_bytes(pkt_byte_len, samples_per_symbol, bits_per_symbol):
     """
