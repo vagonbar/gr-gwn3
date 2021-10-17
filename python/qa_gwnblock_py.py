@@ -53,6 +53,14 @@ class qa_gwnblock_py (gr_unittest.TestCase):
         blk_gwn = gwnblock_py(name="MsgPasser", number_in=1, number_out=1, number_timers=0, number_timeouts=0)
         dbg = blocks.message_debug() 
 
+
+        # debug
+        blk_gwn.debug = True
+        print(blk_gwn)
+        print(blk_gwn.ports_in)
+        print(blk_gwn.ports_in[0])
+        print(blk_gwn.ports_in[0].port)
+
         self.tb.msg_connect( 
             (src, "strobe"), 
             (blk_gwn, blk_gwn.ports_in[0].port) )

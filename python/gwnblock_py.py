@@ -594,8 +594,14 @@ class gwnblock_py(gr.basic_block):
         return
 
 
-    def handle_msg(self):
-        pass 
+    def handle_msg(self, pmt_msg):
+        '''Receives PMT message, converts to Python, passes to process data.
+
+        @param pmt_msg: a message in PMT format.
+        '''
+        py_msg = pmt.to_python(pmt_msg)
+        self.process_data(py_msg)
+        return
 
 
     def process_data(self, pmt_msg):
@@ -605,13 +611,10 @@ class gwnblock_py(gr.basic_block):
         @param ev: the event received, to process.
         '''
         if self.debug:
-            #print "process_data:", pmt_msg
             mutex_prt("process_data: " + pmt_msg)
         else:
             pass
-
         self.write_out(pmt_msg, port_nr=0)
-
         return
         
 
