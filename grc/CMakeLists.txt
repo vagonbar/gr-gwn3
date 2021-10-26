@@ -28,8 +28,6 @@ install(FILES
     gwn3_event_source.block.yml
     gwn3_event_sink.block.yml
     gwn3_event_router.block.yml
-    gwn3_hier_tx_psk.block.yml
-    gwn3_hier_rx_psk.block.yml
-    gwn3_l1_framer.block.yml
-    gwn3_l1_deframer.block.yml DESTINATION share/gnuradio/grc/blocks
+    gwn3_packet_tx_gwn.block.yml
+    gwn3_packet_rx_gwn.block.yml DESTINATION share/gnuradio/grc/blocks
 )

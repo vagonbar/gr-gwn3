@@ -1,0 +1,69 @@
+id: gwn3_packet_tx_gwn
+label: packet_tx_gwn
+category: '[gwn3]'
+
+templates:
+  imports: import gwn3
+  make: gwn3.packet_tx_gwn( ${hdr_const}, ${hdr_enc}, ${hdr_format}, ${pld_const}, ${pld_enc}, ${psf_taps}, ${sps})
+
+parameters:
+-   id: hdr_const
+    label: Header constellation
+    dtype: raw
+    default: 'digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base()'
+    hide: none
+-   id: hdr_enc
+    label: Header FEC encoder
+    dtype: raw
+    default: 'fec.dummy_encoder_make(8000)'
+    hide: none
+-   id: hdr_format
+    label: Header Formatter
+    dtype: raw
+    default: 'digital.header_format_default(digital.packet_utils.default_access_code, 0)'
+    hide: none
+-   id: pld_const
+    label: Payload constellation
+    dtype: raw
+    default: 'digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base()'
+    hide: none
+-   id: pld_enc
+    label: Payload FEC encoder
+    dtype: raw
+    default: 'fec.dummy_encoder_make(8000)'
+    hide: none
+-   id: psf_taps
+    label: Pulse Shape Filter
+    dtype: raw
+    default: '[0,]'
+    hide: none
+-   id: sps
+    label: Samples per Symbol
+    dtype: real
+    default: '2'
+    hide: none
+
+inputs:
+-   label: in
+    domain: message
+    dtype: message
+
+outputs:
+-   label: out
+    dtype: complex
+    vlen: 1
+-   label: postcrc
+    domain: message
+    dtype: message
+    optional: true
+-   label: mux
+    dtype: complex
+    vlen: 1
+    optional: true
+-   label: burst
+    dtype: complex
+    vlen: 1
+    optional: true
+
+file_format: 1
+

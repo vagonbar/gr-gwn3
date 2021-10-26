@@ -37,7 +37,7 @@ inputs:
 outputs:
 - id: out_0
   label: out_0
-  domai: message
+  domain: message
   dtype: message
 #  vlen: ...
   optional: true

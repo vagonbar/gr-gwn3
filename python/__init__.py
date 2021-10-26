@@ -57,6 +57,8 @@ from .pdu_to_ev import pdu_to_ev
 from .event_source import event_source
 from .event_sink import event_sink
 from .event_router import event_router
+from .packet_tx_gwn import packet_tx_gwn
+from .packet_rx_gwn import packet_rx_gwn
 
 
 

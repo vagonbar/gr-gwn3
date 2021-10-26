@@ -42,7 +42,8 @@ GR_PYTHON_INSTALL(
     event_source.py
     event_sink.py
     event_router.py
-    DESTINATION ${GR_PYTHON_DIR}/gwn3
+    packet_tx_gwn.py
+    packet_rx_gwn.py DESTINATION ${GR_PYTHON_DIR}/gwn3
 )
 
 ########################################################################
@@ -62,3 +63,5 @@ GR_ADD_TEST(qa_pdu_to_ev ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_pdu
 GR_ADD_TEST(qa_event_source ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_event_source.py)
 GR_ADD_TEST(qa_event_sink ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_event_sink.py)
 GR_ADD_TEST(qa_event_router ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_event_router.py)
+GR_ADD_TEST(qa_packet_tx_gwn ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_packet_tx_gwn.py)
+GR_ADD_TEST(qa_packet_rx_gwn ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_packet_rx_gwn.py)
