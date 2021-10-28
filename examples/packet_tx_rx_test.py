@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: GPL-3.0
 #
 # GNU Radio Python Flow Graph
-# Title: Not titled yet
+# Title: Packet Tx Rx test
 # GNU Radio version: 3.9.3.0
 
 from distutils.version import StrictVersion
@@ -22,10 +22,8 @@ if __name__ == '__main__':
 
 from gnuradio import blocks
 import pmt
-from gnuradio import channels
-from gnuradio.filter import firdes
 from gnuradio import gr
-from gnuradio import fec
+from gnuradio.filter import firdes
 from gnuradio.fft import window
 import sys
 import signal
@@ -42,9 +40,9 @@ from gnuradio import qtgui
 class packet_tx_rx_test(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Not titled yet", catch_exceptions=True)
+        gr.top_block.__init__(self, "Packet Tx Rx test", catch_exceptions=True)
         Qt.QWidget.__init__(self)
-        self.setWindowTitle("Not titled yet")
+        self.setWindowTitle("Packet Tx Rx test")
         qtgui.util.check_set_qss()
         try:
             self.setWindowIcon(Qt.QIcon.fromTheme('gnuradio-grc'))
@@ -80,18 +78,11 @@ class packet_tx_rx_test(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
-        self.gwn3_packet_tx_gwn_0 = gwn3.packet_tx_gwn( 'digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base()', 'fec.dummy_encoder_make(8000)', 'digital.header_format_default(digital.packet_utils.default_access_code, 0)', 'digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base()', 'fec.dummy_encoder_make(8000)', [0,], 2)
-        self.gwn3_packet_rx_gwn_0 = gwn3.packet_rx_gwn( 0.35, 'digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base()', 'fec.dummy_decoder.make(8000)', 'digital.header_format_default(digital.packet_utils.default_access_code, 0)', 'digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base()', 'fec.dummy_decoder.make(8000)', [0,], 2 )
-        self.channels_channel_model_0 = channels.channel_model(
-            noise_voltage=0.0,
-            frequency_offset=0.0,
-            epsilon=1.0,
-            taps=[1.0],
-            noise_seed=0,
-            block_tags=True)
+        self.gwn3_packet_tx_gwn_0 = gwn3.packet_tx_gwn()
+        self.gwn3_packet_rx_gwn_0 = gwn3.packet_rx_gwn()
         self.blocks_random_pdu_0 = blocks.random_pdu(20, 200, 0xFF, 2)
+        self.blocks_probe_signal_x_0_0 = blocks.probe_signal_c()
         self.blocks_message_strobe_0 = blocks.message_strobe(pmt.intern("TEST"), 1000)
-        self.blocks_message_debug_0_0_0 = blocks.message_debug(True)
 
 
 
@@ -100,9 +91,8 @@ class packet_tx_rx_test(gr.top_block, Qt.QWidget):
         ##################################################
         self.msg_connect((self.blocks_message_strobe_0, 'strobe'), (self.blocks_random_pdu_0, 'generate'))
         self.msg_connect((self.blocks_random_pdu_0, 'pdus'), (self.gwn3_packet_tx_gwn_0, 'in'))
-        self.msg_connect((self.gwn3_packet_rx_gwn_0, 'pkt out'), (self.blocks_message_debug_0_0_0, 'print_pdu'))
-        self.connect((self.channels_channel_model_0, 0), (self.gwn3_packet_rx_gwn_0, 0))
-        self.connect((self.gwn3_packet_tx_gwn_0, 0), (self.channels_channel_model_0, 0))
+        self.connect((self.gwn3_packet_tx_gwn_0, 0), (self.blocks_probe_signal_x_0_0, 0))
+        self.connect((self.gwn3_packet_tx_gwn_0, 0), (self.gwn3_packet_rx_gwn_0, 0))
 
 
     def closeEvent(self, event):

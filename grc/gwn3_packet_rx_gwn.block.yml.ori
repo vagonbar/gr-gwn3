@@ -4,44 +4,84 @@ category: '[gwn3]'
 
 templates:
   imports: import gwn3
-  make: gwn3.packet_rx_gwn(${eb}, ${hdr_const)[0])}, ${(digital.psk_2()[1])}, ${2}, ${1).base()}, ${hdr_dec)}, ${hdr_format}, ${0)}, ${pld_const)[0])}, ${(digital.psk_2()[1])}, ${2}, ${1).base()}, ${pld_dec)}, ${psf_taps}, ${]}, ${sps})
+  make: gwn3.packet_rx_gwn( ${eb}, ${hdr_const}, ${hdr_dec}, ${hdr_format}, ${pld_const}, ${pld_dec}, ${psf_taps}, ${sps} )
 
-#  Make one 'parameters' list entry for every parameter you want settable from the GUI.
-#     Keys include:
-#     * id (makes the value accessible as keyname, e.g. in the make entry)
-#     * label (label shown in the GUI)
-#     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
-#     * default
 parameters:
-- id: parametername_replace_me
-  label: FIX ME:
-  dtype: string
-  default: You need to fill in your grc/gwn3_packet_rx_gwn.block.yaml
-#- id: ...
-#  label: ...
-#  dtype: ...
+-   id: eb
+    label: Filter Rolloff
+    dtype: real
+    #default: '0.35'
+    hide: none
+-   id: hdr_const
+    label: Header constellation
+    dtype: raw
+    #default: 'digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base()'
+    hide: none
+-   id: hdr_dec
+    label: Header FEC Decoder
+    dtype: raw
+    #default: 'fec.dummy_decoder.make(8000)'
+    hide: none
+-   id: hdr_format
+    label: Header Formatter
+    dtype: raw
+    #default: 'digital.header_format_#default(digital.packet_utils.#default_access_code, 0)'
+    hide: none
+-   id: pld_const
+    label: Payload constellation
+    dtype: raw
+    #default: 'digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base()'
+    hide: none
+-   id: pld_dec
+    label: Payload FEC Decoder
+    dtype: raw
+    #default: 'fec.dummy_decoder.make(8000)'
+    hide: none
+-   id: psf_taps
+    label: Pulse Shape Filter
+    dtype: raw
+    #default: '[0,]'
+    hide: none
+-   id: sps
+    label: Samples per Symbol
+    dtype: real
+    #default: '2'
+    hide: none
 
-#  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
-#  Keys include:
-#      * label (an identifier for the GUI)
-#      * domain (optional - stream or message. Default is stream)
-#      * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
-#      * vlen (optional - data stream vector length. Default is 1)
-#      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
-#- label: ...
-#  domain: ...
-#  dtype: ...
-#  vlen: ...
-#  optional: ...
+-   label: in
+    dtype: complex
+    vlen: 1
 
 outputs:
-#- label: ...
-#  domain: ...
-#  dtype: ...
-#  vlen: ...
-#  optional: ...
+-   label: pkt out
+    domain: message
+    dtype: message
+    optional: true
+-   label: precrc
+    domain: message
+    dtype: message
+    optional: true
+-   label: hdr_out
+    dtype: complex
+    vlen: 1
+    optional: true
+-   label: pld_out
+    dtype: complex
+    vlen: 1
+    optional: true
+-   label: pld_phs
+    dtype: complex
+    vlen: 1
+    optional: true
+-   label: timing
+    dtype: complex
+    vlen: 1
+    optional: true
+-   label: corr est
+    dtype: complex
+    vlen: 1
+    optional: true
 
-#  'file_format' specifies the version of the GRC yml format used in the file
-#  and should usually not be changed.
 file_format: 1
+

@@ -30,6 +30,7 @@ from gnuradio import channels
 from gnuradio import blocks
 import pmt
 
+import time
 
 
 class qa_packet_tx_gwn(gr_unittest.TestCase):
@@ -47,11 +48,9 @@ class qa_packet_tx_gwn(gr_unittest.TestCase):
         ### blocks
 
         self.pkt_tx = packet_tx_gwn()
-        print(type(self.pkt_tx))
         self.pkt_rx = packet_rx_gwn()
-        print(type(self.pkt_tx))
 
-        self.channels_channel_model_0 = channels.channel_model(
+        self.channel_model = channels.channel_model(
             noise_voltage=0.0,
             frequency_offset=0.0,
             epsilon=1.0,
@@ -59,29 +58,41 @@ class qa_packet_tx_gwn(gr_unittest.TestCase):
             noise_seed=0,
             block_tags=True)
 
-        self.blocks_random_pdu_0 = blocks.random_pdu(20, 200, 0xFF, 2)
-
-        self.blocks_message_strobe_0 = blocks.message_strobe(pmt.intern("TEST"), 1000)
-
-        self.blocks_message_debug_0_0_0 = blocks.message_debug(True)
+        self.random_pdu = blocks.random_pdu(20, 200, 0xFF, 2)
+        self.multiply_const = blocks.multiply_const_cc(1.0)
+        self.message_strobe = blocks.message_strobe(pmt.intern("TEST"), 1000)
+        self.message_debug = blocks.message_debug(True)
 
         ### connections
 
-        self.tb.msg_connect((self.blocks_message_strobe_0, 'strobe'), (self.blocks_random_pdu_0, 'generate'))
-        self.tb.msg_connect((self.blocks_random_pdu_0, 'pdus'), (self.pkt_tx, 'in'))
-        self.tb.connect((self.pkt_tx, 0), (self.channels_channel_model_0, 0))
-        #self.tb.connect((self.channels_channel_model_0, 0), (self.pkt_rx, 0))
-        #self.msg_connect((self.pkt_rx, 'pkt out'), (self.blocks_message_debug_0_0_0, 'print_pdu'))
+        self.tb.msg_connect((self.message_strobe, 'strobe'), (self.random_pdu, 'generate'))
+        self.tb.msg_connect((self.random_pdu, 'pdus'), (self.pkt_tx, 'in'))
+        self.tb.connect((self.pkt_tx, 0), (self.channel_model, 0))
+        #self.tb.connect((self.channel_model, 0), (self.pkt_rx, 0))
+        self.tb.connect((self.channel_model, 0), (self.multiply_const, 0))
+        self.tb.connect((self.multiply_const, 0), (self.pkt_rx, 0))
+        self.tb.msg_connect((self.pkt_rx, 'pkt out'), (self.message_debug, 'print_pdu'))
+        #self.tb.msg_connect((self.pkt_rx, 'pkt out'), (self.message_debug, 'print_pdu'))
+
+        #self.tb.msg_connect((self.message_strobe, 'strobe'), (self.message_debug, 'print'))
+        #self.tb.msg_connect((self.random_pdu, 'pdus'), (self.message_debug, 'print_pdu'))
 
         #self.tb.run()
+        self.tb.start()
+        time.sleep(14)
+        self.tb.stop()
+        self.tb.wait()
+
+        return
 
 
 
 
     def test_001_descriptive_test_name(self):
         # set up fg
-        self.tb.run()
+        #self.tb.run()
         # check data
+        pass
 
 
 if __name__ == '__main__':

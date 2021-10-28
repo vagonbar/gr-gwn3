@@ -22,7 +22,7 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: Not titled yet
+    title: Packet Tx Rx test
   states:
     bus_sink: false
     bus_source: false
@@ -55,9 +55,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [736, 288.0]
+    coordinate: [984, 168.0]
     rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_message_strobe_0
   id: blocks_message_strobe
   parameters:
@@ -73,6 +73,34 @@ blocks:
     bus_source: false
     bus_structure: null
     coordinate: [64, 116.0]
+    rotation: 0
+    state: enabled
+- name: blocks_probe_signal_x_0
+  id: blocks_probe_signal_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [376, 356.0]
+    rotation: 0
+    state: disabled
+- name: blocks_probe_signal_x_0_0
+  id: blocks_probe_signal_x
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [944, 76.0]
     rotation: 0
     state: enabled
 - name: blocks_random_pdu_0
@@ -114,65 +142,47 @@ blocks:
     bus_structure: null
     coordinate: [376, 236.0]
     rotation: 180
-    state: enabled
+    state: disabled
 - name: gwn3_packet_rx_gwn_0
   id: gwn3_packet_rx_gwn
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    eb: '0.35'
-    hdr_const: '''digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]),
-      2, 1).base()'''
-    hdr_dec: '''fec.dummy_decoder.make(8000)'''
-    hdr_format: '''digital.header_format_default(digital.packet_utils.default_access_code,
-      0)'''
     maxoutbuf: '0'
     minoutbuf: '0'
-    pld_const: '''digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]),
-      2, 1).base()'''
-    pld_dec: '''fec.dummy_decoder.make(8000)'''
-    psf_taps: '[0,]'
-    sps: '2'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [336, 408.0]
+    coordinate: [376, 408.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: gwn3_packet_tx_gwn_0
   id: gwn3_packet_tx_gwn
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    hdr_const: '''digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]),
-      2, 1).base()'''
-    hdr_enc: '''fec.dummy_encoder_make(8000)'''
-    hdr_format: '''digital.header_format_default(digital.packet_utils.default_access_code,
-      0)'''
     maxoutbuf: '0'
     minoutbuf: '0'
-    pld_const: '''digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]),
-      2, 1).base()'''
-    pld_enc: '''fec.dummy_encoder_make(8000)'''
-    psf_taps: '[0,]'
-    sps: '2'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [616, 76.0]
+    coordinate: [616, 80.0]
     rotation: 0
     state: true
 
 connections:
 - [blocks_message_strobe_0, strobe, blocks_random_pdu_0, generate]
 - [blocks_random_pdu_0, pdus, gwn3_packet_tx_gwn_0, in]
+- [channels_channel_model_0, '0', blocks_probe_signal_x_0, '0']
 - [channels_channel_model_0, '0', gwn3_packet_rx_gwn_0, '0']
-- [gwn3_packet_rx_gwn_0, pkt out, blocks_message_debug_0_0_0, print_pdu]
+- [gwn3_packet_tx_gwn_0, '0', blocks_probe_signal_x_0_0, '0']
 - [gwn3_packet_tx_gwn_0, '0', channels_channel_model_0, '0']
+- [gwn3_packet_tx_gwn_0, '0', gwn3_packet_rx_gwn_0, '0']
+- [gwn3_packet_tx_gwn_0, postcrc, blocks_message_debug_0_0_0, print_pdu]
 
 metadata:
   file_format: 1

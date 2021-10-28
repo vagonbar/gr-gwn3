@@ -32,23 +32,57 @@ import signal
 from gnuradio.filter import pfb
 
 
+# Variables for block construction
+
+"""
+eb = 0.22
+hdr_const = Const_HDR = digital.constellation_calcdist( 
+    digital.psk_2()[0], digital.psk_2()[1],
+    2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
+
+rep = 3
+hdr_enc = enc_hdr = fec.repetition_encoder_make(8000, rep)
+
+pld_const = Const_PLD = digital.constellation_calcdist(
+    digital.psk_4()[0], digital.psk_4()[1],
+    4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
+
+hdr_format = digital.header_format_counter( 
+    digital.packet_utils.default_access_code, 3, Const_PLD.bits_per_symbol() )
+
+k = 7
+rate = 2
+polys = [109, 79]
+pld_enc = enc = fec.cc_encoder_make(
+    8000,k, rate, polys, 0, fec.CC_TERMINATED, False)
+
+sps = 2
+nfilts = 32
+psf_taps = rx_rrc_taps = firdes.root_raised_cosine(
+    nfilts, nfilts*sps,1.0, eb, 11*sps*nfilts)
+"""
+
 
 class packet_tx_gwn(gr.hier_block2):
     """
     docstring for block packet_tx_gwn
     """
-    def __init__(self, hdr_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), hdr_enc= fec.dummy_encoder_make(8000), hdr_format=digital.header_format_default(digital.packet_utils.default_access_code, 0), pld_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), pld_enc= fec.dummy_encoder_make(8000), psf_taps=[0,], sps=2):
-        gr.hier_block2.__init__(self,
-            "Packet Tx GWN",
+    #def __init__(self, hdr_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), hdr_enc= fec.dummy_encoder_make(8000), hdr_format=digital.header_format_default(digital.packet_utils.default_access_code, 0), pld_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), pld_enc= fec.dummy_encoder_make(8000), psf_taps=[0,], sps=2):
+    #def __init__(self, hdr_const=hdr_const, hdr_enc=hdr_enc, hdr_format=hdr_format, pld_const=pld_const, pld_enc=pld_enc, psf_taps=psf_taps):
+    def __init__(self):
+        gr.hier_block2.__init__(
+            self, "Packet Tx GWN",
                 gr.io_signature(0, 0, 0),
                 gr.io_signaturev(3, 3, [gr.sizeof_gr_complex*1, gr.sizeof_gr_complex*1, gr.sizeof_gr_complex*1]),
         )
         self.message_port_register_hier_in("in")
         self.message_port_register_hier_out("postcrc")
 
+
         ##################################################
         # Parameters
         ##################################################
+        """
         self.hdr_const = hdr_const
         self.hdr_enc = hdr_enc
         self.hdr_format = hdr_format
@@ -56,6 +90,34 @@ class packet_tx_gwn(gr.hier_block2):
         self.pld_enc = pld_enc
         self.psf_taps = psf_taps
         self.sps = sps
+        """
+        eb = 0.22
+        self.hdr_const = hdr_const = Const_HDR = digital.constellation_calcdist( 
+            digital.psk_2()[0], digital.psk_2()[1],
+            2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
+
+        rep = 3
+        self.hdr_enc = hdr_enc = enc_hdr = fec.repetition_encoder_make(8000, rep)
+
+        self.pld_const = pld_const = Const_PLD = digital.constellation_calcdist(
+            digital.psk_4()[0], digital.psk_4()[1],
+            4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
+
+        self.hdr_format = hdr_format = digital.header_format_counter( 
+            digital.packet_utils.default_access_code, 3, Const_PLD.bits_per_symbol() )
+
+        k = 7
+        rate = 2
+        polys = [109, 79]
+        self.pld_enc = enc = pld_enc = fec.cc_encoder_make(
+            8000,k, rate, polys, 0, fec.CC_TERMINATED, False)
+
+        self.sps = sps = 2
+        nfilts = 32
+        self.psf_taps = psf_taps = rx_rrc_taps = firdes.root_raised_cosine(
+            nfilts, nfilts*sps,1.0, eb, 11*sps*nfilts)
+
+
 
         ##################################################
         # Variables
@@ -182,8 +244,4 @@ class packet_tx_gwn(gr.hier_block2):
 
     def set_filt_delay(self, filt_delay):
         self.filt_delay = filt_delay
-
-
-
-
 
