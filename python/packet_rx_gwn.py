@@ -103,7 +103,8 @@ class packet_rx_gwn(gr.hier_block2):
             4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
 
         self.hdr_format = hdr_format = digital.header_format_counter( 
-            digital.packet_utils.default_access_code, 3, Const_PLD.bits_per_symbol() )
+            digital.packet_utils.default_access_code, 3, 
+            Const_PLD.bits_per_symbol() )
 
         rep = 3
         self.hdr_dec = hdr_dec = dec_hdr = fec.repetition_decoder.make(hdr_format.header_nbits(),rep, 0.5)

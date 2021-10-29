@@ -32,6 +32,7 @@ import pmt
 
 import time
 
+import signal
 
 class qa_packet_tx_gwn(gr_unittest.TestCase):
 

@@ -114,8 +114,8 @@ class packet_tx_gwn(gr.hier_block2):
 
         self.sps = sps = 2
         nfilts = 32
-        self.psf_taps = psf_taps = rx_rrc_taps = firdes.root_raised_cosine(
-            nfilts, nfilts*sps,1.0, eb, 11*sps*nfilts)
+        self.psf_taps = psf_taps = tx_rrc_taps = firdes.root_raised_cosine(
+            nfilts, nfilts,1.0, eb, 5*sps*nfilts)
 
 
 
