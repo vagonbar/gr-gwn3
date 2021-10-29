@@ -132,7 +132,7 @@ blocks:
     alias: ''
     comment: ''
     ev_count: '10'
-    ev_dc: '{''Type'':''Data'', ''SubType'':''Data'', ''payload'':''My payload''}'
+    ev_dc: '"My payload"'
     interval: '1.0'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -140,7 +140,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [64, 100.0]
+    coordinate: [8, 100.0]
     rotation: 0
     state: true
 - name: gwn3_packet_rx_gwn_0

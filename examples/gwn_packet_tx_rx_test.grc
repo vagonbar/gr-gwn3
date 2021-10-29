@@ -2,7 +2,7 @@ options:
   parameters:
     author: ''
     catch_exceptions: 'True'
-    category: Custom
+    category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: ''
     copyright: ''
@@ -11,7 +11,7 @@ options:
     gen_linking: dynamic
     generate_options: qt_gui
     hier_block_src_path: '.:'
-    id: packet_loopback_hier
+    id: packet_tx_rx_test
     max_nouts: '0'
     output_language: python
     placement: (0,0)
@@ -22,73 +22,16 @@ options:
     run_options: prompt
     sizing_mode: fixed
     thread_safe_setters: ''
-    title: ''
+    title: Packet Tx Rx test
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [8, 11]
+    coordinate: [8, 8]
     rotation: 0
     state: enabled
 
 blocks:
-- name: Const_HDR
-  id: variable_constellation
-  parameters:
-    comment: ''
-    const_points: digital.psk_2()[0]
-    dims: '1'
-    normalization: digital.constellation.AMPLITUDE_NORMALIZATION
-    precision: '8'
-    rot_sym: '2'
-    soft_dec_lut: '''auto'''
-    sym_map: digital.psk_2()[1]
-    type: calcdist
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [240, 11]
-    rotation: 0
-    state: enabled
-- name: Const_PLD
-  id: variable_constellation
-  parameters:
-    comment: ''
-    const_points: digital.psk_4()[0]
-    dims: '1'
-    normalization: digital.constellation.AMPLITUDE_NORMALIZATION
-    precision: '8'
-    rot_sym: '4'
-    soft_dec_lut: '''auto'''
-    sym_map: digital.psk_4()[1]
-    type: calcdist
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [560, 11]
-    rotation: 0
-    state: enabled
-- name: Const_PLD
-  id: variable_constellation
-  parameters:
-    comment: ''
-    const_points: digital.psk_2()[0]
-    dims: '1'
-    normalization: digital.constellation.AMPLITUDE_NORMALIZATION
-    precision: '8'
-    rot_sym: '2'
-    soft_dec_lut: '''auto'''
-    sym_map: digital.psk_2()[1]
-    type: calcdist
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [400, 11]
-    rotation: 0
-    state: disabled
 - name: amp
   id: variable_qtgui_range
   parameters:
@@ -107,195 +50,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [72, 547]
-    rotation: 0
-    state: enabled
-- name: dec
-  id: variable_cc_decoder_def
-  parameters:
-    comment: ''
-    dim1: '1'
-    dim2: '4'
-    framebits: '8000'
-    k: k
-    mode: fec.CC_TERMINATED
-    ndim: '0'
-    padding: 'False'
-    polys: polys
-    rate: rate
-    state_end: '-1'
-    state_start: '0'
-    value: '"ok"'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1152, 635]
-    rotation: 0
-    state: enabled
-- name: dec
-  id: variable_dummy_decoder_def
-  parameters:
-    comment: ''
-    dim1: '1'
-    dim2: '1'
-    framebits: '8000'
-    ndim: '0'
-    value: '"ok"'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [760, 539]
+    coordinate: [32, 484.0]
     rotation: 0
     state: disabled
-- name: dec
-  id: variable_repetition_decoder_def
-  parameters:
-    comment: ''
-    dim1: '1'
-    dim2: '1'
-    framebits: '8000'
-    ndim: '0'
-    prob: '0.5'
-    rep: rep
-    value: '"ok"'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [952, 555]
-    rotation: 0
-    state: disabled
-- name: dec_hdr
-  id: variable_dummy_decoder_def
-  parameters:
-    comment: ''
-    dim1: '1'
-    dim2: '1'
-    framebits: hdr_format.header_nbits()
-    ndim: '0'
-    value: '"ok"'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1376, 539]
-    rotation: 0
-    state: disabled
-- name: dec_hdr
-  id: variable_repetition_decoder_def
-  parameters:
-    comment: ''
-    dim1: '1'
-    dim2: '1'
-    framebits: hdr_format.header_nbits()
-    ndim: '0'
-    prob: '0.5'
-    rep: rep
-    value: '"ok"'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1560, 555]
-    rotation: 0
-    state: disabled
-- name: eb
-  id: variable
-  parameters:
-    comment: ''
-    value: '0.22'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [152, 75]
-    rotation: 0
-    state: enabled
-- name: enc
-  id: variable_cc_encoder_def
-  parameters:
-    comment: ''
-    dim1: '1'
-    dim2: '1'
-    framebits: '8000'
-    k: k
-    mode: fec.CC_TERMINATED
-    ndim: '0'
-    padding: 'False'
-    polys: polys
-    rate: rate
-    state_start: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1152, 459]
-    rotation: 0
-    state: enabled
-- name: enc
-  id: variable_dummy_encoder_def
-  parameters:
-    comment: ''
-    dim1: '1'
-    dim2: '1'
-    framebits: '8000'
-    ndim: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [760, 459]
-    rotation: 0
-    state: disabled
-- name: enc
-  id: variable_repetition_encoder_def
-  parameters:
-    comment: ''
-    dim1: '1'
-    dim2: '1'
-    framebits: '8000'
-    ndim: '0'
-    rep: rep
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [952, 459]
-    rotation: 0
-    state: disabled
-- name: enc_hdr
-  id: variable_dummy_encoder_def
-  parameters:
-    comment: ''
-    dim1: '1'
-    dim2: '1'
-    framebits: '8000'
-    ndim: '0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1376, 459]
-    rotation: 0
-    state: disabled
-- name: enc_hdr
-  id: variable_repetition_encoder_def
-  parameters:
-    comment: ''
-    dim1: '1'
-    dim2: '1'
-    framebits: '8000'
-    ndim: '0'
-    rep: rep
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1560, 459]
-    rotation: 0
-    state: enabled
 - name: freq_offset
   id: variable_qtgui_range
   parameters:
@@ -314,60 +71,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [984, 275]
-    rotation: 0
-    state: enabled
-- name: hdr_format
-  id: variable_header_format_default
-  parameters:
-    access_code: digital.packet_utils.default_access_code
-    bps: '1'
-    comment: ''
-    threshold: '3'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [728, 14]
+    coordinate: [256, 484.0]
     rotation: 0
     state: disabled
-- name: hdr_format
-  id: variable
-  parameters:
-    comment: ''
-    value: digital.header_format_counter(digital.packet_utils.default_access_code,
-      3, Const_PLD.bits_per_symbol())
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [728, 91]
-    rotation: 0
-    state: disabled
-- name: k
-  id: variable
-  parameters:
-    comment: ''
-    value: '7'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1008, 675]
-    rotation: 0
-    state: enabled
-- name: nfilts
-  id: variable
-  parameters:
-    comment: ''
-    value: '32'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [80, 75]
-    rotation: 0
-    state: enabled
 - name: noise
   id: variable_qtgui_range
   parameters:
@@ -386,71 +92,19 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [872, 275]
+    coordinate: [144, 484.0]
     rotation: 0
-    state: enabled
-- name: polys
+    state: disabled
+- name: samp_rate
   id: variable
   parameters:
     comment: ''
-    value: '[109, 79]'
+    value: '32000'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1056, 739]
-    rotation: 0
-    state: enabled
-- name: rate
-  id: variable
-  parameters:
-    comment: ''
-    value: '2'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1080, 675]
-    rotation: 0
-    state: enabled
-- name: rep
-  id: variable
-  parameters:
-    comment: ''
-    value: '3'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [984, 739]
-    rotation: 0
-    state: enabled
-- name: rx_rrc_taps
-  id: variable_rrc_filter_taps
-  parameters:
-    alpha: eb
-    comment: ''
-    gain: nfilts
-    ntaps: 11*sps*nfilts
-    samp_rate: nfilts*sps
-    sym_rate: '1.0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [1080, 11]
-    rotation: 0
-    state: enabled
-- name: sps
-  id: variable
-  parameters:
-    comment: ''
-    value: '2'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [8, 75]
+    coordinate: [184, 12]
     rotation: 0
     state: enabled
 - name: time_offset
@@ -471,25 +125,9 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1096, 275]
+    coordinate: [368, 484.0]
     rotation: 0
-    state: enabled
-- name: tx_rrc_taps
-  id: variable_rrc_filter_taps
-  parameters:
-    alpha: eb
-    comment: ''
-    gain: nfilts
-    ntaps: 5*sps*nfilts
-    samp_rate: nfilts
-    sym_rate: '1.0'
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [944, 11]
-    rotation: 0
-    state: enabled
+    state: disabled
 - name: blocks_message_debug_0_0_0
   id: blocks_message_debug
   parameters:
@@ -501,7 +139,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [544, 321]
+    coordinate: [872, 160.0]
     rotation: 0
     state: enabled
 - name: blocks_message_strobe_0
@@ -512,13 +150,13 @@ blocks:
     comment: ''
     maxoutbuf: '0'
     minoutbuf: '0'
-    msg: pmt.intern("TEST")
+    msg: pmt.intern("A TEST")
     period: '1000'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [32, 196.0]
+    coordinate: [64, 108.0]
     rotation: 0
     state: enabled
 - name: blocks_multiply_const_vxx_0
@@ -527,7 +165,7 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    const: amp
+    const: '1.0'
     maxoutbuf: '0'
     minoutbuf: '0'
     type: complex
@@ -536,7 +174,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [72, 499]
+    coordinate: [256, 316.0]
     rotation: 0
     state: enabled
 - name: blocks_random_pdu_0
@@ -555,20 +193,20 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [224, 180.0]
+    coordinate: [344, 92.0]
     rotation: 0
     state: enabled
-- name: chan_data
+- name: chan_data_0
   id: virtual_sink
   parameters:
     alias: ''
     comment: ''
-    stream_id: Chan Data
+    stream_id: '''Channel Data'''
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1352, 155]
+    coordinate: [1096, 36.0]
     rotation: 0
     state: enabled
 - name: channels_channel_model_0
@@ -578,18 +216,18 @@ blocks:
     alias: ''
     block_tags: 'True'
     comment: ''
-    epsilon: time_offset
-    freq_offset: freq_offset
+    epsilon: '1.0'
+    freq_offset: '0.0'
     maxoutbuf: '0'
     minoutbuf: '0'
-    noise_voltage: noise
+    noise_voltage: '0.0'
     seed: '0'
     taps: '1.0'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [960, 124.0]
+    coordinate: [848, 36.0]
     rotation: 0
     state: enabled
 - name: gwn3_packet_rx_gwn_0
@@ -598,49 +236,28 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
-    eb: '0.35'
-    hdr_const: digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]),
-      2, 1).base()
-    hdr_dec: ' fec.dummy_decoder.make(8000)'
-    hdr_format: digital.header_format_default(digital.packet_utils.default_access_code,
-      0)
     maxoutbuf: '0'
     minoutbuf: '0'
-    pld_const: digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]),
-      2, 1).base()
-    pld_dec: ' fec.dummy_decoder.make(8000)'
-    psf_taps: '[0,]'
-    sps: '2'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [240, 464.0]
+    coordinate: [600, 224.0]
     rotation: 0
-    state: true
+    state: enabled
 - name: gwn3_packet_tx_gwn_0
   id: gwn3_packet_tx_gwn
   parameters:
     affinity: ''
     alias: ''
     comment: ''
-    hdr_const: digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]),
-      2, 1).base()
-    hdr_enc: ' fec.dummy_encoder_make(8000)'
-    hdr_format: digital.header_format_default(digital.packet_utils.default_access_code,
-      0)
     maxoutbuf: '0'
     minoutbuf: '0'
-    pld_const: digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]),
-      2, 1).base()
-    pld_enc: ' fec.dummy_encoder_make(8000)'
-    psf_taps: '[0,]'
-    sps: '2'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [488, 172.0]
+    coordinate: [600, 72.0]
     rotation: 0
     state: true
 - name: qtgui_const_sink_x_0
@@ -732,7 +349,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1352, 363]
+    coordinate: [1096, 276.0]
     rotation: 0
     state: enabled
 - name: qtgui_const_sink_x_0_0_0
@@ -824,7 +441,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 604.0]
+    coordinate: [840, 356.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0
@@ -905,7 +522,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1352, 283]
+    coordinate: [1112, 176.0]
     rotation: 0
     state: enabled
 - name: qtgui_freq_sink_x_0_0
@@ -986,7 +603,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 496.0]
+    coordinate: [840, 424.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_1
@@ -1083,7 +700,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1352, 203]
+    coordinate: [1096, 100.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_1_0_0_0
@@ -1180,7 +797,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 412.0]
+    coordinate: [840, 268.0]
     rotation: 0
     state: enabled
 - name: qtgui_time_sink_x_1_0_0_1
@@ -1277,7 +894,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [568, 676.0]
+    coordinate: [800, 524.0]
     rotation: 0
     state: enabled
 - name: tab0
@@ -1311,7 +928,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1360, 11]
+    coordinate: [168, 372.0]
     rotation: 0
     state: enabled
 - name: tab1
@@ -1345,7 +962,7 @@ blocks:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1224, 11]
+    coordinate: [32, 372.0]
     rotation: 0
     state: enabled
 - name: virtual_source_0
@@ -1353,12 +970,12 @@ blocks:
   parameters:
     alias: ''
     comment: ''
-    stream_id: Chan Data
+    stream_id: '''Channel Data'''
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [24, 427]
+    coordinate: [32, 316.0]
     rotation: 0
     state: enabled
 
@@ -1366,7 +983,7 @@ connections:
 - [blocks_message_strobe_0, strobe, blocks_random_pdu_0, generate]
 - [blocks_multiply_const_vxx_0, '0', gwn3_packet_rx_gwn_0, '0']
 - [blocks_random_pdu_0, pdus, gwn3_packet_tx_gwn_0, in]
-- [channels_channel_model_0, '0', chan_data, '0']
+- [channels_channel_model_0, '0', chan_data_0, '0']
 - [channels_channel_model_0, '0', qtgui_const_sink_x_0, '0']
 - [channels_channel_model_0, '0', qtgui_freq_sink_x_0, '0']
 - [channels_channel_model_0, '0', qtgui_time_sink_x_1, '0']

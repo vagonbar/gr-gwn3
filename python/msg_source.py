@@ -33,12 +33,12 @@ from gwnblock_py import mutex_prt          # for tests
 class msg_source(gwnblock_py):
     '''Emits a number of messages at regular intervals.
     '''
-    def __init__(self, msg_count=10, interval=1.0, payload=""):
+    def __init__(self, msg_count=10, interval=1.0, ev_fields=""):
       '''Message source constructor.
 
       @param msg_count: the number of messages to emit.
       @param interval: the lapse of time between messages, in seconds.
-      @param payload: a string to include in message.
+      @param ev_fields: event fields, may by a dictionary or just a string.
       '''
       gwnblock_py.__init__(self, name='msg_source', number_in=0, number_out=1, number_timers=1, number_timeouts=0)
 
@@ -49,8 +49,8 @@ class msg_source(gwnblock_py):
       #self.timers[0].interrupt = False
       self.timers[0].msg_dc_1['Final'] = 'False'
       self.timers[0].msg_dc_2['Final'] = 'True'
-      self.timers[0].msg_dc_1['payload'] = payload
-      self.timers[0].msg_dc_2['payload'] = payload
+      self.timers[0].msg_dc_1['payload'] = ev_fields
+      self.timers[0].msg_dc_2['payload'] = ev_fields
       self.start_timers()
 
       return
