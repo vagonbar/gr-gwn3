@@ -1,25 +1,11 @@
-#!/usr/bin/env python
 # -*- coding: utf-8 -*-
+
 #
-# Copyright 2015-2021
-#   Instituto de Ingenieria Electrica, Facultad de Ingenieria,
-#   Universidad de la Republica, Uruguay.
-#   https://iie.fing.edu.uy/
+# SPDX-License-Identifier: GPL-3.0
 #
-# This program is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# This program is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with this program.  If not, see <https://www.gnu.org/licenses/>.
-#
-#
+# GNU Radio Python Flow Graph
+# Title: Packet Tx
+# GNU Radio version: 3.9.3.0
 
 from gnuradio import blocks
 from gnuradio import digital
@@ -32,57 +18,24 @@ import signal
 from gnuradio.filter import pfb
 
 
-# Variables for block construction
-
-"""
-eb = 0.22
-hdr_const = Const_HDR = digital.constellation_calcdist( 
-    digital.psk_2()[0], digital.psk_2()[1],
-    2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-rep = 3
-hdr_enc = enc_hdr = fec.repetition_encoder_make(8000, rep)
-
-pld_const = Const_PLD = digital.constellation_calcdist(
-    digital.psk_4()[0], digital.psk_4()[1],
-    4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-hdr_format = digital.header_format_counter( 
-    digital.packet_utils.default_access_code, 3, Const_PLD.bits_per_symbol() )
-
-k = 7
-rate = 2
-polys = [109, 79]
-pld_enc = enc = fec.cc_encoder_make(
-    8000,k, rate, polys, 0, fec.CC_TERMINATED, False)
-
-sps = 2
-nfilts = 32
-psf_taps = rx_rrc_taps = firdes.root_raised_cosine(
-    nfilts, nfilts*sps,1.0, eb, 11*sps*nfilts)
-"""
 
 
-class packet_tx_gwn(gr.hier_block2):
-    """
-    docstring for block packet_tx_gwn
-    """
-    #def __init__(self, hdr_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), hdr_enc= fec.dummy_encoder_make(8000), hdr_format=digital.header_format_default(digital.packet_utils.default_access_code, 0), pld_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), pld_enc= fec.dummy_encoder_make(8000), psf_taps=[0,], sps=2):
-    #def __init__(self, hdr_const=hdr_const, hdr_enc=hdr_enc, hdr_format=hdr_format, pld_const=pld_const, pld_enc=pld_enc, psf_taps=psf_taps):
-    def __init__(self):
+
+
+
+class packet_tx(gr.hier_block2):
+    def __init__(self, hdr_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), hdr_enc= fec.dummy_encoder_make(8000), hdr_format=digital.header_format_default(digital.packet_utils.default_access_code, 0), pld_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), pld_enc= fec.dummy_encoder_make(8000), psf_taps=[0,], sps=2):
         gr.hier_block2.__init__(
-            self, "Packet Tx GWN",
+            self, "Packet Tx",
                 gr.io_signature(0, 0, 0),
                 gr.io_signaturev(3, 3, [gr.sizeof_gr_complex*1, gr.sizeof_gr_complex*1, gr.sizeof_gr_complex*1]),
         )
         self.message_port_register_hier_in("in")
         self.message_port_register_hier_out("postcrc")
 
-
         ##################################################
         # Parameters
         ##################################################
-        """
         self.hdr_const = hdr_const
         self.hdr_enc = hdr_enc
         self.hdr_format = hdr_format
@@ -90,34 +43,6 @@ class packet_tx_gwn(gr.hier_block2):
         self.pld_enc = pld_enc
         self.psf_taps = psf_taps
         self.sps = sps
-        """
-        eb = 0.22
-        self.hdr_const = hdr_const = Const_HDR = digital.constellation_calcdist( 
-            digital.psk_2()[0], digital.psk_2()[1],
-            2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-        rep = 3
-        self.hdr_enc = hdr_enc = enc_hdr = fec.repetition_encoder_make(8000, rep)
-
-        self.pld_const = pld_const = Const_PLD = digital.constellation_calcdist(
-            digital.psk_4()[0], digital.psk_4()[1],
-            4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-        self.hdr_format = hdr_format = digital.header_format_counter( 
-            digital.packet_utils.default_access_code, 3, Const_PLD.bits_per_symbol() )
-
-        k = 7
-        rate = 2
-        polys = [109, 79]
-        self.pld_enc = enc = pld_enc = fec.cc_encoder_make(
-            8000,k, rate, polys, 0, fec.CC_TERMINATED, False)
-
-        self.sps = sps = 2
-        nfilts = 32
-        self.psf_taps = psf_taps = tx_rrc_taps = firdes.root_raised_cosine(
-            nfilts, nfilts,1.0, eb, 5*sps*nfilts)
-
-
 
         ##################################################
         # Variables
@@ -143,7 +68,7 @@ class packet_tx_gwn(gr.hier_block2):
         self.digital_chunks_to_symbols_xx_0_0 = digital.chunks_to_symbols_bc(pld_const.points(), 1)
         self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bc(hdr_const.points(), 1)
         self.digital_burst_shaper_xx_0 = digital.burst_shaper_cc(firdes.window(window.WIN_HANN, 20, 0), 0, filt_delay, True, 'packet_len')
-        #self.digital_burst_shaper_xx_0.set_block_alias("burst_shaper_a")
+        self.digital_burst_shaper_xx_0.set_block_alias("burst_shaper_a")
         self.blocks_tagged_stream_mux_0 = blocks.tagged_stream_mux(gr.sizeof_gr_complex*1, 'packet_len', 0)
         self.blocks_tagged_stream_multiply_length_0 = blocks.tagged_stream_multiply_length(gr.sizeof_gr_complex*1, 'packet_len', sps)
         self.blocks_repack_bits_bb_0_0 = blocks.repack_bits_bb(8, pld_const.bits_per_symbol(), 'packet_len', False, gr.GR_MSB_FIRST)
