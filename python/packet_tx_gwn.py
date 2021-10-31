@@ -32,44 +32,18 @@ import signal
 from gnuradio.filter import pfb
 
 
-# Variables for block construction
-
-"""
-eb = 0.22
-hdr_const = Const_HDR = digital.constellation_calcdist( 
-    digital.psk_2()[0], digital.psk_2()[1],
-    2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-rep = 3
-hdr_enc = enc_hdr = fec.repetition_encoder_make(8000, rep)
-
-pld_const = Const_PLD = digital.constellation_calcdist(
-    digital.psk_4()[0], digital.psk_4()[1],
-    4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-hdr_format = digital.header_format_counter( 
-    digital.packet_utils.default_access_code, 3, Const_PLD.bits_per_symbol() )
-
-k = 7
-rate = 2
-polys = [109, 79]
-pld_enc = enc = fec.cc_encoder_make(
-    8000,k, rate, polys, 0, fec.CC_TERMINATED, False)
-
-sps = 2
-nfilts = 32
-psf_taps = rx_rrc_taps = firdes.root_raised_cosine(
-    nfilts, nfilts*sps,1.0, eb, 11*sps*nfilts)
-"""
-
 
 class packet_tx_gwn(gr.hier_block2):
-    """
-    docstring for block packet_tx_gwn
-    """
+    ''' Packet reception, receives stream, decodifies into PDU and sends.
+
+    Code adapted from GR packet_tx.py. Changes made:
+
+      - after argument value assigned to attribute, use attribute instead of parameter in rest of code.
+      - default arguments assigned to attributes; constructor can now be invoked with no arguments.
+    '''
     #def __init__(self, hdr_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), hdr_enc= fec.dummy_encoder_make(8000), hdr_format=digital.header_format_default(digital.packet_utils.default_access_code, 0), pld_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), pld_enc= fec.dummy_encoder_make(8000), psf_taps=[0,], sps=2):
-    #def __init__(self, hdr_const=hdr_const, hdr_enc=hdr_enc, hdr_format=hdr_format, pld_const=pld_const, pld_enc=pld_enc, psf_taps=psf_taps):
-    def __init__(self):
+    def __init__(self, eb=None, hdr_const=None, hdr_enc=None, hdr_format=None,
+            pld_const=None, pld_enc=None, psf_taps=None, sps=None):
         gr.hier_block2.__init__(
             self, "Packet Tx GWN",
                 gr.io_signature(0, 0, 0),
@@ -91,63 +65,79 @@ class packet_tx_gwn(gr.hier_block2):
         self.psf_taps = psf_taps
         self.sps = sps
         """
-        eb = 0.22
-        self.hdr_const = hdr_const = Const_HDR = digital.constellation_calcdist( 
-            digital.psk_2()[0], digital.psk_2()[1],
-            2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-        rep = 3
-        self.hdr_enc = hdr_enc = enc_hdr = fec.repetition_encoder_make(8000, rep)
-
-        self.pld_const = pld_const = Const_PLD = digital.constellation_calcdist(
-            digital.psk_4()[0], digital.psk_4()[1],
-            4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-        self.hdr_format = hdr_format = digital.header_format_counter( 
-            digital.packet_utils.default_access_code, 3, Const_PLD.bits_per_symbol() )
-
-        k = 7
-        rate = 2
-        polys = [109, 79]
-        self.pld_enc = enc = pld_enc = fec.cc_encoder_make(
-            8000,k, rate, polys, 0, fec.CC_TERMINATED, False)
-
-        self.sps = sps = 2
-        nfilts = 32
-        self.psf_taps = psf_taps = tx_rrc_taps = firdes.root_raised_cosine(
-            nfilts, nfilts,1.0, eb, 5*sps*nfilts)
-
+        if eb:
+            self.eb = eb
+        else:
+            self.eb = 0.22
+        if hdr_const:
+            self.hdr_const = hdr_const
+        else:
+            self.hdr_const = Const_HDR = digital.constellation_calcdist( 
+                digital.psk_2()[0], digital.psk_2()[1],
+                2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
+        if hdr_enc:
+            self.hdr_enc = hdr_enc
+        else:
+            rep = 3
+            self.hdr_enc = fec.repetition_encoder_make(8000, rep)
+        if pld_const:
+            self.pld_const = pld_const
+        else:
+            self.pld_const = Const_PLD = digital.constellation_calcdist(
+                digital.psk_4()[0], digital.psk_4()[1],
+                4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
+        if hdr_format:
+            self.hdr_format = hdr_format
+        else:
+            self.hdr_format = digital.header_format_counter( 
+                digital.packet_utils.default_access_code, 3, 
+                Const_PLD.bits_per_symbol() )
+        if pld_enc:
+            self.pld_enc = pld_enc
+        else:
+            k = 7
+            rate = 2
+            polys = [109, 79]
+            self.pld_enc = pld_enc = fec.cc_encoder_make(
+                8000,k, rate, polys, 0, fec.CC_TERMINATED, False)
+        if sps:
+            self.sps = sps
+        else:
+            self.sps = 2
+            nfilts = 32
+            self.psf_taps = tx_rrc_taps = firdes.root_raised_cosine(
+                nfilts, nfilts,1.0, self.eb, 5*self.sps*nfilts)
 
 
         ##################################################
         # Variables
         ##################################################
         self.nfilts = nfilts = 32
-        self.taps_per_filt = taps_per_filt = len(psf_taps)/nfilts
+        self.taps_per_filt = taps_per_filt = len(self.psf_taps)/nfilts
         self.filt_delay = filt_delay = int(1+(taps_per_filt-1)//2)
 
         ##################################################
         # Blocks
         ##################################################
         self.pfb_arb_resampler_xxx_0 = pfb.arb_resampler_ccf(
-            sps,
-            taps=psf_taps,
+            self.sps,
+            taps=self.psf_taps,
             flt_size=nfilts)
         self.pfb_arb_resampler_xxx_0.declare_sample_delay(filt_delay)
-        self.fec_async_encoder_0_0 = fec.async_encoder(hdr_enc, True, False, False, 1500)
-        self.fec_async_encoder_0 = fec.async_encoder(pld_enc, True, False, False, 1500)
-        self.digital_protocol_formatter_async_0 = digital.protocol_formatter_async(hdr_format)
-        self.digital_map_bb_1_0 = digital.map_bb(pld_const.pre_diff_code())
-        self.digital_map_bb_1 = digital.map_bb(hdr_const.pre_diff_code())
+        self.fec_async_encoder_0_0 = fec.async_encoder(self.hdr_enc, True, False, False, 1500)
+        self.fec_async_encoder_0 = fec.async_encoder(self.pld_enc, True, False, False, 1500)
+        self.digital_protocol_formatter_async_0 = digital.protocol_formatter_async(self.hdr_format)
+        self.digital_map_bb_1_0 = digital.map_bb(self.pld_const.pre_diff_code())
+        self.digital_map_bb_1 = digital.map_bb(self.hdr_const.pre_diff_code())
         self.digital_crc32_async_bb_1 = digital.crc32_async_bb(False)
-        self.digital_chunks_to_symbols_xx_0_0 = digital.chunks_to_symbols_bc(pld_const.points(), 1)
-        self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bc(hdr_const.points(), 1)
+        self.digital_chunks_to_symbols_xx_0_0 = digital.chunks_to_symbols_bc(self.pld_const.points(), 1)
+        self.digital_chunks_to_symbols_xx_0 = digital.chunks_to_symbols_bc(self.hdr_const.points(), 1)
         self.digital_burst_shaper_xx_0 = digital.burst_shaper_cc(firdes.window(window.WIN_HANN, 20, 0), 0, filt_delay, True, 'packet_len')
         #self.digital_burst_shaper_xx_0.set_block_alias("burst_shaper_a")
         self.blocks_tagged_stream_mux_0 = blocks.tagged_stream_mux(gr.sizeof_gr_complex*1, 'packet_len', 0)
-        self.blocks_tagged_stream_multiply_length_0 = blocks.tagged_stream_multiply_length(gr.sizeof_gr_complex*1, 'packet_len', sps)
-        self.blocks_repack_bits_bb_0_0 = blocks.repack_bits_bb(8, pld_const.bits_per_symbol(), 'packet_len', False, gr.GR_MSB_FIRST)
-        self.blocks_repack_bits_bb_0 = blocks.repack_bits_bb(8, hdr_const.bits_per_symbol(), 'packet_len', False, gr.GR_MSB_FIRST)
+        self.blocks_tagged_stream_multiply_length_0 = blocks.tagged_stream_multiply_length(gr.sizeof_gr_complex*1, 'packet_len', self.sps)
+        self.blocks_repack_bits_bb_0_0 = blocks.repack_bits_bb(8, self.pld_const.bits_per_symbol(), 'packet_len', False, gr.GR_MSB_FIRST)
+        self.blocks_repack_bits_bb_0 = blocks.repack_bits_bb(8, self.hdr_const.bits_per_symbol(), 'packet_len', False, gr.GR_MSB_FIRST)
         self.blocks_pdu_to_tagged_stream_0_0 = blocks.pdu_to_tagged_stream(blocks.byte_t, 'packet_len')
         self.blocks_pdu_to_tagged_stream_0 = blocks.pdu_to_tagged_stream(blocks.byte_t, 'packet_len')
 

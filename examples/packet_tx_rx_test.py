@@ -453,8 +453,8 @@ class packet_tx_rx_test(gr.top_block, Qt.QWidget):
 
         self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.qwidget(), Qt.QWidget)
         self.tab0_layout_2.addWidget(self._qtgui_const_sink_x_0_win)
-        self.gwn3_packet_tx_gwn_0 = gwn3.packet_tx_gwn()
-        self.gwn3_packet_rx_gwn_0 = gwn3.packet_rx_gwn()
+        self.gwn3_packet_tx_gwn_0 = gwn3.packet_tx_gwn( '', '', '', '', '', '', 2)
+        self.gwn3_packet_rx_gwn_0 = gwn3.packet_rx_gwn( 0.22, '', '', '', '', '', '', 2 )
         self.channels_channel_model_0 = channels.channel_model(
             noise_voltage=0.0,
             frequency_offset=0.0,

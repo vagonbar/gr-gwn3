@@ -48,6 +48,7 @@ class qa_packet_tx_gwn(gr_unittest.TestCase):
     def test_gr_packet(self):
         '''Packet Tx and Packet Tx with GR blocks.
         '''
+        print("\n=== Packet Tx Rx with GR blocks")
 
         ### blocks
         pkt_tx = packet_tx_gwn()

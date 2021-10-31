@@ -34,43 +34,20 @@ import signal
 # Variables
 debug = True
 
-# Variables for block construction
-
-"""
-eb = 0.22
-hdr_const = Const_HDR = digital.constellation_calcdist( 
-    digital.psk_2()[0], digital.psk_2()[1],
-    2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-pld_const = Const_PLD = digital.constellation_calcdist(
-    digital.psk_4()[0], digital.psk_4()[1],
-    4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-hdr_format = digital.header_format_counter( 
-    digital.packet_utils.default_access_code, 3, Const_PLD.bits_per_symbol() )
-
-rep = 3
-hdr_dec = dec_hdr = fec.repetition_decoder.make(hdr_format.header_nbits(),rep, 0.5)
-
-k = 7
-rate = 2
-polys = [109, 79]
-pld_dec = fec.cc_decoder.make(8000, k, rate, polys, 0, -1, fec.CC_TERMINATED, False)
-
-sps = 2
-nfilts = 32
-psf_taps = rx_rrc_taps = firdes.root_raised_cosine(
-    nfilts, nfilts*sps,1.0, eb, 11*sps*nfilts)
-"""
 
 
 class packet_rx_gwn(gr.hier_block2):
-    """
-    docstring for block packet_rx_gwn
-    """
+    ''' Packet transmission, receives PDU, codifies in stream and sends.
+
+    Code adapted from GR packet_rx.py. Changes made:
+
+      - after argument value assigned to attribute, use attribute instead of parameter in rest of code.
+      - default arguments assigned to attributes; constructor can now be invoked with no arguments.
+    '''
     #def __init__(self, eb=0.35, hdr_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), hdr_dec= fec.dummy_decoder.make(8000), hdr_format=digital.header_format_default(digital.packet_utils.default_access_code, 0), pld_const=digital.constellation_calcdist((digital.psk_2()[0]), (digital.psk_2()[1]), 2, 1).base(), pld_dec= fec.dummy_decoder.make(8000), psf_taps=[0,], sps=2):
-    #def __init__(self, eb=eb, hdr_const=hdr_const, hdr_dec=hdr_dec, hdr_format=hdr_format, pld_const=pld_const, pld_dec=pld_dec, psf_taps=psf_taps, sps=sps):
-    def __init__(self):
+    def __init__(self, eb=None, hdr_const=None, hdr_dec=None,
+            hdr_format=None, pld_const=None, pld_dec=None, 
+            psf_taps=None, sps=None):
         gr.hier_block2.__init__(
             self, "Packet Rx GWN",
                 gr.io_signature(1, 1, gr.sizeof_gr_complex*1),
@@ -82,45 +59,52 @@ class packet_rx_gwn(gr.hier_block2):
         ##################################################
         # Parameters
         ##################################################
-        """
-        self.eb = eb
-        self.hdr_const = hdr_const
-        self.hdr_dec = hdr_dec
-        self.hdr_format = hdr_format
-        self.pld_const = pld_const
-        self.pld_dec = pld_dec
-        self.psf_taps = psf_taps
-        self.sps = sps
-        """
-
-        self.eb = eb = 0.22
-        self.hdr_const = hdr_const = Const_HDR = digital.constellation_calcdist( 
-            digital.psk_2()[0], digital.psk_2()[1],
-            2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-        self.pld_const = pld_const = Const_PLD = digital.constellation_calcdist(
-            digital.psk_4()[0], digital.psk_4()[1],
-            4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
-
-        self.hdr_format = hdr_format = digital.header_format_counter( 
-            digital.packet_utils.default_access_code, 3, 
-            Const_PLD.bits_per_symbol() )
-
-        rep = 3
-        self.hdr_dec = hdr_dec = dec_hdr = fec.repetition_decoder.make(hdr_format.header_nbits(),rep, 0.5)
-
-        k = 7
-        rate = 2
-        polys = [109, 79]
-        self.pld_dec = pld_dec = fec.cc_decoder.make(8000, k, rate, polys, 0, -1, fec.CC_TERMINATED, False)
-
-        self.sps = sps = 2
-        nfilts = 32
-        self.psf_taps = psf_taps = rx_rrc_taps = firdes.root_raised_cosine(
-            nfilts, nfilts*sps,1.0, eb, 11*sps*nfilts)
-
-
-
+        if eb:
+            self.eb = eb
+        else:
+            self.eb = 0.22
+        if hdr_const:
+            self.hdr_const = hdr_const
+        else:
+            self.hdr_const = Const_HDR = digital.constellation_calcdist( 
+                digital.psk_2()[0], digital.psk_2()[1],
+                2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
+        if pld_const:
+            self.pld_const = pld_const
+        else:
+            self.pld_const = Const_PLD = digital.constellation_calcdist(
+                digital.psk_4()[0], digital.psk_4()[1],
+                4, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
+        if hdr_format:
+            self.hdr_format = hdr_format
+        else:
+            self.hdr_format = digital.header_format_counter( 
+                digital.packet_utils.default_access_code, 3, 
+                Const_PLD.bits_per_symbol() )
+        if hdr_dec:
+            self.hdr_dec = hdr_dec
+        else:
+            rep = 3
+            self.hdr_dec = fec.repetition_decoder.make(
+                self.hdr_format.header_nbits(),rep, 0.5)
+        if pld_dec:
+            self.pld_dec = pld_dec
+        else:
+            k = 7
+            rate = 2
+            polys = [109, 79]
+            self.pld_dec = pld_dec = fec.cc_decoder.make(
+                8000, k, rate, polys, 0, -1, fec.CC_TERMINATED, False)
+        if sps:
+            self.sps = sps
+        else:
+            self.sps = 2
+        if psf_taps:
+            self.psf_taps = psf_taps
+        else:
+            nfilts = 32
+            self.psf_taps = rx_rrc_taps = firdes.root_raised_cosine(
+            nfilts, nfilts*self.sps,1.0, self.eb, 11*self.sps*nfilts)
 
 
         ##################################################
@@ -129,22 +113,22 @@ class packet_rx_gwn(gr.hier_block2):
         self.preamble_rep = preamble_rep = [0xe3, 0x8f, 0xc0, 0xfc, 0x7f, 0xc7, 0xe3, 0x81, 0xc0, 0xff, 0x80, 0x38, 0xff, 0xf0, 0x38, 0xe0, 0x0f, 0xc0, 0x03, 0x80, 0x00, 0xff, 0xff, 0xc0]
         self.preamble_dummy = preamble_dummy = [0xac, 0xdd, 0xa4, 0xe2, 0xf2, 0x8c, 0x20, 0xfc]
         self.preamble_select = preamble_select = {1: preamble_dummy, 3: preamble_rep}
-        self.rxmod = rxmod = digital.generic_mod(hdr_const, False, sps, True, eb, False, False)
-        self.preamble = preamble = preamble_select[int(1.0/hdr_dec.rate())]
+        self.rxmod = rxmod = digital.generic_mod(self.hdr_const, False, self.sps, True, self.eb, False, False)
+        self.preamble = preamble = preamble_select[int(1.0/self.hdr_dec.rate())]
         self.mark_delays = mark_delays = [0, 0, 34, 56, 87, 119]
         self.nfilts = nfilts = 32
         self.modulated_sync_word = modulated_sync_word = digital.modulate_vector_bc(rxmod.to_basic_block(), preamble, [1])
-        self.mark_delay = mark_delay = mark_delays[sps]
+        self.mark_delay = mark_delay = mark_delays[self.sps]
 
         ##################################################
         # Blocks
         ##################################################
-        self.fec_generic_decoder_0 = fec.decoder(hdr_dec, gr.sizeof_float, gr.sizeof_char)
+        self.fec_generic_decoder_0 = fec.decoder(self.hdr_dec, gr.sizeof_float, gr.sizeof_char)
         self.fec_async_decoder_0 = fec.async_decoder(pld_dec, True, False, 1500*8)
-        self.digital_protocol_parser_b_0 = digital.protocol_parser_b(hdr_format)
-        self.digital_pfb_clock_sync_xxx_0 = digital.pfb_clock_sync_ccf(sps, 6.28/400.0, psf_taps, nfilts, nfilts/2, 1.5, 1)
+        self.digital_protocol_parser_b_0 = digital.protocol_parser_b(self.hdr_format)
+        self.digital_pfb_clock_sync_xxx_0 = digital.pfb_clock_sync_ccf(self.sps, 6.28/400.0, self.psf_taps, nfilts, nfilts/2, 1.5, 1)
         self.digital_header_payload_demux_0 = digital.header_payload_demux(
-            (hdr_format.header_nbits() * int(1.0/hdr_dec.rate())) //  hdr_const.bits_per_symbol(),
+            (self.hdr_format.header_nbits() * int(1.0/self.hdr_dec.rate())) //  self.hdr_const.bits_per_symbol(),
             1,
             0,
             "payload symbols",
@@ -156,13 +140,13 @@ class packet_rx_gwn(gr.hier_block2):
             [],
             0)
         self.digital_crc32_async_bb_0 = digital.crc32_async_bb(True)
-        self.digital_costas_loop_cc_0_0_0 = digital.costas_loop_cc(6.28/200.0, pld_const.arity(), False)
-        self.digital_costas_loop_cc_0_0 = digital.costas_loop_cc(6.28/200.0, hdr_const.arity(), False)
-        self.digital_corr_est_cc_0 = digital.corr_est_cc(modulated_sync_word, sps, mark_delay, 0.999, digital.THRESHOLD_ABSOLUTE)
-        self.digital_constellation_soft_decoder_cf_0_0 = digital.constellation_soft_decoder_cf(hdr_const)
-        self.digital_constellation_soft_decoder_cf_0 = digital.constellation_soft_decoder_cf(pld_const)
+        self.digital_costas_loop_cc_0_0_0 = digital.costas_loop_cc(6.28/200.0, self.pld_const.arity(), False)
+        self.digital_costas_loop_cc_0_0 = digital.costas_loop_cc(6.28/200.0, self.hdr_const.arity(), False)
+        self.digital_corr_est_cc_0 = digital.corr_est_cc(modulated_sync_word, self.sps, mark_delay, 0.999, digital.THRESHOLD_ABSOLUTE)
+        self.digital_constellation_soft_decoder_cf_0_0 = digital.constellation_soft_decoder_cf(self.hdr_const)
+        self.digital_constellation_soft_decoder_cf_0 = digital.constellation_soft_decoder_cf(self.pld_const)
         self.blocks_tagged_stream_to_pdu_0 = blocks.tagged_stream_to_pdu(blocks.float_t, "payload symbols")
-        self.blocks_tagged_stream_multiply_length_0 = blocks.tagged_stream_multiply_length(gr.sizeof_float*1, "payload symbols", pld_const.bits_per_symbol())
+        self.blocks_tagged_stream_multiply_length_0 = blocks.tagged_stream_multiply_length(gr.sizeof_float*1, "payload symbols", self.pld_const.bits_per_symbol())
         self.blocks_multiply_by_tag_value_cc_0 = blocks.multiply_by_tag_value_cc("amp_est", 1)
 
 
@@ -266,7 +250,7 @@ class packet_rx_gwn(gr.hier_block2):
 
     def set_preamble_select(self, preamble_select):
         self.preamble_select = preamble_select
-        self.set_preamble(self.preamble_select[int(1.0/hdr_dec.rate())])
+        self.set_preamble(self.preamble_select[int(1.0/self.hdr_dec.rate())])
 
     def get_rxmod(self):
         return self.rxmod

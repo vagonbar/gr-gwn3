@@ -50,6 +50,7 @@ class qa_packet_rx_gwn(gr_unittest.TestCase):
     def test_gwn_event(self):
         '''Packet Tx and Packet Tx with GWN event blocks.
         '''
+        print("\n=== Event Tx Rx with GWN blocks")
 
         ### blocks
         ev_tx = packet_tx_gwn()
@@ -86,9 +87,11 @@ class qa_packet_rx_gwn(gr_unittest.TestCase):
 
         return
 
+    """
     def test_gr_packet(self):
-        '''Packet Tx and Packet Tx with GR blocks.
+        '''Packet Tx and Packet Rx with GR blocks.
         '''
+        print("\n=== Packet Tx Rx with GR blocks")
 
         ### blocks
         pkt_tx = packet_tx_gwn()
@@ -119,7 +122,7 @@ class qa_packet_rx_gwn(gr_unittest.TestCase):
         self.tb.wait()
 
         return
-
+        """
 
 
 

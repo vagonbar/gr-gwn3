@@ -236,8 +236,16 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
+    eb: '0.22'
+    hdr_const: ''''''
+    hdr_dec: ''''''
+    hdr_format: ''''''
     maxoutbuf: '0'
     minoutbuf: '0'
+    pld_const: ''''''
+    pld_dec: ''''''
+    psf_taps: ''''''
+    sps: '2'
   states:
     bus_sink: false
     bus_source: false
@@ -251,13 +259,21 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
+    eb: '0.22'
+    hdr_const: ''''''
+    hdr_enc: ''''''
+    hdr_format: ''''''
     maxoutbuf: '0'
     minoutbuf: '0'
+    pld_const: ''''''
+    pld_enc: ''''''
+    psf_taps: ''''''
+    sps: '2'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [600, 72.0]
+    coordinate: [600, 60.0]
     rotation: 0
     state: true
 - name: qtgui_const_sink_x_0

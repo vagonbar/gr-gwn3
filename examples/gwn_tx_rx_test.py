@@ -79,8 +79,8 @@ class gwn_tx_rx_test(gr.top_block, Qt.QWidget):
         # Blocks
         ##################################################
         self.gwn3_pdu_to_ev_0 = gwn3.pdu_to_ev()
-        self.gwn3_packet_tx_gwn_0 = gwn3.packet_tx_gwn()
-        self.gwn3_packet_rx_gwn_0 = gwn3.packet_rx_gwn()
+        self.gwn3_packet_tx_gwn_0 = gwn3.packet_tx_gwn( '', '', '', '', '', '', 2)
+        self.gwn3_packet_rx_gwn_0 = gwn3.packet_rx_gwn( 0.22, '', '', '', '', '', '', 2 )
         self.gwn3_event_source_0 = gwn3.event_source(10,1.0,"My payload")
         self.gwn3_event_sink_0 = gwn3.event_sink(True)
         self.gwn3_ev_to_pdu_0 = gwn3.ev_to_pdu()

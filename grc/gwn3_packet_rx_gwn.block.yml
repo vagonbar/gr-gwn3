@@ -4,9 +4,49 @@ category: '[gwn3]'
 
 templates:
   imports: import gwn3
-  make: gwn3.packet_rx_gwn()
+  make: gwn3.packet_rx_gwn( ${eb}, ${hdr_const}, ${hdr_dec}, ${hdr_format}, ${pld_const}, ${pld_dec}, ${psf_taps}, ${sps} )
 
 parameters:
+-   id: eb
+    label: Filter Rolloff
+    dtype: real
+    default: 0.22
+    hide: none
+-   id: hdr_const
+    label: Header constellation
+    dtype: raw
+    default: ''
+    hide: none
+-   id: hdr_dec
+    label: Header FEC Decoder
+    dtype: raw
+    default: ''
+    hide: none
+-   id: hdr_format
+    label: Header Formatter
+    dtype: raw
+    default: ''
+    hide: none
+-   id: pld_const
+    label: Payload constellation
+    dtype: raw
+    default: ''
+    hide: none
+-   id: pld_dec
+    label: Payload FEC Decoder
+    dtype: raw
+    default: ''
+    hide: none
+-   id: psf_taps
+    label: Pulse Shape Filter
+    dtype: raw
+    default: ''
+    hide: none
+-   id: sps
+    label: Samples per Symbol
+    dtype: real
+    default: 2
+    hide: none
 
 inputs:
 -   label: in
