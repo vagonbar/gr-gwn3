@@ -13,6 +13,12 @@ GWN provides a template block with a Finite State Machine (FSM), which can be us
 
 The GWN toolkit was tested in real world communication among computers using USRP hardware devices.
 
+## An example flowgraph
+
+The following example flowgraph shows transmission and reception of a data packet through a Channel Model block. For real air transmission, blocks Virtual Sink and Virtual Source can be substituted by blocks which act as interfaces to real transmission and reception hardware, such as USRP devices. In such case, the Channel Model block becomes unnecessary.
+
+![Packet Tx Rx through channel](examples/gwn_msg_tx_rx_channel_test.jpg)
+
 
 ## History
 
