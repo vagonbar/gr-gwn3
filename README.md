@@ -17,7 +17,7 @@ The GWN toolkit was tested in real world communication among computers using USR
 
 The following example flowgraph shows transmission and reception of a data packet through a Channel Model block. For real air transmission, blocks Virtual Sink and Virtual Source can be substituted by blocks which act as interfaces to real transmission and reception hardware, such as USRP devices. In such case, the Channel Model block becomes unnecessary.
 
-![Packet Tx Rx through channel](examples/gwn_msg_tx_rx_channel_test.jpg)
+![Packet Tx Rx through channel](libgwn/images/gwn_msg_tx_rx_channel_test.jpg)
 
 
 ## History
@@ -33,6 +33,7 @@ Ths project started several years ago, evolutioning through different stages. Th
 - [GWN block characteristics](libgwn/docs/GWN3Block.md)
 - [Creating a new GWN block](libgwn/docs/NewBlock.md)
 - [FSM, Finite State Machine](libgwn/docs/FSM.md)
+- [GNU Radio packet blocks](libgwn/docs/GR_packet.md)
 - [Code documentation](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/index.html)
 
 

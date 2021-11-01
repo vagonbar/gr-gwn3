@@ -1,0 +1,47 @@
+id: gwn3_packet_rx_gwn
+label: packet_rx_gwn
+category: '[gwn3]'
+
+templates:
+  imports: import gwn3
+  make: gwn3.packet_rx_gwn()
+
+parameters:
+
+inputs:
+-   label: in
+    dtype: complex
+    vlen: 1
+
+outputs:
+-   label: pkt out
+    domain: message
+    dtype: message
+    optional: true
+-   label: precrc
+    domain: message
+    dtype: message
+    optional: true
+-   label: hdr_out
+    dtype: complex
+    vlen: 1
+    optional: true
+-   label: pld_out
+    dtype: complex
+    vlen: 1
+    optional: true
+-   label: pld_phs
+    dtype: complex
+    vlen: 1
+    optional: true
+-   label: timing
+    dtype: complex
+    vlen: 1
+    optional: true
+-   label: corr est
+    dtype: complex
+    vlen: 1
+    optional: true
+
+file_format: 1
+

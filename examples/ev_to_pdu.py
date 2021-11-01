@@ -6,7 +6,7 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Event to PDU
-# GNU Radio version: 3.8.1.0
+# GNU Radio version: 3.9.3.0
 
 from distutils.version import StrictVersion
 
@@ -23,6 +23,7 @@ if __name__ == '__main__':
 from gnuradio import blocks
 from gnuradio import gr
 from gnuradio.filter import firdes
+from gnuradio.fft import window
 import sys
 import signal
 from PyQt5 import Qt
@@ -30,12 +31,15 @@ from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
 import gwn3
+
+
+
 from gnuradio import qtgui
 
 class ev_to_pdu(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "Event to PDU")
+        gr.top_block.__init__(self, "Event to PDU", catch_exceptions=True)
         Qt.QWidget.__init__(self)
         self.setWindowTitle("Event to PDU")
         qtgui.util.check_set_qss()
@@ -77,7 +81,7 @@ class ev_to_pdu(gr.top_block, Qt.QWidget):
         self.gwn3_ev_to_pdu_0 = gwn3.ev_to_pdu()
         self.blocks_tagged_stream_to_pdu_0 = blocks.tagged_stream_to_pdu(blocks.byte_t, 'packet_len')
         self.blocks_pdu_to_tagged_stream_0 = blocks.pdu_to_tagged_stream(blocks.byte_t, 'packet_len')
-        self.blocks_message_debug_0 = blocks.message_debug()
+        self.blocks_message_debug_0 = blocks.message_debug(True)
 
 
 
@@ -89,9 +93,13 @@ class ev_to_pdu(gr.top_block, Qt.QWidget):
         self.msg_connect((self.gwn3_msg_source_0, 'out_0'), (self.gwn3_ev_to_pdu_0, 'in_0'))
         self.connect((self.blocks_pdu_to_tagged_stream_0, 0), (self.blocks_tagged_stream_to_pdu_0, 0))
 
+
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "ev_to_pdu")
         self.settings.setValue("geometry", self.saveGeometry())
+        self.stop()
+        self.wait()
+
         event.accept()
 
     def get_samp_rate(self):
@@ -99,6 +107,7 @@ class ev_to_pdu(gr.top_block, Qt.QWidget):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
+
 
 
 
@@ -110,10 +119,15 @@ def main(top_block_cls=ev_to_pdu, options=None):
     qapp = Qt.QApplication(sys.argv)
 
     tb = top_block_cls()
+
     tb.start()
+
     tb.show()
 
     def sig_handler(sig=None, frame=None):
+        tb.stop()
+        tb.wait()
+
         Qt.QApplication.quit()
 
     signal.signal(signal.SIGINT, sig_handler)
@@ -123,12 +137,7 @@ def main(top_block_cls=ev_to_pdu, options=None):
     timer.start(500)
     timer.timeout.connect(lambda: None)
 
-    def quitting():
-        tb.stop()
-        tb.wait()
-    qapp.aboutToQuit.connect(quitting)
     qapp.exec_()
-
 
 if __name__ == '__main__':
     main()

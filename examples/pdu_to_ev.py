@@ -6,7 +6,7 @@
 #
 # GNU Radio Python Flow Graph
 # Title: PDU to event
-# GNU Radio version: 3.8.1.0
+# GNU Radio version: 3.9.3.0
 
 from distutils.version import StrictVersion
 
@@ -22,6 +22,7 @@ if __name__ == '__main__':
 
 from gnuradio import gr
 from gnuradio.filter import firdes
+from gnuradio.fft import window
 import sys
 import signal
 from PyQt5 import Qt
@@ -29,12 +30,15 @@ from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
 import gwn3
+
+
+
 from gnuradio import qtgui
 
 class pdu_to_ev(gr.top_block, Qt.QWidget):
 
     def __init__(self):
-        gr.top_block.__init__(self, "PDU to event")
+        gr.top_block.__init__(self, "PDU to event", catch_exceptions=True)
         Qt.QWidget.__init__(self)
         self.setWindowTitle("PDU to event")
         qtgui.util.check_set_qss()
@@ -86,9 +90,13 @@ class pdu_to_ev(gr.top_block, Qt.QWidget):
         self.msg_connect((self.gwn3_msg_source_0, 'out_0'), (self.gwn3_ev_to_pdu_0, 'in_0'))
         self.msg_connect((self.gwn3_pdu_to_ev_0, 'out_0'), (self.gwn3_msg_sink_0, 'in_0'))
 
+
     def closeEvent(self, event):
         self.settings = Qt.QSettings("GNU Radio", "pdu_to_ev")
         self.settings.setValue("geometry", self.saveGeometry())
+        self.stop()
+        self.wait()
+
         event.accept()
 
     def get_samp_rate(self):
@@ -96,6 +104,7 @@ class pdu_to_ev(gr.top_block, Qt.QWidget):
 
     def set_samp_rate(self, samp_rate):
         self.samp_rate = samp_rate
+
 
 
 
@@ -107,10 +116,15 @@ def main(top_block_cls=pdu_to_ev, options=None):
     qapp = Qt.QApplication(sys.argv)
 
     tb = top_block_cls()
+
     tb.start()
+
     tb.show()
 
     def sig_handler(sig=None, frame=None):
+        tb.stop()
+        tb.wait()
+
         Qt.QApplication.quit()
 
     signal.signal(signal.SIGINT, sig_handler)
@@ -120,12 +134,7 @@ def main(top_block_cls=pdu_to_ev, options=None):
     timer.start(500)
     timer.timeout.connect(lambda: None)
 
-    def quitting():
-        tb.stop()
-        tb.wait()
-    qapp.aboutToQuit.connect(quitting)
     qapp.exec_()
-
 
 if __name__ == '__main__':
     main()

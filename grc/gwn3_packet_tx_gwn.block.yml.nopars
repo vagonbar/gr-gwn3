@@ -1,0 +1,34 @@
+id: gwn3_packet_tx_gwn
+label: packet_tx_gwn
+category: '[gwn3]'
+
+templates:
+  imports: import gwn3
+  make: gwn3.packet_tx_gwn()
+
+parameters:
+
+inputs:
+-   label: in
+    domain: message
+    dtype: message
+
+outputs:
+-   label: out
+    dtype: complex
+    vlen: 1
+-   label: postcrc
+    domain: message
+    dtype: message
+    optional: true
+-   label: mux
+    dtype: complex
+    vlen: 1
+    optional: true
+-   label: burst
+    dtype: complex
+    vlen: 1
+    optional: true
+
+file_format: 1
+

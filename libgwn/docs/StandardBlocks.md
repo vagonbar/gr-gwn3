@@ -53,6 +53,11 @@ Receives a message in its input port, sends this message on its output port. Sen
 
 Receives messages and shows them. If message is a GWN event (a dictionary) all keys and values are printed.
 
+### Examples
+
+```msg_passer_test```
+
+
 
 ## Event and channel blocks
 
@@ -72,6 +77,13 @@ Receives a message (event or other Python data type) and retransmits with a user
 
 Receives an event on its input port, sends event on either output port 0 or 1, according to parameters field_nm_0, field_val_0, field_nm_1, field_val_1. An event which contains {field_nm_0:field_val_0} is sent on output port 0; an event with {field_nm_1:field_val_1} is sent on output port 1. If event does not meet any of those criteria, no event is sent on either output port.
 
+### Examples
+
+```virtual_channel_test```
+
+```ev_router_test```
+
+
 ## Conversion blocks
 
 ### Event to PDU, [`ev_to_pdu`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.ev_to_pdu.html)
@@ -82,18 +94,32 @@ Converts an event (string or dictionary) into a PDU (Protocol Data Unit).
 
 Converta a PDU (Protocol Data Unit) into an event (string or dictionary).
 
-### PSK transmit, `hier_tx_psk`
+### Examples
 
-### PSK receive, `hier_rx_psk`
+```ev_to_pdu_test``` 
+
+```pdu_to_ev_test```
 
 
+## Transmission and reception blocks
 
-## Framers
+These blocks are adaptated from GR packet blocks, please see [GR packet blocks](GR_packet.md) for a description of changes made in GWN blocks from the original GR blocks.
 
-### L1 framer, `l1_framer`
+### Transmission block, `packer_tx_gwn`
 
-### L1 deframer, `l1_deframer`
+Receives a PDU on its input ```in``` port, emits a stream on its output ```out``` port for transmission through a suitable air transmission device or through a Channel Model block for demonstration and testing.
 
+### Reception block, `packet_rx_gwn`
+
+Receives on its input ```in``` port a stream from a suitable air reception device or from a Channel Model block, emits a PDU on its output ```pkt out``` port.
+
+### Examples
+
+```gr_packet_loopback_hier``` : the GR example packet_loopback_hier implemented with modified versions of GR packet_tx and GR packet_rx; small corrections were required to make these blocks run in GNU Radio 3.9.3.
+
+```gwn_packet_tx_rx_test``` : a simplified version of GR gr_packet_loopback_hier using GWN packet blocks, preserving graphic outputs.
+
+```gwn_msg_tx_rx_channel_test``` : transmission and reception of a data packet using only GWN blocks, through a GR channel model block. This example is a startpoint to build appllications in GWN. Virtual Source and Virtual Sink GR blocks can be substituted for interface blocks to suitable air or cable transmission devices.
 
 
 [Back to README](../../README.md)
