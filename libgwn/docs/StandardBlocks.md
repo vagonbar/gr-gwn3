@@ -115,9 +115,9 @@ Receives on its input ```in``` port a stream from a suitable air reception devic
 
 ### Examples
 
-```gr_packet_loopback_hier``` : the GR example packet_loopback_hier implemented with modified versions of GR packet_tx and GR packet_rx; small corrections were required to make these blocks run in GNU Radio 3.9.3.
+```gr_packet_loopback_hier``` : the GR example ```packet_loopback_hier``` implemented with modified versions of GR ```packet_tx``` and GR ```packet_rx```; small corrections were required to make these blocks run in GNU Radio 3.9.3.
 
-```gwn_packet_tx_rx_test``` : a simplified version of GR gr_packet_loopback_hier using GWN packet blocks, preserving graphic outputs.
+```gwn_packet_tx_rx_test``` : a simplified version of GR ```gr_packet_loopback_hier``` using GWN packet blocks, preserving graphic outputs.
 
 ```gwn_msg_tx_rx_channel_test``` : transmission and reception of a data packet using only GWN blocks, through a GR channel model block. This example is a startpoint to build appllications in GWN. Virtual Source and Virtual Sink GR blocks can be substituted for interface blocks to suitable air or cable transmission devices.
 

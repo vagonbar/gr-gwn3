@@ -1,0 +1,1501 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>gr-gwn3.python.packet_rx_gwn.packet_rx_gwn : API documentation</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">
+            GWN 3 API Documentation
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="showPrivate">
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code>gr-gwn3.python.packet_rx_gwn.packet_rx_gwn(<span title="gnuradio.gr.hier_block2">gr.hier_block2</span>)</code> <small>class documentation</small></h1>
+
+        <span id="partOf">
+          Part of <code><a href="gr-gwn3.html" class="code" data-type="Package">gr-gwn3</a>.<a href="gr-gwn3.python.html" class="code" data-type="Package">python</a>.<a href="gr-gwn3.python.packet_rx_gwn.html" class="code" data-type="Module">packet_rx_gwn</a></code>
+          
+          <a href="classIndex.html#gr-gwn3.python.packet_rx_gwn.packet_rx_gwn">(View In Hierarchy)</a>
+        </span>
+      </div>
+
+      <div class="extrasDocstring">
+        
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p>Packet transmission, receives PDU, codifies in stream and sends.</p><p>Code adapted from GR packet_rx.py. Changes made:</p><ul><li>after argument value assigned to attribute, use attribute instead of parameter in rest of code.</li><li>default arguments assigned to attributes; constructor can now be invoked with no arguments.</li></ul></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id44">
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#__init__" class="code" data-type="Method">__init__</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#eb" class="code" data-type="Instance Variable">eb</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#hdr_const" class="code" data-type="Instance Variable">hdr_const</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#pld_const" class="code" data-type="Instance Variable">pld_const</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#hdr_format" class="code" data-type="Instance Variable">hdr_format</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#hdr_dec" class="code" data-type="Instance Variable">hdr_dec</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#pld_dec" class="code" data-type="Instance Variable">pld_dec</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#sps" class="code" data-type="Instance Variable">sps</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#psf_taps" class="code" data-type="Instance Variable">psf_taps</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#fec_generic_decoder_0" class="code" data-type="Instance Variable">fec_generic_decoder_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#fec_async_decoder_0" class="code" data-type="Instance Variable">fec_async_decoder_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#digital_protocol_parser_b_0" class="code" data-type="Instance Variable">digital_protocol_parser_b_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#digital_pfb_clock_sync_xxx_0" class="code" data-type="Instance Variable">digital_pfb_clock_sync_xxx_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#digital_header_payload_demux_0" class="code" data-type="Instance Variable">digital_header_payload_demux_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#digital_crc32_async_bb_0" class="code" data-type="Instance Variable">digital_crc32_async_bb_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#digital_costas_loop_cc_0_0_0" class="code" data-type="Instance Variable">digital_costas_loop_cc_0_0_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#digital_costas_loop_cc_0_0" class="code" data-type="Instance Variable">digital_costas_loop_cc_0_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#digital_corr_est_cc_0" class="code" data-type="Instance Variable">digital_corr_est_cc_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#digital_constellation_soft_decoder_cf_0_0" class="code" data-type="Instance Variable">digital_constellation_soft_decoder_cf_0_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#digital_constellation_soft_decoder_cf_0" class="code" data-type="Instance Variable">digital_constellation_soft_decoder_cf_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#blocks_tagged_stream_to_pdu_0" class="code" data-type="Instance Variable">blocks_tagged_stream_to_pdu_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#blocks_tagged_stream_multiply_length_0" class="code" data-type="Instance Variable">blocks_tagged_stream_multiply_length_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#blocks_multiply_by_tag_value_cc_0" class="code" data-type="Instance Variable">blocks_multiply_by_tag_value_cc_0</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_eb" class="code" data-type="Method">get_eb</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_eb" class="code" data-type="Method">set_eb</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_hdr_const" class="code" data-type="Method">get_hdr_const</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_hdr_const" class="code" data-type="Method">set_hdr_const</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_hdr_dec" class="code" data-type="Method">get_hdr_dec</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_hdr_dec" class="code" data-type="Method">set_hdr_dec</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_hdr_format" class="code" data-type="Method">get_hdr_format</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_hdr_format" class="code" data-type="Method">set_hdr_format</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_pld_const" class="code" data-type="Method">get_pld_const</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_pld_const" class="code" data-type="Method">set_pld_const</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_pld_dec" class="code" data-type="Method">get_pld_dec</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_pld_dec" class="code" data-type="Method">set_pld_dec</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_psf_taps" class="code" data-type="Method">get_psf_taps</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_psf_taps" class="code" data-type="Method">set_psf_taps</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_sps" class="code" data-type="Method">get_sps</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_sps" class="code" data-type="Method">set_sps</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_preamble_rep" class="code" data-type="Method">get_preamble_rep</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_preamble_rep" class="code" data-type="Method">set_preamble_rep</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#preamble_rep" class="code" data-type="Instance Variable">preamble_rep</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_preamble_dummy" class="code" data-type="Method">get_preamble_dummy</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_preamble_dummy" class="code" data-type="Method">set_preamble_dummy</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#preamble_dummy" class="code" data-type="Instance Variable">preamble_dummy</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_preamble_select" class="code" data-type="Method">get_preamble_select</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_preamble_select" class="code" data-type="Method">set_preamble_select</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#preamble_select" class="code" data-type="Instance Variable">preamble_select</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_rxmod" class="code" data-type="Method">get_rxmod</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_rxmod" class="code" data-type="Method">set_rxmod</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#rxmod" class="code" data-type="Instance Variable">rxmod</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_preamble" class="code" data-type="Method">get_preamble</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_preamble" class="code" data-type="Method">set_preamble</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#preamble" class="code" data-type="Instance Variable">preamble</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_mark_delays" class="code" data-type="Method">get_mark_delays</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_mark_delays" class="code" data-type="Method">set_mark_delays</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#mark_delays" class="code" data-type="Instance Variable">mark_delays</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_nfilts" class="code" data-type="Method">get_nfilts</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_nfilts" class="code" data-type="Method">set_nfilts</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#nfilts" class="code" data-type="Instance Variable">nfilts</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_modulated_sync_word" class="code" data-type="Method">get_modulated_sync_word</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_modulated_sync_word" class="code" data-type="Method">set_modulated_sync_word</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#modulated_sync_word" class="code" data-type="Instance Variable">modulated_sync_word</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#get_mark_delay" class="code" data-type="Method">get_mark_delay</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#set_mark_delay" class="code" data-type="Method">set_mark_delay</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.html#mark_delay" class="code" data-type="Instance Variable">mark_delay</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    __init__(self, eb=None, hdr_const=None, hdr_dec=None, hdr_format=None, pld_const=None, pld_dec=None, psf_taps=None, sps=None):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.eb">
+    
+  </a>
+  <a name="eb">
+    
+  </a>
+  <div class="functionHeader">
+    eb =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.hdr_const">
+    
+  </a>
+  <a name="hdr_const">
+    
+  </a>
+  <div class="functionHeader">
+    hdr_const =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.pld_const">
+    
+  </a>
+  <a name="pld_const">
+    
+  </a>
+  <div class="functionHeader">
+    pld_const =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.hdr_format">
+    
+  </a>
+  <a name="hdr_format">
+    
+  </a>
+  <div class="functionHeader">
+    hdr_format =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.hdr_dec">
+    
+  </a>
+  <a name="hdr_dec">
+    
+  </a>
+  <div class="functionHeader">
+    hdr_dec =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.pld_dec">
+    
+  </a>
+  <a name="pld_dec">
+    
+  </a>
+  <div class="functionHeader">
+    pld_dec =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.sps">
+    
+  </a>
+  <a name="sps">
+    
+  </a>
+  <div class="functionHeader">
+    sps =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.psf_taps">
+    
+  </a>
+  <a name="psf_taps">
+    
+  </a>
+  <div class="functionHeader">
+    psf_taps =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.fec_generic_decoder_0">
+    
+  </a>
+  <a name="fec_generic_decoder_0">
+    
+  </a>
+  <div class="functionHeader">
+    fec_generic_decoder_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.fec_async_decoder_0">
+    
+  </a>
+  <a name="fec_async_decoder_0">
+    
+  </a>
+  <div class="functionHeader">
+    fec_async_decoder_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.digital_protocol_parser_b_0">
+    
+  </a>
+  <a name="digital_protocol_parser_b_0">
+    
+  </a>
+  <div class="functionHeader">
+    digital_protocol_parser_b_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.digital_pfb_clock_sync_xxx_0">
+    
+  </a>
+  <a name="digital_pfb_clock_sync_xxx_0">
+    
+  </a>
+  <div class="functionHeader">
+    digital_pfb_clock_sync_xxx_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.digital_header_payload_demux_0">
+    
+  </a>
+  <a name="digital_header_payload_demux_0">
+    
+  </a>
+  <div class="functionHeader">
+    digital_header_payload_demux_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.digital_crc32_async_bb_0">
+    
+  </a>
+  <a name="digital_crc32_async_bb_0">
+    
+  </a>
+  <div class="functionHeader">
+    digital_crc32_async_bb_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.digital_costas_loop_cc_0_0_0">
+    
+  </a>
+  <a name="digital_costas_loop_cc_0_0_0">
+    
+  </a>
+  <div class="functionHeader">
+    digital_costas_loop_cc_0_0_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.digital_costas_loop_cc_0_0">
+    
+  </a>
+  <a name="digital_costas_loop_cc_0_0">
+    
+  </a>
+  <div class="functionHeader">
+    digital_costas_loop_cc_0_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.digital_corr_est_cc_0">
+    
+  </a>
+  <a name="digital_corr_est_cc_0">
+    
+  </a>
+  <div class="functionHeader">
+    digital_corr_est_cc_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.digital_constellation_soft_decoder_cf_0_0">
+    
+  </a>
+  <a name="digital_constellation_soft_decoder_cf_0_0">
+    
+  </a>
+  <div class="functionHeader">
+    digital_constellation_soft_decoder_cf_0_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.digital_constellation_soft_decoder_cf_0">
+    
+  </a>
+  <a name="digital_constellation_soft_decoder_cf_0">
+    
+  </a>
+  <div class="functionHeader">
+    digital_constellation_soft_decoder_cf_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.blocks_tagged_stream_to_pdu_0">
+    
+  </a>
+  <a name="blocks_tagged_stream_to_pdu_0">
+    
+  </a>
+  <div class="functionHeader">
+    blocks_tagged_stream_to_pdu_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.blocks_tagged_stream_multiply_length_0">
+    
+  </a>
+  <a name="blocks_tagged_stream_multiply_length_0">
+    
+  </a>
+  <div class="functionHeader">
+    blocks_tagged_stream_multiply_length_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.blocks_multiply_by_tag_value_cc_0">
+    
+  </a>
+  <a name="blocks_multiply_by_tag_value_cc_0">
+    
+  </a>
+  <div class="functionHeader">
+    blocks_multiply_by_tag_value_cc_0 =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_eb">
+    
+  </a>
+  <a name="get_eb">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_eb(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_eb">
+    
+  </a>
+  <a name="set_eb">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_eb(self, eb):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_hdr_const">
+    
+  </a>
+  <a name="get_hdr_const">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_hdr_const(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_hdr_const">
+    
+  </a>
+  <a name="set_hdr_const">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_hdr_const(self, hdr_const):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_hdr_dec">
+    
+  </a>
+  <a name="get_hdr_dec">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_hdr_dec(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_hdr_dec">
+    
+  </a>
+  <a name="set_hdr_dec">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_hdr_dec(self, hdr_dec):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_hdr_format">
+    
+  </a>
+  <a name="get_hdr_format">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_hdr_format(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_hdr_format">
+    
+  </a>
+  <a name="set_hdr_format">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_hdr_format(self, hdr_format):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_pld_const">
+    
+  </a>
+  <a name="get_pld_const">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_pld_const(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_pld_const">
+    
+  </a>
+  <a name="set_pld_const">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_pld_const(self, pld_const):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_pld_dec">
+    
+  </a>
+  <a name="get_pld_dec">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_pld_dec(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_pld_dec">
+    
+  </a>
+  <a name="set_pld_dec">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_pld_dec(self, pld_dec):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_psf_taps">
+    
+  </a>
+  <a name="get_psf_taps">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_psf_taps(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_psf_taps">
+    
+  </a>
+  <a name="set_psf_taps">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_psf_taps(self, psf_taps):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_sps">
+    
+  </a>
+  <a name="get_sps">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_sps(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_sps">
+    
+  </a>
+  <a name="set_sps">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_sps(self, sps):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_preamble_rep">
+    
+  </a>
+  <a name="get_preamble_rep">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_preamble_rep(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_preamble_rep">
+    
+  </a>
+  <a name="set_preamble_rep">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_preamble_rep(self, preamble_rep):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.preamble_rep">
+    
+  </a>
+  <a name="preamble_rep">
+    
+  </a>
+  <div class="functionHeader">
+    preamble_rep =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_preamble_dummy">
+    
+  </a>
+  <a name="get_preamble_dummy">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_preamble_dummy(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_preamble_dummy">
+    
+  </a>
+  <a name="set_preamble_dummy">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_preamble_dummy(self, preamble_dummy):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.preamble_dummy">
+    
+  </a>
+  <a name="preamble_dummy">
+    
+  </a>
+  <div class="functionHeader">
+    preamble_dummy =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_preamble_select">
+    
+  </a>
+  <a name="get_preamble_select">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_preamble_select(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_preamble_select">
+    
+  </a>
+  <a name="set_preamble_select">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_preamble_select(self, preamble_select):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.preamble_select">
+    
+  </a>
+  <a name="preamble_select">
+    
+  </a>
+  <div class="functionHeader">
+    preamble_select =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_rxmod">
+    
+  </a>
+  <a name="get_rxmod">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_rxmod(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_rxmod">
+    
+  </a>
+  <a name="set_rxmod">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_rxmod(self, rxmod):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.rxmod">
+    
+  </a>
+  <a name="rxmod">
+    
+  </a>
+  <div class="functionHeader">
+    rxmod =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_preamble">
+    
+  </a>
+  <a name="get_preamble">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_preamble(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_preamble">
+    
+  </a>
+  <a name="set_preamble">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_preamble(self, preamble):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.preamble">
+    
+  </a>
+  <a name="preamble">
+    
+  </a>
+  <div class="functionHeader">
+    preamble =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_mark_delays">
+    
+  </a>
+  <a name="get_mark_delays">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_mark_delays(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_mark_delays">
+    
+  </a>
+  <a name="set_mark_delays">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_mark_delays(self, mark_delays):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.mark_delays">
+    
+  </a>
+  <a name="mark_delays">
+    
+  </a>
+  <div class="functionHeader">
+    mark_delays =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_nfilts">
+    
+  </a>
+  <a name="get_nfilts">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_nfilts(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_nfilts">
+    
+  </a>
+  <a name="set_nfilts">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_nfilts(self, nfilts):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.nfilts">
+    
+  </a>
+  <a name="nfilts">
+    
+  </a>
+  <div class="functionHeader">
+    nfilts =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_modulated_sync_word">
+    
+  </a>
+  <a name="get_modulated_sync_word">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_modulated_sync_word(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_modulated_sync_word">
+    
+  </a>
+  <a name="set_modulated_sync_word">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_modulated_sync_word(self, modulated_sync_word):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.modulated_sync_word">
+    
+  </a>
+  <a name="modulated_sync_word">
+    
+  </a>
+  <div class="functionHeader">
+    modulated_sync_word =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.get_mark_delay">
+    
+  </a>
+  <a name="get_mark_delay">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    get_mark_delay(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.set_mark_delay">
+    
+  </a>
+  <a name="set_mark_delay">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_mark_delay(self, mark_delay):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.packet_rx_gwn.packet_rx_gwn.mark_delay">
+    
+  </a>
+  <a name="mark_delay">
+    
+  </a>
+  <div class="functionHeader">
+    mark_delay =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div>
+
+      </div>
+      <address>
+        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-02 20:53:50.
+      </address>
+
+    </div>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

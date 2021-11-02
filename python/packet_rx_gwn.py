@@ -31,9 +31,6 @@ import sys
 import signal
 
 
-# Variables
-debug = True
-
 
 
 class packet_rx_gwn(gr.hier_block2):

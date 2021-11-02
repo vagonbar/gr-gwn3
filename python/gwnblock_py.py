@@ -421,8 +421,8 @@ class gwnblock_py(gr.basic_block):
 
         The GWN basic block implements facilites used by all GWN blocks. A descendent of this class may call this constructor to fix the number of ports, timers and timeouts.
         @param name: a name for this block.
-        @param number_in: number of input ports.
-        @param number_out: number of output ports.
+        @param number_in: number of input ports. Input ports are called in_0, in_1, etc.
+        @param number_out: number of output ports. Output ports are called out_0, out_1, etc.
         @param number_timers: number of internal timers.
         @param number_timeouts: number of internal timeouts.
         '''

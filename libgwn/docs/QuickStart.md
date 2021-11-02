@@ -5,7 +5,7 @@ GR: [GNU Radio](https://www.gnuradio.org/). Version 3.8 required.
 
 GRC: GNU Radio Companion, the GR graphic environment.
 
-To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.php/InstallingGR).
+In Ubuntu based Linux distributions (e.g. LinuxMint), the easiest way to install GNU Radio is to follow the instructions on [UbuntuInstall](https://wiki.gnuradio.org/index.php/UbuntuInstall). For general instructions, please see [InstallingGR](https://wiki.gnuradio.org/index.php/InstallingGR).
 
 ## Install GWN3
 1. Clone the project.

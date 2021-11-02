@@ -3,7 +3,7 @@
           "DTD/xhtml1-strict.dtd">
 <html>
   <head>
-    <title>gr-gwn3.python.ev_to_pdu.ev_to_pdu : API documentation</title>
+    <title>gr-gwn3.python.event_source_ori.event_source : API documentation</title>
 
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
@@ -28,12 +28,12 @@
     <div class="container">
 
       <div class="page-header">
-        <h1 class="class"><code>gr-gwn3.python.ev_to_pdu.ev_to_pdu(<a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html" class="code" data-type="Class">gwnblock_py</a>)</code> <small>class documentation</small></h1>
+        <h1 class="class"><code>gr-gwn3.python.event_source_ori.event_source(<a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html" class="code" data-type="Class">gwnblock_py</a>)</code> <small>class documentation</small></h1>
 
         <span id="partOf">
-          Part of <code><a href="gr-gwn3.html" class="code" data-type="Package">gr-gwn3</a>.<a href="gr-gwn3.python.html" class="code" data-type="Package">python</a>.<a href="gr-gwn3.python.ev_to_pdu.html" class="code" data-type="Module">ev_to_pdu</a></code>
+          Part of <code><a href="gr-gwn3.html" class="code" data-type="Package">gr-gwn3</a>.<a href="gr-gwn3.python.html" class="code" data-type="Package">python</a>.<a href="gr-gwn3.python.event_source_ori.html" class="code" data-type="Module">event_source_ori</a></code>
           
-          <a href="classIndex.html#gr-gwn3.python.ev_to_pdu.ev_to_pdu">(View In Hierarchy)</a>
+          <a href="classIndex.html#gr-gwn3.python.event_source_ori.event_source">(View In Hierarchy)</a>
         </span>
       </div>
 
@@ -42,29 +42,39 @@
       </div>
 
       <div class="moduleDocstring">
-        <div><p>Converts an event (string or dictionary) into a PDU.</p><p>Receives an event (a string or a dictionary) on the input port, packs it into a PDU, sends PDU on output port.</p></div>
+        <div><p>Emits a number of user defined events at regular intervals.</p></div>
       </div>
 
       <div id="splitTables">
-        <table class="children sortable" id="id11">
+        <table class="children sortable" id="id23">
   
   <tr class="method">
     
     <td>Method</td>
-    <td><a href="gr-gwn3.python.ev_to_pdu.ev_to_pdu.html#__init__" class="code" data-type="Method">__init__</a></td>
-    <td><span>Event to PDU constructor.</span></td>
+    <td><a href="gr-gwn3.python.event_source_ori.event_source.html#__init__" class="code" data-type="Method">__init__</a></td>
+    <td><span>Event source constructor.</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.event_source_ori.event_source.html#ev_dc" class="code" data-type="Instance Variable">ev_dc</a></td>
+    <td><span>Event to emit, a dictionary.</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.event_source_ori.event_source.html#seq_nr" class="code" data-type="Instance Variable">seq_nr</a></td>
+    <td><span>An optional sequence number to include in event to emit.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
-    <td><a href="gr-gwn3.python.ev_to_pdu.ev_to_pdu.html#process_data" class="code" data-type="Method">process_data</a></td>
-    <td><span>Receives an event, converts to PDU, writes on PDU output port.</span></td>
+    <td><a href="gr-gwn3.python.event_source_ori.event_source.html#process_data" class="code" data-type="Method">process_data</a></td>
+    <td><span>Sends user defined event when timer message received.</span></td>
   </tr>
 </table>
         
           <p class="inheritedFrom">
             Inherited from <a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html" class="code" data-type="Class">gwnblock_py</a>:
           </p>
-          <table class="children sortable" id="id12">
+          <table class="children sortable" id="id24">
   
   <tr class="baseinstancevariable">
     
@@ -167,7 +177,7 @@
 
         <div class="basemethod">
   
-  <a name="gr-gwn3.python.ev_to_pdu.ev_to_pdu.__init__">
+  <a name="gr-gwn3.python.event_source_ori.event_source.__init__">
     
   </a>
   <a name="__init__">
@@ -176,17 +186,45 @@
   <div class="functionHeader">
     
     def
-    __init__(self):
+    __init__(self, ev_count=10, interval=1.0, ev_dc={}):
     
   </div>
   <div class="docstring functionBody">
     <div class="interfaceinfo">overrides <a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html#__init__" class="code" data-type="Method">gr-gwn3.python.gwnblock_py.gwnblock_py.__init__</a></div>
     
-    <div><p>Event to PDU constructor.</p></div>
+    <div><p>Event source constructor.</p><p>Events are Python dictionaries with keys and values defined by user.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">ev_count</td><td>the number of events to emit.</td></tr><tr><td></td><td class="fieldArg">interval</td><td>the lapse of time between events, in seconds.</td></tr><tr><td></td><td class="fieldArg">ev_dc</td><td>a dictionary, the user defined events to generate.</td></tr></table></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.event_source_ori.event_source.ev_dc">
+    
+  </a>
+  <a name="ev_dc">
+    
+  </a>
+  <div class="functionHeader">
+    ev_dc =
+  </div>
+  <div class="functionBody">
+    <div><p>Event to emit, a dictionary.</p></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.event_source_ori.event_source.seq_nr">
+    
+  </a>
+  <a name="seq_nr">
+    
+  </a>
+  <div class="functionHeader">
+    seq_nr =
+  </div>
+  <div class="functionBody">
+    <div><p>An optional sequence number to include in event to emit.</p></div> (type: <code>int</code>)
   </div>
 </div><div class="basemethod">
   
-  <a name="gr-gwn3.python.ev_to_pdu.ev_to_pdu.process_data">
+  <a name="gr-gwn3.python.event_source_ori.event_source.process_data">
     
   </a>
   <a name="process_data">
@@ -201,7 +239,7 @@
   <div class="docstring functionBody">
     <div class="interfaceinfo">overrides <a href="gr-gwn3.python.gwnblock_py.gwnblock_py.html#process_data" class="code" data-type="Method">gr-gwn3.python.gwnblock_py.gwnblock_py.process_data</a></div>
     
-    <div><p>Receives an event, converts to PDU, writes on PDU output port.</p><p>Serializaes event into bytes with pickle, converts to PDU and sends.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">py_msg</td><td>message, a Python data type; GWN uses string or dictionary.</td></tr></table></div>
+    <div><p>Sends user defined event when timer message received.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">py_msg</td><td>message received from timer.</td></tr></table></div>
   </div>
 </div>
 
