@@ -18,7 +18,6 @@
 # the Free Software Foundation, Inc., 51 Franklin Street,
 # Boston, MA 02110-1301, USA.
 install(FILES
-    gwn3_gwnblock_py.block.yml
     gwn3_msg_source.block.yml
     gwn3_msg_sink.block.yml
     gwn3_msg_passer.block.yml
