@@ -28,7 +28,6 @@ QA for pdu_to_ev.
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-from gwnblock_py import gwnblock_py
 from pdu_to_ev import pdu_to_ev
 
 # GWN imports
@@ -39,7 +38,7 @@ from msg_sink import msg_sink
 
 #import pmt
 import time
-from gwnblock_py import mutex_prt     # for mutually exclusive printing
+from libgwn.gwnblock_py import mutex_prt     # for mutually exclusive printing
 
 
 class qa_pdu_to_ev (gr_unittest.TestCase):
@@ -56,7 +55,7 @@ class qa_pdu_to_ev (gr_unittest.TestCase):
 
         Flowgraph: Message source --> Event to PDU --> PDU to event --> Message sink.'''
 
-        blk_src = msg_source(msg_count=10, interval=1.0)
+        blk_src = msg_source(msg_count=4, interval=1.0)
         blk_ev2pdu = ev_to_pdu()
         blk_pdu2ev = pdu_to_ev()
         blk_snk = msg_sink()
@@ -72,7 +71,7 @@ class qa_pdu_to_ev (gr_unittest.TestCase):
         self.tb.start() 
         #mutex_prt(self.tb.msg_edge_list())
         #print tb.dump()
-        time.sleep(12)     # to allow for Message source to finish
+        time.sleep(6)     # to allow for Message source to finish
         self.tb.stop()
         self.tb.wait()
 

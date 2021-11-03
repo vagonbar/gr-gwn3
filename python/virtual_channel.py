@@ -27,8 +27,8 @@ from gnuradio import gr
 from random import random
 
 # GWN imports
-from gwnblock_py import gwnblock_py        # for all GWN blocks
-from gwnblock_py import mutex_prt          # for tests
+from libgwn.gwnblock_py import gwnblock_py        # for all GWN blocks
+from libgwn.gwnblock_py import mutex_prt          # for tests
 
 
 class virtual_channel(gwnblock_py):

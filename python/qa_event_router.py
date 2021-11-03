@@ -25,14 +25,13 @@
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-from gwnblock_py import gwnblock_py
 from event_router import event_router
 
 from event_sink import event_sink
 from event_source import event_source
 
 import time
-from gwnblock_py import mutex_prt     # for mutually exclusive printing
+from libgwn.gwnblock_py import mutex_prt     # for mutually exclusive printing
 
 
 class qa_event_router (gr_unittest.TestCase):

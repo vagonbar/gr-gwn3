@@ -26,19 +26,19 @@
 from gnuradio import gr
 
 # GWN imports
-from gwnblock_py import gwnblock_py        # for all GWN blocks
-from gwnblock_py import mutex_prt          # for tests
+from libgwn.gwnblock_py import gwnblock_py        # for all GWN blocks
+from libgwn.gwnblock_py import mutex_prt          # for tests
 
 
 class msg_source(gwnblock_py):
     '''Emits a number of messages at regular intervals.
     '''
-    def __init__(self, msg_count=10, interval=1.0, ev_fields=""):
+    def __init__(self, msg_count=10, interval=1.0, payload=""):
       '''Message source constructor.
 
       @param msg_count: the number of messages to emit.
       @param interval: the lapse of time between messages, in seconds.
-      @param ev_fields: event fields, may by a dictionary or just a string.
+      @param payload: a string, the message to transfer; may be a dictionary.
       '''
       gwnblock_py.__init__(self, name='msg_source', number_in=0, number_out=1, number_timers=1, number_timeouts=0)
 
@@ -49,8 +49,8 @@ class msg_source(gwnblock_py):
       #self.timers[0].interrupt = False
       self.timers[0].msg_dc_1['Final'] = 'False'
       self.timers[0].msg_dc_2['Final'] = 'True'
-      self.timers[0].msg_dc_1['payload'] = ev_fields
-      self.timers[0].msg_dc_2['payload'] = ev_fields
+      self.timers[0].msg_dc_1['payload'] = payload
+      self.timers[0].msg_dc_2['payload'] = payload
       self.start_timers()
 
       return

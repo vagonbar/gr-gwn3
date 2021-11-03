@@ -1,5 +1,5 @@
 id: gwn3_packet_tx_gwn
-label: packet_tx_gwn
+label: Packet Tx GWN
 category: '[gwn3]'
 
 templates:

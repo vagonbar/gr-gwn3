@@ -26,12 +26,11 @@
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-from gwnblock_py import gwnblock_py
 from msg_source import msg_source
 
 import pmt
 import time
-from gwnblock_py import mutex_prt
+from libgwn.gwnblock_py import mutex_prt
 
 
 class qa_msg_source (gr_unittest.TestCase):
@@ -45,7 +44,7 @@ class qa_msg_source (gr_unittest.TestCase):
 
     def test_msg_source(self):
         blk_src = msg_source(msg_count=4, interval=1.0, \
-          payload='An example payload')
+          payload='QA payload' )
         blk_src.timers[0].debug = False     # True
         #blk_src.timers[0].start()
         blk_dbg = blocks.message_debug()

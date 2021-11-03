@@ -24,7 +24,6 @@
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-#from gwnblock_py import gwnblock_py
 
 from virtual_channel import virtual_channel
 from msg_source import msg_source
@@ -32,7 +31,7 @@ from msg_sink import msg_sink
 
 # GWN imports
 from time import sleep
-from gwnblock_py import mutex_prt     # for mutually exclusive printing
+from libgwn.gwnblock_py import mutex_prt     # for mutually exclusive printing
 
 
 class qa_virtual_channel (gr_unittest.TestCase):

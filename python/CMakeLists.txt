@@ -32,7 +32,6 @@ endif()
 GR_PYTHON_INSTALL(
     FILES
     __init__.py
-    gwnblock_py.py
     msg_source.py
     msg_sink.py
     msg_passer.py
@@ -43,7 +42,8 @@ GR_PYTHON_INSTALL(
     event_sink.py
     event_router.py
     packet_tx_gwn.py
-    packet_rx_gwn.py DESTINATION ${GR_PYTHON_DIR}/gwn3
+    packet_rx_gwn.py
+    DESTINATION ${GR_PYTHON_DIR}/gwn3
 )
 
 ########################################################################
@@ -53,7 +53,6 @@ include(GrTest)
 
 set(GR_TEST_TARGET_DEPS gnuradio-gwn3)
 set(GR_TEST_PYTHON_DIRS ${CMAKE_BINARY_DIR}/swig)
-GR_ADD_TEST(qa_gwnblock_py ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_gwnblock_py.py)
 GR_ADD_TEST(qa_msg_source ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_msg_source.py)
 GR_ADD_TEST(qa_msg_sink ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_msg_sink.py)
 GR_ADD_TEST(qa_msg_passer ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_msg_passer.py)

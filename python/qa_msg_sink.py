@@ -25,13 +25,12 @@
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-from gwnblock_py import gwnblock_py
 from msg_sink import msg_sink
 from msg_source import msg_source
 
 import pmt
 import time
-from gwnblock_py import mutex_prt
+from libgwn.gwnblock_py import mutex_prt
 
 
 class qa_msg_sink (gr_unittest.TestCase):

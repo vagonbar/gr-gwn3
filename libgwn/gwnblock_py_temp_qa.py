@@ -26,13 +26,12 @@
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-from gwnblock_py import gwnblock_py
 from <BLOCK_NAME> import <BLOCK_NAME>
 
 # GWN imports
 import pmt
 import time
-from gwnblock_py import mutex_prt     # for mutually exclusive printing
+from libgwn.gwnblock_py import mutex_prt     # for mutually exclusive printing
 
 
 class qa_<BLOCK_NAME> (gr_unittest.TestCase):

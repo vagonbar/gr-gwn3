@@ -29,9 +29,9 @@ A block to converta an event into a PDU (Protocol Data Unit).
 from gnuradio import gr
 
 # GWN imports
-from gwnblock_py import gwnblock_py        # for all GWN blocks
-from gwnblock_py import mutex_prt          # for tests
-from gwnblock_py import msg_to_pdu            # to convert message to PDU
+from libgwn.gwnblock_py import gwnblock_py        # for all GWN blocks
+from libgwn.gwnblock_py import mutex_prt          # for tests
+from libgwn.gwnblock_py import msg_to_pdu         # to convert message to PDU
 
 import pickle
 import pmt

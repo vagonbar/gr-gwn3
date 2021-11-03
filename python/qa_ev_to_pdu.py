@@ -28,14 +28,13 @@ QA for ev_to_pdu.
 
 from gnuradio import gr, gr_unittest
 from gnuradio import blocks
-from gwnblock_py import gwnblock_py
 
 from ev_to_pdu import ev_to_pdu
 from msg_source import msg_source
 
 import pmt
 import time
-from gwnblock_py import mutex_prt     # for mutually exclusive printing
+from libgwn.gwnblock_py import mutex_prt     # for mutually exclusive printing
 
 
 class qa_ev_to_pdu (gr_unittest.TestCase):
@@ -52,7 +51,7 @@ class qa_ev_to_pdu (gr_unittest.TestCase):
 
         Flowgraph: Message source --> Event to PDU --> Message debug.'''
 
-        blk_src = msg_source(msg_count=10, interval=1.0)   # source
+        blk_src = msg_source(msg_count=4, interval=1.0)   # source
         blk_ev2pdu = ev_to_pdu()                           # convert to PDU
         blk_snk = blocks.message_debug()                   # sink
 
@@ -65,7 +64,7 @@ class qa_ev_to_pdu (gr_unittest.TestCase):
         self.tb.start() 
         #mutex_prt(self.tb.msg_edge_list())
         #print tb.dump()
-        time.sleep(12)    # to allow for Message source to finish
+        time.sleep(6)    # to allow for Message source to finish
         self.tb.stop()
         self.tb.wait()
 

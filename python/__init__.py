@@ -46,7 +46,7 @@ except:
     pass
 
 # import any pure python here
-from .gwnblock_py import gwnblock_py
+
 from .msg_source import msg_source
 from .msg_sink import msg_sink
 from .msg_passer import msg_passer
@@ -59,6 +59,7 @@ from .event_sink import event_sink
 from .event_router import event_router
 from .packet_tx_gwn import packet_tx_gwn
 from .packet_rx_gwn import packet_rx_gwn
+
 
 
 
