@@ -16,7 +16,7 @@ After sending each frame, the sender doesn't send any further frames until it re
 
 ## Using an FSM in a GWN block
 
-To implement a protocol or functionality using an FSM, the following steps are recommended::
+To implement a protocol or functionality using an FSM, the following steps are recommended:
 
     1. Carefully study or design the protocol or functionality to implement.
     2. Draw and describe the FSM: states, transitions, data required and necessary comments to make clear how everything works.
@@ -40,7 +40,7 @@ The FSM has the following states::
     - Stop : the machine has stopped, no further action will be taken.
 
 
-A description of transitions follows::
+A description of transitions follows:
 
     - Idle, DataData/send [None], WaitAck : a message {Type:Data, SubType:Data, seq_nr:sss, ...} has been received. Action C{send} sends this message to its destination, keeps message in a buffer (memory) to resend if necessary, and starts a timeout to resend if ACK is not received before this timeout expires. There are no conditions to be satisfied. The FSM moves to WaitAck.
     - WaitAck, CtrlAck/ack_ok [buffer_empty], Idle : a message of {Type:Ctrl, SubType:ACK, seq_nr:xxx} is received. Function C{ack_ok} verifies if seq_nr received xxx is the same as seq_nr of the message last send, which confirms this message has been correctly received; this message was the first in the bufferM; it is extracted from the buffer. If there are no more messagees in the buffer, i.e. condition buffer_empty is True, the FSM moves to the Idle state.
