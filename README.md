@@ -34,7 +34,7 @@ Ths project started several years ago, evolutioning through different stages. Th
 - [Creating a new GWN block](libgwn/docs/NewBlock.md)
 - [FSM, Finite State Machine](libgwn/docs/FSM.md)
 - [GNU Radio packet blocks](libgwn/docs/GR_packet.md)
-- [Stop and Wait network protocol FSM blocks](libgwn/StopAndWaitFSM.md)
+- [Stop and Wait network protocol FSM blocks](libgwn/docs/StopAndWaitFSM.md)
 - [Code documentation](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/index.html)
 
 
