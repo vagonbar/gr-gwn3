@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>gr-gwn3.libgwn.gwnblock_py : API documentation</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">
+            GWN 3 API Documentation
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="showPrivate">
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="module"><code>gr-gwn3.libgwn.gwnblock_py</code> <small>module documentation</small></h1>
+
+        <span id="partOf">
+          Part of <code><a href="gr-gwn3.html" class="code" data-type="Package">gr-gwn3</a>.<a href="gr-gwn3.libgwn.html" class="code" data-type="Package">libgwn</a></code>
+          
+          
+        </span>
+      </div>
+
+      <div class="extrasDocstring">
+        
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p>GWN block with message inputs, message outputs and timers.</p><p>The GWN block is an extension of the GNU Radio gr.basic_block; it inherits from gr.basic_block.</p></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id9">
+  
+  <tr class="variable">
+    
+    <td>Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.html#lock_obj" class="code" data-type="Variable">lock_obj</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.html#pdu_to_msg" class="code" data-type="Function">pdu_to_msg</a></td>
+    <td><span>Extracts message from a PDU.</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.html#msg_to_pdu" class="code" data-type="Function">msg_to_pdu</a></td>
+    <td><span>Inserts message data into a PDU.</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.html#mutex_prt" class="code" data-type="Function">mutex_prt</a></td>
+    <td><span>Mutually exclusive printing.</span></td>
+  </tr><tr class="class">
+    
+    <td>Class</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.GWNPort.html" class="code" data-type="Class">GWNPort</a></td>
+    <td><span>A class for GNU Radio message ports.</span></td>
+  </tr><tr class="class">
+    
+    <td>Class</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.GWNInPort.html" class="code" data-type="Class">GWNInPort</a></td>
+    <td><span>Input GWN Port.</span></td>
+  </tr><tr class="class">
+    
+    <td>Class</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.GWNOutPort.html" class="code" data-type="Class">GWNOutPort</a></td>
+    <td><span>Output GWN Port.</span></td>
+  </tr><tr class="class">
+    
+    <td>Class</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.GWNTimeout.html" class="code" data-type="Class">GWNTimeout</a></td>
+    <td><span>A timer class to implement timeouts inside GWN blocks.</span></td>
+  </tr><tr class="class">
+    
+    <td>Class</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.GWNTimer.html" class="code" data-type="Class">GWNTimer</a></td>
+    <td><span>A timer class to implement timers inside GWN blocks.</span></td>
+  </tr><tr class="class">
+    
+    <td>Class</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html" class="code" data-type="Class">gwnblock_py</a></td>
+    <td><span>The GWN basic block, from which all GWN blocks inherit.</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basevariable">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.lock_obj">
+    
+  </a>
+  <a name="lock_obj">
+    
+  </a>
+  <div class="functionHeader">
+    lock_obj =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.pdu_to_msg">
+    
+  </a>
+  <a name="pdu_to_msg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    pdu_to_msg(pdu):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Extracts message from a PDU.</p><p>Extracts message (cdr) from a PDU, deserializes bytes with pickle into a Python data type, returns (car, cdr) from the PDU.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">pdu</td><td>a PDU.</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2">a pair (metadata, message data).</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.msg_to_pdu">
+    
+  </a>
+  <a name="msg_to_pdu">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    msg_to_pdu(msg_data):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Inserts message data into a PDU.</p><p>Serializes received data into bytes with pickle, creates a PMT u8vector and inserts bytes into it, creates a PDU with the u8vector.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">msg_data</td><td>data to insert as content of the PDU.</td></tr><tr class="fieldStart"><td class="fieldName">Returns</td><td colspan="2">a PDU, a pair (metadata, content) in PMT data types; metadata is None.</td></tr></table></div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.mutex_prt">
+    
+  </a>
+  <a name="mutex_prt">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    mutex_prt(msg):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Mutually exclusive printing.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">msg</td><td>string to print.</td></tr></table></div>
+  </div>
+</div>
+
+      </div>
+      <address>
+        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-09 18:59:30.
+      </address>
+
+    </div>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

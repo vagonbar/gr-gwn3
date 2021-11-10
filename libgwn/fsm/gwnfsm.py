@@ -67,6 +67,22 @@ The GWN Finite State Machine implementation is an extension of Noah Spurrier's F
 
 import sys
 
+import threading
+lock_obj = threading.Lock()   # for mutex_prt
+
+def mutex_prt(msg):
+    '''Mutually exclusive printing.
+
+    This function also in libgw/gwnblock_py, repeated here to keep the FSM machine independent of GWN blocks.
+    @param msg: string to print.
+    '''
+    lock_obj.acquire()
+    print(msg)
+    lock_obj.release()
+    return
+
+
+
 
 class ExceptionFSM(Exception):
     '''FSM Exception class.'''
@@ -90,14 +106,19 @@ class FSM:
     @ivar current_state: the state on which the machine is right now.
     @ivar next_state: the FSM state to go in a transition.
     @ivar action: a function to excecute on transition.
-    @ivar memory: an object made available to the action functions.
+    @ivar mem: memory, a data structure; may be one of the built-in containers (dict, list, set, tuple), a container datatype in module C{collections}, or other.
+    @ivar dc: a dictionary of user defined variables to attach to the FSM.
+    @ivar debug: If True prints debug messages.
     '''
 
-    def __init__(self, initial_state, memory=None):
+    def __init__(self, initial_state, mem=None, dc={}, debug=False):
         '''GWN FSM constructor.
 
         @param initial_state: the FSM initial state.
-        @param memory:  an object intended to pass along to the action functions. A usual option is a list used as a stack.'''
+        @param mem:  an object intended to pass along to the action functions. A usual option is a list used as a stack.
+        @param dc: a dictionary of user defined variables to attach to the FSM.
+        @param debug: if True prints debug messages.
+        '''
 
         # Map (input_symbol, current_state) --> (action, next_state).
         self.state_transitions = {}
@@ -111,9 +132,9 @@ class FSM:
         self.current_state = self.initial_state
         self.next_state = None
         self.action = None
-        self.memory = memory
-
-        self.debug = False
+        self.mem = mem
+        self.dc = dc
+        self.debug = debug
         return
 
 
@@ -246,7 +267,8 @@ class FSM:
         @return: a list of the return values of actions executed, or None.
         '''
         if self.debug:
-            print("\n    FSM process: " + input_symbol + ", " + \
+            #print("    FSM process: " + input_symbol + ", " + \
+            mutex_prt("    FSM process: " + input_symbol + ", " + \
                 self.current_state)
         # list of possible destinations for (input_symbol, current_state):
         ls_dest = self.get_transition (input_symbol, self.current_state)
@@ -260,7 +282,8 @@ class FSM:
                condition = [condition]      # make it a list
             if condition is None:           # no condition, aka no list
                 if self.debug:
-                    print("    FSM Condition: None")
+                    #print("    FSM Condition: None")
+                    mutex_prt("    FSM Condition: None")
                 cond_val = True
             elif type(condition) is list:   # a list of conditions
                 cond_val = True
@@ -278,13 +301,13 @@ class FSM:
                             this_cond_val = cond(self)
                         cond_val = cond_val and this_cond_val
                     if self.debug:
-                        print("    FSM Condition in list: " + \
-                            str(cond) + ", value: " + str(cond_val) )
+                        #print("    FSM condition: " + \
+                        mutex_prt("    FSM condition: " + \
+                            str(cond.__str__().split(' ')[1]) + 
+                            ", value: " + str(cond_val) )
             else:
                 raise ExceptionFSM ('Condition must be a list of functions ' +\
                     'or expressions')
-            if self.debug:
-                print("    FSM cond_val: " + str(cond_val) )
 
             ### do transition
             if cond_val:  # no condition or all conditions True
@@ -310,8 +333,8 @@ class FSM:
 
                 if self.debug:
                     self.print_state(show=['transition'])
-                    print("    FSM change state to: " + \
-                        self.next_state + "\n")
+                    #print("    FSM change state to: " + \
+                    #    self.next_state + "\n")
 
                 self.current_state = self.next_state   # change state
                 self.next_state = None
@@ -374,7 +397,7 @@ class FSM:
             ss += ' --> ' + str(self.next_state) + "\n"
 
         if 'memory' in show:
-            ss += '    FSM memory: ' + str(self.memory) + "\n"
+            ss += '    FSM memory: ' + str(self.mem) + "\n"
         return ss
 
 
@@ -384,7 +407,8 @@ class FSM:
         This function may be called in the action functions.
         @param show: whole or partial list of ["state", "transition", "memory"], shows accordingly.
         '''
-        print(self.mesg_state(show) )
+        #print(self.mesg_state(show) )
+        mutex_prt(self.mesg_state(show) )
         return
 
 

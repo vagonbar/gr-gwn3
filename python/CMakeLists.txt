@@ -43,7 +43,8 @@ GR_PYTHON_INSTALL(
     event_router.py
     packet_tx_gwn.py
     packet_rx_gwn.py
-    DESTINATION ${GR_PYTHON_DIR}/gwn3
+    stop_wait_send.py
+    stop_wait_ack.py DESTINATION ${GR_PYTHON_DIR}/gwn3
 )
 
 ########################################################################
@@ -64,3 +65,5 @@ GR_ADD_TEST(qa_event_sink ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_ev
 GR_ADD_TEST(qa_event_router ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_event_router.py)
 GR_ADD_TEST(qa_packet_tx_gwn ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_packet_tx_gwn.py)
 GR_ADD_TEST(qa_packet_rx_gwn ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_packet_rx_gwn.py)
+GR_ADD_TEST(qa_stop_wait_send ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_stop_wait_send.py)
+GR_ADD_TEST(qa_stop_wait_ack ${PYTHON_EXECUTABLE} ${CMAKE_CURRENT_SOURCE_DIR}/qa_stop_wait_ack.py)

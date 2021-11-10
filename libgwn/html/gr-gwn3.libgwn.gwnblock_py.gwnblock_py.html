@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+          "DTD/xhtml1-strict.dtd">
+<html>
+  <head>
+    <title>gr-gwn3.libgwn.gwnblock_py.gwnblock_py : API documentation</title>
+
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="apidocs.css" />
+  </head>
+  <body>
+
+    <nav class="navbar navbar-default">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="index.html">
+            GWN 3 API Documentation
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <div id="showPrivate">
+      <button class="btn btn-link" onclick="togglePrivate()">Toggle Private API</button>
+    </div>
+
+    <div class="container">
+
+      <div class="page-header">
+        <h1 class="class"><code>gr-gwn3.libgwn.gwnblock_py.gwnblock_py(<span title="gnuradio.gr.basic_block">gr.basic_block</span>)</code> <small>class documentation</small></h1>
+
+        <span id="partOf">
+          Part of <code><a href="gr-gwn3.html" class="code" data-type="Package">gr-gwn3</a>.<a href="gr-gwn3.libgwn.html" class="code" data-type="Package">libgwn</a>.<a href="gr-gwn3.libgwn.gwnblock_py.html" class="code" data-type="Module">gwnblock_py</a></code>
+          
+          <a href="classIndex.html#gr-gwn3.libgwn.gwnblock_py.gwnblock_py">(View In Hierarchy)</a>
+        </span>
+      </div>
+
+      <div class="extrasDocstring">
+        <p>Known subclasses: <a href="gr-gwn3.python.ev_to_pdu.ev_to_pdu.html" class="code" data-type="Class">gr-gwn3.python.ev_to_pdu.ev_to_pdu</a>, <a href="gr-gwn3.python.event_router.event_router.html" class="code" data-type="Class">gr-gwn3.python.event_router.event_router</a>, <a href="gr-gwn3.python.event_sink.event_sink.html" class="code" data-type="Class">gr-gwn3.python.event_sink.event_sink</a>, <a href="gr-gwn3.python.event_source.event_source.html" class="code" data-type="Class">gr-gwn3.python.event_source.event_source</a>, <a href="gr-gwn3.python.msg_passer.msg_passer.html" class="code" data-type="Class">gr-gwn3.python.msg_passer.msg_passer</a>, <a href="gr-gwn3.python.msg_sink.msg_sink.html" class="code" data-type="Class">gr-gwn3.python.msg_sink.msg_sink</a>, <a href="gr-gwn3.python.msg_source.msg_source.html" class="code" data-type="Class">gr-gwn3.python.msg_source.msg_source</a>, <a href="gr-gwn3.python.pdu_to_ev.pdu_to_ev.html" class="code" data-type="Class">gr-gwn3.python.pdu_to_ev.pdu_to_ev</a>, <a href="gr-gwn3.python.stop_wait_ack.stop_wait_ack.html" class="code" data-type="Class">gr-gwn3.python.stop_wait_ack.stop_wait_ack</a>, <a href="gr-gwn3.python.stop_wait_send.stop_wait_send.html" class="code" data-type="Class">gr-gwn3.python.stop_wait_send.stop_wait_send</a>, <a href="gr-gwn3.python.virtual_channel.virtual_channel.html" class="code" data-type="Class">gr-gwn3.python.virtual_channel.virtual_channel</a></p>
+      </div>
+
+      <div class="moduleDocstring">
+        <div><p>The GWN basic block, from which all GWN blocks inherit.</p></div>
+      </div>
+
+      <div id="splitTables">
+        <table class="children sortable" id="id17">
+  
+  <tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#__init__" class="code" data-type="Method">__init__</a></td>
+    <td><span>The GWN basic block constructor.</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#ports_in" class="code" data-type="Instance Variable">ports_in</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#ports_out" class="code" data-type="Instance Variable">ports_out</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#timeouts" class="code" data-type="Instance Variable">timeouts</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#timers" class="code" data-type="Instance Variable">timers</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#finished" class="code" data-type="Instance Variable">finished</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#debug" class="code" data-type="Instance Variable">debug</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#forecast" class="code" data-type="Method">forecast</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#general_work" class="code" data-type="Method">general_work</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#set_in_size" class="code" data-type="Method">set_in_size</a></td>
+    <td><span>Creates a list of input message connections.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#set_out_size" class="code" data-type="Method">set_out_size</a></td>
+    <td><span>Creates a list of output message connections.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#set_timeout_size" class="code" data-type="Method">set_timeout_size</a></td>
+    <td><span>Creates a list of timeout objects, assigns to block.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#set_timer_size" class="code" data-type="Method">set_timer_size</a></td>
+    <td><span>Creates a list of inside timer objects, assigns to block.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#set_timer" class="code" data-type="Method">set_timer</a></td>
+    <td><span>Sets timer values.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#start_timers" class="code" data-type="Method">start_timers</a></td>
+    <td><span>Starts timers attached to this block.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#stop_timers" class="code" data-type="Method">stop_timers</a></td>
+    <td><span>Stops timers attached to this block.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#write_out" class="code" data-type="Method">write_out</a></td>
+    <td><span>Sends an event converted to PMT on an output port.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#handle_msg" class="code" data-type="Method">handle_msg</a></td>
+    <td><span>Receives PMT message, converts to Python, passes to process data.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#process_data" class="code" data-type="Method">process_data</a></td>
+    <td><span>Receives message, processes, produces output event(s).</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#__str__" class="code" data-type="Method">__str__</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr>
+</table>
+        
+
+          
+      </div>
+
+      <div id="childList">
+
+        <div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.__init__">
+    
+  </a>
+  <a name="__init__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    __init__(self, name="""""", number_in=0, number_out=0, number_timers=0, number_timeouts=0):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <a href="gr-gwn3.python.ev_to_pdu.ev_to_pdu.html" class="code" data-type="Class">gr-gwn3.python.ev_to_pdu.ev_to_pdu</a>, <a href="gr-gwn3.python.event_router.event_router.html" class="code" data-type="Class">gr-gwn3.python.event_router.event_router</a>, <a href="gr-gwn3.python.event_sink.event_sink.html" class="code" data-type="Class">gr-gwn3.python.event_sink.event_sink</a>, <a href="gr-gwn3.python.event_source.event_source.html" class="code" data-type="Class">gr-gwn3.python.event_source.event_source</a>, <a href="gr-gwn3.python.msg_passer.msg_passer.html" class="code" data-type="Class">gr-gwn3.python.msg_passer.msg_passer</a>, <a href="gr-gwn3.python.msg_sink.msg_sink.html" class="code" data-type="Class">gr-gwn3.python.msg_sink.msg_sink</a>, <a href="gr-gwn3.python.msg_source.msg_source.html" class="code" data-type="Class">gr-gwn3.python.msg_source.msg_source</a>, <a href="gr-gwn3.python.pdu_to_ev.pdu_to_ev.html" class="code" data-type="Class">gr-gwn3.python.pdu_to_ev.pdu_to_ev</a>, <a href="gr-gwn3.python.stop_wait_ack.stop_wait_ack.html" class="code" data-type="Class">gr-gwn3.python.stop_wait_ack.stop_wait_ack</a>, <a href="gr-gwn3.python.stop_wait_send.stop_wait_send.html" class="code" data-type="Class">gr-gwn3.python.stop_wait_send.stop_wait_send</a>, <a href="gr-gwn3.python.virtual_channel.virtual_channel.html" class="code" data-type="Class">gr-gwn3.python.virtual_channel.virtual_channel</a></div>
+    
+    <div><p>The GWN basic block constructor.</p><p>The GWN basic block implements facilites used by all GWN blocks. A descendent of this class may call this constructor to fix the number of ports, timers and timeouts.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">name</td><td>a name for this block.</td></tr><tr><td></td><td class="fieldArg">number_in</td><td>number of input ports. Input ports are called in_0, in_1, etc.</td></tr><tr><td></td><td class="fieldArg">number_out</td><td>number of output ports. Output ports are called out_0, out_1, etc.</td></tr><tr><td></td><td class="fieldArg">number_timers</td><td>number of internal timers.</td></tr><tr><td></td><td class="fieldArg">number_timeouts</td><td>number of internal timeouts.</td></tr></table></div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.ports_in">
+    
+  </a>
+  <a name="ports_in">
+    
+  </a>
+  <div class="functionHeader">
+    ports_in =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.ports_out">
+    
+  </a>
+  <a name="ports_out">
+    
+  </a>
+  <div class="functionHeader">
+    ports_out =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.timeouts">
+    
+  </a>
+  <a name="timeouts">
+    
+  </a>
+  <div class="functionHeader">
+    timeouts =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.timers">
+    
+  </a>
+  <a name="timers">
+    
+  </a>
+  <div class="functionHeader">
+    timers =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>List</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.finished">
+    
+  </a>
+  <a name="finished">
+    
+  </a>
+  <div class="functionHeader">
+    finished =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>bool</code>)
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.debug">
+    
+  </a>
+  <a name="debug">
+    
+  </a>
+  <div class="functionHeader">
+    debug =
+  </div>
+  <div class="functionBody">
+    <div class="undocumented">Undocumented</div> (type: <code>bool</code>)
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.forecast">
+    
+  </a>
+  <a name="forecast">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    forecast(self, noutput_items, ninput_items_required):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.general_work">
+    
+  </a>
+  <a name="general_work">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    general_work(self, input_items, output_items):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.set_in_size">
+    
+  </a>
+  <a name="set_in_size">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_in_size(self, number_in):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Creates a list of input message connections.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">number_in</td><td>the number of input message connections.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.set_out_size">
+    
+  </a>
+  <a name="set_out_size">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_out_size(self, number_out):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Creates a list of output message connections.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">number_out</td><td>the number of output message connections.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.set_timeout_size">
+    
+  </a>
+  <a name="set_timeout_size">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_timeout_size(self, number_timeouts):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Creates a list of timeout objects, assigns to block.</p><p>Creates a list of timeout objects with default values.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">number_timeouts</td><td>the number of timeouts to create.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.set_timer_size">
+    
+  </a>
+  <a name="set_timer_size">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_timer_size(self, number_timers):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Creates a list of inside timer objects, assigns to block.</p><p>Creates a list of inside timer objects with default values; timer characteristics can be set later with function set_timer().</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">number_timers</td><td>the number of timers to create.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.set_timer">
+    
+  </a>
+  <a name="set_timer">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    set_timer(self, index, interrupt=(True), interval=1, retry=1, ev_dc_1={}, ev_dc_2={}):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Sets timer values.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">index</td><td>the timer index position.</td></tr><tr><td></td><td class="fieldArg">interrupt</td><td>if True interrupts timer event generation until set to False.</td></tr><tr><td></td><td class="fieldArg">interval</td><td>the time between two successive timer events.</td></tr><tr><td></td><td class="fieldArg">retry</td><td>the number of events to be generated; once this number is reached, the timer is interrupted until interrupt is set to False.</td></tr><tr><td></td><td class="fieldArg">ev_dc_1</td><td>additional information for event to send at regular intervals for retry times. Adds to existing dictionary.</td></tr><tr><td></td><td class="fieldArg">ev_dc_2</td><td>additional information for event to send when retries have exhausted. Adds to existing dictionary.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.start_timers">
+    
+  </a>
+  <a name="start_timers">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    start_timers(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Starts timers attached to this block.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.stop_timers">
+    
+  </a>
+  <a name="stop_timers">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    stop_timers(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Stops timers attached to this block.</p></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.write_out">
+    
+  </a>
+  <a name="write_out">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    write_out(self, py_msg, port_nr=None):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Sends an event converted to PMT on an output port.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">py_msg</td><td>a Python object, e.g. a dictionary.</td></tr><tr><td></td><td class="fieldArg">port_nr</td><td>the output por number, an index of the output ports list. If not given, write out on all ports.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.handle_msg">
+    
+  </a>
+  <a name="handle_msg">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    handle_msg(self, pmt_msg):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Receives PMT message, converts to Python, passes to process data.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">pmt_msg</td><td>a message in PMT format.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.process_data">
+    
+  </a>
+  <a name="process_data">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    process_data(self, pmt_msg):
+    
+  </div>
+  <div class="docstring functionBody">
+    <div class="interfaceinfo">overridden in <a href="gr-gwn3.python.ev_to_pdu.ev_to_pdu.html" class="code" data-type="Class">gr-gwn3.python.ev_to_pdu.ev_to_pdu</a>, <a href="gr-gwn3.python.event_router.event_router.html" class="code" data-type="Class">gr-gwn3.python.event_router.event_router</a>, <a href="gr-gwn3.python.event_sink.event_sink.html" class="code" data-type="Class">gr-gwn3.python.event_sink.event_sink</a>, <a href="gr-gwn3.python.event_source.event_source.html" class="code" data-type="Class">gr-gwn3.python.event_source.event_source</a>, <a href="gr-gwn3.python.msg_passer.msg_passer.html" class="code" data-type="Class">gr-gwn3.python.msg_passer.msg_passer</a>, <a href="gr-gwn3.python.msg_sink.msg_sink.html" class="code" data-type="Class">gr-gwn3.python.msg_sink.msg_sink</a>, <a href="gr-gwn3.python.msg_source.msg_source.html" class="code" data-type="Class">gr-gwn3.python.msg_source.msg_source</a>, <a href="gr-gwn3.python.pdu_to_ev.pdu_to_ev.html" class="code" data-type="Class">gr-gwn3.python.pdu_to_ev.pdu_to_ev</a>, <a href="gr-gwn3.python.stop_wait_ack.stop_wait_ack.html" class="code" data-type="Class">gr-gwn3.python.stop_wait_ack.stop_wait_ack</a>, <a href="gr-gwn3.python.stop_wait_send.stop_wait_send.html" class="code" data-type="Class">gr-gwn3.python.stop_wait_send.stop_wait_send</a>, <a href="gr-gwn3.python.virtual_channel.virtual_channel.html" class="code" data-type="Class">gr-gwn3.python.virtual_channel.virtual_channel</a></div>
+    
+    <div><p>Receives message, processes, produces output event(s).</p><p>To be overwritten by descendent block.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">ev</td><td>the event received, to process.</td></tr></table></div>
+  </div>
+</div><div class="basemethod">
+  
+  <a name="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.__str__">
+    
+  </a>
+  <a name="__str__">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    __str__(self):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div>
+
+      </div>
+      <address>
+        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-09 18:59:30.
+      </address>
+
+    </div>
+
+    <script src="pydoctor.js" type="text/javascript"></script>
+
+  </body>
+</html>

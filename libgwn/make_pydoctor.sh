@@ -5,10 +5,18 @@
 #
 
 CURDIR=`pwd`
-echo "Directorio actual: " $CURDIR
+ISBUILD=`pwd | grep build$`
+if [ -n $ISBUILD ]
+then
+  echo "Directorio actual: " $CURDIR
+else
+  echo "make_pydoctor: must execute from build directory"
+  exit
+fi
+
 cd ../..
 echo "Directorio de ejecución: " `pwd`
 pydoctor --make-html --html-output=gr-gwn3/libgwn/html --project-name="GWN 3" --add-package=gr-gwn3
 cd $CURDIR
-pwd
+echo -n "Directorio actual"; pwd
 
