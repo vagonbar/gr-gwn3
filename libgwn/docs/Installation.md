@@ -4,9 +4,33 @@
 
 These notes offer some additional information on installation, as a complement to the [Quick Start page](QuickStart.md).
 
+## GNU Radio
+
 This version of GWN requires GNU Radio 3.8.  To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.php/InstallingGR).
 
-The following instructions assume gr-gwn3 is cloned in the user's home directory under subdirectory `~/GNURadio`, and GNU Radio 3.8 is installed in `/home/gnuradio-3.8`. It also asumes `/home/gnuradio-3.8/setup_env.sh` has been sourced to make paths to GNU Radio available (command `source /home/gnuradio-3.8/setup_env.sh`, or its content has been included in the  `.bashrc` file.
+In Linux Mint 20, GNU Radio can be easily installed with the following commands:
+
+
+```
+  sudo add-apt-repository ppa:gnuradio/gnuradio-releases
+  sudo apt-get update
+  sudo apt-get install gnuradio
+  gnuradio-companion -h   # shows installed version, e.g. 3.9.3.0
+```
+
+Some additional packages may be required:
+
+```
+  sudo apt install python3-distutils   # for GRC
+  sudo apt install xterm               # instead of gnome-terminal
+```
+
+To install in a virtual machine, Linux Mint XFCE offers an Ubuntu based Linux installation with a light graphical environment, XFCE. 
+
+
+## GWN
+
+The following instructions assume `gr-gwn3` is cloned in the user's home directory under subdirectory `~/GNURadio`, and GNU Radio 3.8 is installed in `/home/gnuradio-3.8`. It also asumes `/home/gnuradio-3.8/setup_env.sh` has been sourced to make paths to GNU Radio available (command `source /home/gnuradio-3.8/setup_env.sh`, or its content has been included in the  `.bashrc` file.
 
 
 ```

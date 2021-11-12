@@ -71,12 +71,6 @@ class stop_wait_ack(gwnblock_py):
           else:           # key to ACK not in event received
               is_ev_to_ack = False
               break  
-
-      if self.debug:
-          mutex_prt("--- stop_wait_ack, is_ev_to_ack: " + str(is_ev_to_ack) )
-          mutex_prt("--- stop_wait_ack, event: " + str(event) )
-          mutex_prt("--- stop_wait_ack, ACK to send: " + str(self.ev_to_ack) )
-
       # send ACK or pass
       if is_ev_to_ack:
           if 'seq_nr' in event:
@@ -84,9 +78,10 @@ class stop_wait_ack(gwnblock_py):
           else:
               pass       # ACK with seq_nr=0 will be sent back
           if self.debug:
-              mutex_prt("--- stop_wait_ack, event: " + str(event) )
-              mutex_prt("--- stop_wait_ack, ACK to send: " + str(self.ev_to_ack) )
-
+              msg_dbg = "--- stop_wait_ack, is_ev_to_ack: " + \
+                str(is_ev_to_ack) + ", event: " + str(event) + \
+                ", ACK to send: " + str(self.ev_to_ack)
+              mutex_prt(msg_dbg)
           # send events
           self.write_out(self.ack_to_send, port_nr=1)
           self.write_out(event, port_nr=0)

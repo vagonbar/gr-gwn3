@@ -68,7 +68,8 @@ The GWN Finite State Machine implementation is an extension of Noah Spurrier's F
 import sys
 
 import threading
-lock_obj = threading.Lock()   # for mutex_prt
+lock_obj = threading.Lock()
+'''To lock thread for mutually exclusive printing.'''
 
 def mutex_prt(msg):
     '''Mutually exclusive printing.
@@ -132,6 +133,7 @@ class FSM:
         self.current_state = self.initial_state
         self.next_state = None
         self.action = None
+        self.condition = None
         self.mem = mem
         self.dc = dc
         self.debug = debug
@@ -209,7 +211,6 @@ class FSM:
         @param next_state: the state to which the machine will be moved and made the current state. If next_state is None, the current state will remain unchanged.
         @param condition: a function or expression which returns True or False; if True, transition is performed, otherwise the transition is ignored, i.e. the FSM remains in its state and action is not executed. If this parameter is None, no conditions are checked, and transition is performed. This parameter may be given as a list of expressions or functions.
         '''
-
         if next_state is None:
             next_state = state
         # adds transition to dictionary of transitions for any symbol
@@ -266,30 +267,30 @@ class FSM:
         @param block: a reference to the block to which the FSM is attached, to pass on to action functions.
         @return: a list of the return values of actions executed, or None.
         '''
-        if self.debug:
-            #print("    FSM process: " + input_symbol + ", " + \
-            mutex_prt("    FSM process: " + input_symbol + ", " + \
-                self.current_state)
+        msg_dbg = "    FSM process: " + input_symbol + ", " + \
+            self.current_state + "\n"
+
         # list of possible destinations for (input_symbol, current_state):
         ls_dest = self.get_transition (input_symbol, self.current_state)
 
         for dest in ls_dest:
             action, next_state, condition = dest
+            self.condition = condition     # to show in debug
 
             ### determine value of all conditions
             # consider no condition, one condition, a list of conditions
             if condition and type(condition) is not list:   # string or function
                condition = [condition]      # make it a list
             if condition is None:           # no condition, aka no list
-                if self.debug:
-                    #print("    FSM Condition: None")
-                    mutex_prt("    FSM Condition: None")
+                #msg_dbg += "    FSM Condition: None\n"
                 cond_val = True
             elif type(condition) is list:   # a list of conditions
+                #msg_dbg += "    FSM Condition: "
                 cond_val = True
                 for cond in condition:      # AND all conditions
                     if type(cond) is str:   # condition is a string
                         cond_val = cond_val and eval(cond)
+                        
                     else:                   # condition is a function
                         if event and block:
                             this_cond_val = cond(self, event, block)
@@ -300,11 +301,10 @@ class FSM:
                         else:
                             this_cond_val = cond(self)
                         cond_val = cond_val and this_cond_val
-                    if self.debug:
-                        #print("    FSM condition: " + \
-                        mutex_prt("    FSM condition: " + \
-                            str(cond.__str__().split(' ')[1]) + 
-                            ", value: " + str(cond_val) )
+            
+                #msg_dbg += "    FSM condition: " + \
+                #    cond.__name__ + \
+                #    ", value: " + str(cond_val) + "\n"
             else:
                 raise ExceptionFSM ('Condition must be a list of functions ' +\
                     'or expressions')
@@ -332,15 +332,17 @@ class FSM:
                         ret_val += [fn_act(self)]
 
                 if self.debug:
-                    self.print_state(show=['transition'])
-                    #print("    FSM change state to: " + \
-                    #    self.next_state + "\n")
-
+                    msg_dbg += self.mesg_state(show=['transition'])
+                    #msg_dbg += "    FSM change state to: " + \
+                    #    self.next_state + "\n"
+                    mutex_prt(msg_dbg)
                 self.current_state = self.next_state   # change state
                 self.next_state = None
                 return ret_val
             else:        # condition not met, consider next destination
                 continue # continue loop #return None
+
+
         return None
 
 
@@ -354,6 +356,68 @@ class FSM:
             self.process (s)
         return
 
+    def mesg_trans(self, symbol, cur_state, function, condition, dst_state):
+
+        nm_function = ''
+        if type(function) is list:
+            for nm_fn in function:
+                nm_function += nm_fn.__name__ + " "
+        else:
+            nm_function = function.__name__
+        nm_cond = ''
+        if type(condition) is list:
+            for nm_cnd in condition:
+                if type(nm_cnd) is str:
+                    nm_cond += nm_cnd + " "
+                else:           # is function
+                    nm_cond += nm_cnd.__name__ + " "
+        msg_dbg = '      {0} --> {1} / {2} [{3}] --> {4}'.\
+            format(cur_state, symbol, nm_function, nm_cond, dst_state)
+        return msg_dbg        
+
+
+    def mesg_trans(self, symbol=None, state=None):
+        '''Returns a string describing a transition.
+
+        @param symbol: the symbol received, if None, transition for any symbol is searched for.
+        @param state: the present state. If None, and symbols is also None, default transition is searched for.
+        '''
+        ls_trans = []   # for several transitions for a (symbol, state) pair
+        if symbol == None and state == None:    # default transaction
+            symbol, state = "''", "''"
+            ls_trans += self.default_transition
+            #print("DEFAULT TRANSITION", ls_trans)
+        elif symbol == None:     # transaction any
+            symbol = "''"
+            ls_trans += self.state_transitions_any[state]
+            #print("TRANSITION ANY", ls_trans)
+        else:                    # transaction normal
+            ls_trans += self.state_transitions[(symbol, state)]
+            #print("TRANSITION", ls_trans)
+
+        for trans in ls_trans:
+            function, dst_state, condition = trans[0], trans[1], trans[2]
+            msg_trans = "      " + state + " --> " + symbol + " / "
+            if not function:
+                msg_trans += "'' + ["
+            elif type(function) == list:
+                for fn in function:
+                    msg_trans += fn.__name__ + " "
+                    #msg_trans += str(function).split(" ")[1] + " ["
+                msg_trans += "["
+            else:
+                msg_trans += function.__name__ + " ["
+            if type(condition) == list:
+                for cnd in condition:
+                    if type(cnd) == str:
+                        msg_trans += cnd + " "
+                    else:
+                        msg_trans += cnd.__name__ + " "
+                        #msg_trans += str(cnd).split(" ")[1] + " "
+            msg_trans += "] --> " + dst_state + "\n"
+        return msg_trans
+
+
 
     def mesg_state(self, show=[]):
         '''Returns a string describing FSM state, transitions.
@@ -361,43 +425,38 @@ class FSM:
         @param show: whole or partial list of ["state", "transition", "memory"], shows accordingly.
         '''
         ss = ''     # a string variable to build up message
+
         if 'state' in show:
             ss += "    FSM initial_state: " + self.initial_state + "\n"
-            ss += "    FSM state_transitions:" + "\n"
 
-            for key in self.state_transitions.keys():
-                symbol, cur_state = key
-                for item in self.state_transitions[key]:    
-                    function, dst_state, cond = \
-                        item[0], item[1], item[2]
-                    if type(function) is list:
-                        function = [fn.__name__ for fn in function]
-                    else:
-                        function = function.__name__
-                    # should detect if condition is function, use name
-                    msg_dbg = '      {0} --- {1} | {2} --> {3}'.format( \
-                        cur_state, symbol, function, dst_state)
-                    msg_dbg += '\n        cond = {0}'.format(cond)
-                    ss += msg_dbg + "\n"
 
-            ss += "    FSM state_transitions_any:\n"
-            for item in self.state_transitions_any.items():
-                ss += '     ' + str(item) + "\n"
-            ss += "    FSM default_transition:\n"
-            ss += "     " + str(self.default_transition) + "\n"
+            ss += "    FSM transitions:\n"
+            for (symbol, state) in self.state_transitions:
+                ss += self.mesg_trans(symbol, state)
+            ss += "    FSM transitions for any symbol:\n"
+            for (state) in self.state_transitions_any:
+                ss += self.mesg_trans(None, state) 
+            ss += "    FSM default transition:\n"
+            ss += self.mesg_trans(None, None)
+
         if 'action' in show and self.action:
             ss += "    FSM state %s, symbol %s" % \
                 (self.current_state, self.input_symbol) # + "\n"
             for fn_act in self.action:    # asumes it is a list
-                ss += '\n        action:' + fn_act.__name__ + "\n"
+                ss += '\n        action:' + fn_act.__name__
+            ss += "\n"
 
         if 'transition' in show:
+            ss = self.mesg_trans(self.input_symbol, self.current_state)
+            """
             ss += '    FSM transition: ' + self.current_state + ' --- ' + \
                 str(self.input_symbol) + ' | '
             ss += ' --> ' + str(self.next_state) + "\n"
+            """
 
         if 'memory' in show:
             ss += '    FSM memory: ' + str(self.mem) + "\n"
+
         return ss
 
 

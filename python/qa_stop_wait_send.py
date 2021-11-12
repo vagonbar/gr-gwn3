@@ -67,7 +67,7 @@ class qa_stop_wait_send (gr_unittest.TestCase):
 
         ev_to_ack = {'Type':'Data', 'Subtype':'Data'}
         ack_to_send = {'Type':'Ctrl', 'Subtype':'ACK'}
-        blk_ack = stop_wait_ack( ev_to_ack, ack_to_send, debug=False)
+        blk_ack = stop_wait_ack( ev_to_ack, ack_to_send, debug=True)
 
         blk_snk = event_sink(ev_count=True)
 

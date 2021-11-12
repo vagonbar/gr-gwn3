@@ -45,9 +45,12 @@ def fn_send(fsm, event, block):
     fsm.dc['ev_to_ack'] = event       # event to wait for ACK
     fsm.dc['retries'] = 0             # event sent for first time, no retries yet
     block.timeouts[0].start()         # starts timeout to wait for ACK
-    block.process_data(event, 'Transmit')   # passes to block for transmission
     if fsm.debug:
         mutex_prt("    fn_send, ev_to_ack: " + str(fsm.dc['ev_to_ack']) )
+        #fsm.print_state(['transition'])
+        #msg = fsm.mesg_state(["state", "transition", "memory"])
+        #mutex_prt(msg)
+    block.process_data(event, 'Transmit')   # passes to block for transmission
     return
 
 def fn_ack_ok(fsm, event, block):
@@ -65,10 +68,10 @@ def fn_sendfrombuffer(fsm, event, block):
     fsm.dc['retries'] = 0             # first time, no retries yet 
     fsm.dc['mem_nr_in'] -= 1          # one event less in buffer
     fsm.command = "Transmit"          # to output message
-    block.process_data(fsm.dc['ev_to_ack'], 'Transmit')   # for transmission
     if fsm.debug:
         mutex_prt("    fn_sendfrombuffer, ev_to_ack:" + str(fsm.dc['ev_to_ack']) + 
           ', buffer space: ' + str(fsm.dc['mem_max_len'] - fsm.dc['mem_nr_in']) )
+    block.process_data(fsm.dc['ev_to_ack'], 'Transmit')   # for transmission
     return
     
 def fn_resend(fsm, event, block):
@@ -76,10 +79,10 @@ def fn_resend(fsm, event, block):
     fsm.dc['retries'] += 1            # increment retries
     fsm.command = "Transmit"          # to output message
     block.timeouts[0].start()         # starts timeout to wait for ACK
-    block.process_data(fsm.dc['ev_to_ack'], 'Transmit')   # for transmission
     if fsm.debug:
         mutex_prt("    fn_resend, FSM ev_to_ack:" + str(fsm.dc['ev_to_ack']) +
           ', retries left: ' + str(fsm.dc['max_retries'] - fsm.dc['retries']) ) 
+    block.process_data(fsm.dc['ev_to_ack'], 'Transmit')   # for transmission
     return
     
 def fn_push(fsm, event, block):
@@ -88,13 +91,11 @@ def fn_push(fsm, event, block):
     if fsm.debug:
         mutex_prt("    fn_push, memory:" + str(fsm.mem) +
           ', buffer space: ' + str(fsm.dc['mem_max_len'] - fsm.dc['mem_nr_in']) )
-    #std::cout << "BUFFER push " << fsm.mem.size() << std::endl
 
 def fn_stop(fsm, event, block):
     #if len(fsm.mem) > fsm.dc['mem_max_len']:
     if cn_buffer_full(fsm, event, block):
         command = "StopBufferFull"    # abort execution
-    #elif fsm.dc['retries'] > fsm.dc['max_retries']: 
     elif cn_no_retries_left(fsm, event, block):  
         command = "StopNoRetriesLeft"
     else:
@@ -174,7 +175,7 @@ def cn_False(fsm, event, block):
 
 ### Stop and Wait States
 
-def myfsm(p_dc={}):
+def myfsm(p_dc={}, debug=False):
     '''Stop and Wait FSM.
 
     @param p_dc: a dictionary of values for the Stop and Wait protocol handling. It updates the default values with whatevers keys are given in argument.
@@ -195,9 +196,9 @@ def myfsm(p_dc={}):
     dc['mem_nr_in'] = 0       # number of events in buffer
     dc['command'] = ''        # action to execute in block process_data function
 
-    # FSM construction: initial state, memory as list, dict of variables, debug
-    dq = deque()
-    f = FSM('Idle', mem=dq, dc=dc, debug=True)
+    # FSM construction: initial state, memory as deque, dict of variables, debug
+    deq = deque()
+    f = FSM('Idle', mem=deq, dc=dc, debug=debug)
     
     # add ordinary transitions
     #f.add_transition(<input_symbol>, <state>, <action>, <next_state>, <condition>)

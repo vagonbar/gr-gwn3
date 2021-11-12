@@ -76,7 +76,7 @@ class stop_wait_send(gwnblock_py):
         #self.timeouts[0].start()
 
         # create FSM
-        self.fsm = myfsm(p_dc)
+        self.fsm = myfsm(p_dc, debug=True)
 
         return
 
@@ -95,12 +95,12 @@ class stop_wait_send(gwnblock_py):
             if event['Subtype'] == 'Data':
                 dbg_msg += ', seq_nr: {0}'.format(event['seq_nr'])
             mutex_prt(dbg_msg)
-        # handle event to FSM process functions
-        #self.fsm.process(ev['Subtype'], event=ev, block=self)
 
+        # if FSM stopped, do nothin, just return
         if self.fsm.current_state == 'Stop':
             return
 
+        # handle event to FSM process functions
         if not command:              # event comes from input port
             if event['Type'] == 'Data' and event['Subtype'] == 'Data':
                 self.fsm.process('Data', event=event, block=self)
@@ -111,7 +111,8 @@ class stop_wait_send(gwnblock_py):
         elif command == 'Transmit':  # event comes from FSM to transmit
             self.write_out(event)
         elif 'Stop' in command:      # event comes from FSM, FSM has stopped
-            mutex_prt('    FSM stopped, command: ' + command)
+            mutex_prt('--- {0}, FSM stopped, command: {1}'. \
+                format(self.name(), command) )
 
         return
 
