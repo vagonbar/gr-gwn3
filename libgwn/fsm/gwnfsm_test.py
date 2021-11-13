@@ -144,7 +144,7 @@ if __name__ == '__main__':
         #mutex_prt()
         mutex_prt('=== FSM, Finite State Machine example ===')
         mutex_prt('Input events (symbols, characters).')
-        mutex_prt('To test all functions at once, plese input')
+        mutex_prt('To test all functions at once, please input')
         mutex_prt('    jsjsgrgjrwrsgrwrsgrcrsgrs')
         mutex_prt('Some symbols produce no action, please see FSM diagram.')
         mutex_prt('To finish, press Enter without any symbol.')

@@ -342,7 +342,6 @@ class FSM:
             else:        # condition not met, consider next destination
                 continue # continue loop #return None
 
-
         return None
 
 
@@ -355,6 +354,7 @@ class FSM:
         for s in input_symbols:
             self.process (s)
         return
+
 
     def mesg_trans(self, symbol, cur_state, function, condition, dst_state):
 
@@ -391,8 +391,12 @@ class FSM:
             symbol = "''"
             ls_trans += self.state_transitions_any[state]
             #print("TRANSITION ANY", ls_trans)
-        else:                    # transaction normal
-            ls_trans += self.state_transitions[(symbol, state)]
+        else:                    # normal transition
+            if (symbol, state) in self.state_transitions:
+                ls_trans += self.state_transitions[(symbol, state)]
+            else:                # not found, exec default transition
+                symbol, state = "''", "''"
+                ls_trans += self.default_transition
             #print("TRANSITION", ls_trans)
 
         for trans in ls_trans:
@@ -407,14 +411,18 @@ class FSM:
                 msg_trans += "["
             else:
                 msg_trans += function.__name__ + " ["
-            if type(condition) == list:
+            if not condition:
+                msg_trans += ''
+            elif type(condition) == list:
                 for cnd in condition:
                     if type(cnd) == str:
                         msg_trans += cnd + " "
                     else:
                         msg_trans += cnd.__name__ + " "
                         #msg_trans += str(cnd).split(" ")[1] + " "
-            msg_trans += "] --> " + dst_state + "\n"
+            else:
+                msg_trans += ''
+            msg_trans += "] --> " + dst_state #+ "\n"
         return msg_trans
 
 
@@ -432,12 +440,12 @@ class FSM:
 
             ss += "    FSM transitions:\n"
             for (symbol, state) in self.state_transitions:
-                ss += self.mesg_trans(symbol, state)
+                ss += self.mesg_trans(symbol, state) + "\n"
             ss += "    FSM transitions for any symbol:\n"
             for (state) in self.state_transitions_any:
-                ss += self.mesg_trans(None, state) 
+                ss += self.mesg_trans(None, state) + "\n"
             ss += "    FSM default transition:\n"
-            ss += self.mesg_trans(None, None)
+            ss += self.mesg_trans(None, None) + "\n"
 
         if 'action' in show and self.action:
             ss += "    FSM state %s, symbol %s" % \
