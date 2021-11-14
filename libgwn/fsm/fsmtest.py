@@ -91,26 +91,38 @@ def myfsm():
     #f.add_transition_any ('State A', fn_none, 'State A')
 
 
-    f.add_transition ('a', 'INIT', fn_goA_1, 'State A', cn_1_true)
-    f.add_transition ('b', 'State A', fn_init, 'INIT', [cn_2_true])
-    f.add_transition ('c', 'INIT', fn_goA_1, 'State A', [cn_1_true, cn_2_true])
-    f.add_transition ('d', 'State A', fn_init, 'INIT', [cn_1_true, cn_2_true])
-    f.add_transition ('e', 'INIT', [fn_goA_1, fn_goA_2], 'State A', [cn_1_true])
-    f.add_transition ('z', 'State A', fn_init, 'INIT', [cn_2_true])
+    f.add_transition ('a1', 'INIT', fn_goA_1, 'State A', cn_1_true)
+    f.add_transition ('i1', 'State A', fn_init, 'INIT', [cn_2_true])
+    f.add_transition ('a2', 'INIT', fn_goA_1, 'State A', [cn_1_true, cn_2_true])
+    f.add_transition ('i2', 'State A', fn_init, 'INIT', [cn_1_true, cn_2_true])
+    f.add_transition ('a3', 'INIT', [fn_goA_1, fn_goA_2], 'State A', [cn_1_true])
+    f.add_transition ('i3', 'State A', fn_init, 'INIT', '3 == 2')
+    f.add_transition ('i4', 'State A', fn_init, 'INIT', [cn_3_false])
 
-    event = 'j'
-    while event:
-        event = input('Event:')
-        for ev in event:
-            f.process(ev)
+    print('GWN FSM test: print all transitions')
+    f.print_state(show='state')
+
     return f
 
 
 if __name__ == '__main__':
-    try:
-        myfsm()
-    except KeyboardInterrupt as e: # Ctrl-C
-        raise e
+    print('=== GWN FSM test')
+    print('    1. To test all transitions.')
+    print('    2. To input one symbol at a time.')
+    option = input('    Opción: ')
+    f = myfsm()
+    if option == '1':
+        event = ['a1', 'i1', 'a2', 'i2', 'a3', 'i3', 'i4', 'i1']
+        for ev in event:
+            f.process(ev)
+    else:
+        try:
+            event = 'j'
+            while event:
+                event = input('Event:')
+                f.process(event)
+        except KeyboardInterrupt as e: # Ctrl-C
+            raise e
 
 
 

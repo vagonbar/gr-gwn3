@@ -402,6 +402,7 @@ class FSM:
         for trans in ls_trans:
             function, dst_state, condition = trans[0], trans[1], trans[2]
             msg_trans = "      " + state + " --> " + symbol + " / "
+            # show functions
             if not function:
                 msg_trans += "'' + ["
             elif type(function) == list:
@@ -411,6 +412,7 @@ class FSM:
                 msg_trans += "["
             else:
                 msg_trans += function.__name__ + " ["
+            # show conditions
             if not condition:
                 msg_trans += ''
             elif type(condition) == list:
@@ -420,8 +422,10 @@ class FSM:
                     else:
                         msg_trans += cnd.__name__ + " "
                         #msg_trans += str(cnd).split(" ")[1] + " "
-            else:
-                msg_trans += ''
+            elif type(condition) == str:
+                msg_trans += condition
+            else:    # condition is function
+                msg_trans += condition.__name__
             msg_trans += "] --> " + dst_state #+ "\n"
         return msg_trans
 
