@@ -1,4 +1,4 @@
-# GWN Stop & Wait
+# GWN Stop & Wait, preguntas y ejercicios
 
 [Tallerine telecomunicaciones inalámbricas](https://eva.fing.edu.uy/course/view.php?id=1248).
 
