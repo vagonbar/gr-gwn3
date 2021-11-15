@@ -32,9 +32,11 @@ Ths project started several years ago, evolutioning through different stages. Th
 - [Installation](libgwn/docs/Installation.md)
 - [GWN block characteristics](libgwn/docs/GWN3Block.md)
 - [Creating a new GWN block](libgwn/docs/NewBlock.md)
-- [FSM, Finite State Machine](libgwn/docs/FSM.md)
 - [GNU Radio packet blocks](libgwn/docs/GR_packet.md)
-- [Stop and Wait network protocol FSM blocks](libgwn/docs/StopAndWaitFSM.md)
+- [FSM, Finite State Machine](libgwn/docs/FSM.md)
+- An FSM example, the Stop and Wait protocol:
+  - [Stop and Wait network protocol FSM blocks](libgwn/docs/StopAndWaitFSM.md)
+  - [Stop and Wait, preguntas y ejercicios (en español)](libgwn/docs/StopAndWait_Ejercicios.md)
 - [Code documentation](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/index.html)
 
 

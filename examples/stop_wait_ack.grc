@@ -1,0 +1,118 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: qt_gui
+    hier_block_src_path: '.:'
+    id: stop_wait_ack
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Stop and Wait ACK example
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '32000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: gwn3_event_sink_0
+  id: gwn3_event_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ev_count: 'True'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 164.0]
+    rotation: 0
+    state: true
+- name: gwn3_event_sink_1
+  id: gwn3_event_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ev_count: 'True'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [576, 220.0]
+    rotation: 0
+    state: true
+- name: gwn3_event_source_0
+  id: gwn3_event_source
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ev_count: '5'
+    ev_dc: '{''Type'':''Data'', ''Subtype'':''Data'', ''seq_nr'':0}'
+    interval: '1.0'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [16, 164.0]
+    rotation: 0
+    state: true
+- name: gwn3_stop_wait_ack_0
+  id: gwn3_stop_wait_ack
+  parameters:
+    ack_to_send: '{''Type'': ''Ctrl'', ''Subtype'': ''ACK''}'
+    affinity: ''
+    alias: ''
+    comment: ''
+    debug: 'False'
+    ev_to_ack: '{''Type'':''Data'', ''Subtype'':''Data''}'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [296, 164.0]
+    rotation: 0
+    state: true
+
+connections:
+- [gwn3_event_source_0, out_0, gwn3_stop_wait_ack_0, in_0]
+- [gwn3_stop_wait_ack_0, out_0, gwn3_event_sink_0, in_0]
+- [gwn3_stop_wait_ack_0, out_1, gwn3_event_sink_1, in_0]
+
+metadata:
+  file_format: 1

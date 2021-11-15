@@ -71,6 +71,7 @@ import threading
 lock_obj = threading.Lock()
 '''To lock thread for mutually exclusive printing.'''
 
+
 def mutex_prt(msg):
     '''Mutually exclusive printing.
 

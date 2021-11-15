@@ -1,5 +1,5 @@
 id: gwn3_stop_wait_send
-label: Stop W
+label: Stop Wait send
 category: '[gwn3]'
 
 templates:
@@ -57,12 +57,6 @@ outputs:
   dtype: message
 #  vlen: true
   optional: true
-- label: out_1
-  domain: message
-  dtype: message
-#  vlen: ...
-  optional: true
-
 
 #  'file_format' specifies the version of the GRC yml format used in the file
 #  and should usually not be changed.

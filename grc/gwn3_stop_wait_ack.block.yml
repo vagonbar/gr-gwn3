@@ -4,7 +4,7 @@ category: '[gwn3]'
 
 templates:
   imports: import gwn3
-  make: gwn3.stop_wait_ack(${ack_name},${debug})
+  make: gwn3.stop_wait_ack(${ev_to_ack},${ack_to_send},${debug})
 
 #  Make one 'parameters' list entry for every parameter you want settable from the GUI.
 #     Keys include:
@@ -12,12 +12,19 @@ templates:
 #     * label (label shown in the GUI)
 #     * dtype (e.g. int, float, complex, byte, short, xxx_vector, ...)
 parameters:
-- id: ...
-  label: ...
-  dtype: ...
-- id: ...
-  label: ...
-  dtype: ...
+- id: ev_to_ack
+  label: Event to ACK
+  dtype: raw
+  default: {'Type':'Data', 'Subtype':'Data', 'seq_nr':0}
+- id: ack_to_send
+  label: ACK to send
+  dtype: raw
+  default: {'Type':'Ctrl', 'Subtype':'ACK'}
+- id: debug
+  label: Debug
+  dtype: bool
+  default: false
+
 
 #  Make one 'inputs' list entry per input and one 'outputs' list entry per output.
 #  Keys include:
@@ -27,18 +34,27 @@ parameters:
 #      * vlen (optional - data stream vector length. Default is 1)
 #      * optional (optional - set to 1 for optional inputs. Default is 0)
 inputs:
-- label: ...
-  domain: ...
-  dtype: ...
-  vlen: ...
-  optional: ...
+- id: in_0
+  label: in_0
+  domain: message
+  dtype: message
+#  vlen: ...
+  optional: true
 
 outputs:
-- label: ...
-  domain: ...
-  dtype: ...
-  vlen: ...
-  optional: ...
+- id: out_0
+  label: out_0
+  domain: message
+  dtype: message
+#  vlen: ...
+  optional: true
+- id: out_1
+  label: out_1
+  domain: message
+  dtype: message
+#  vlen: ...
+  optional: true
+
 
 #  'file_format' specifies the version of the GRC yml format used in the file
 #  and should usually not be changed.

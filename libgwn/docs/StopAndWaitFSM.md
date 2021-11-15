@@ -75,13 +75,17 @@ The size of the deque is controlled with a counter, incrementing it with each ap
 
 ## The Stop and Wait QA test
 
-QA stands for Quality Assurance; it is usually a program to test a function or component of an application, or the application as a whole. This GWN Stop and Wait immplementation can be tested by running the program `qa_stop_wait_send.py`.
+QA stands for Quality Assurance; it is usually a program to test a function or component of an application, or the application as a whole. This GWN Stop and Wait immplementation can be tested by running the program `qa_stop_wait_send.py`. To test the ACK block, please use `qa_stop_wait_ack.py`.
 
 
 ## The Stop and Wait flowgraph
 
-To do.
- 
+Two example flowgraphs are provided n the `examples` directory to show this Stop and Wait protocol in action:
+
+- `stop_wait_send.grc` shows the whole protocol, send and ACK blocks.
+- `stop_wait_ack.grc` shows only the ACK block
+
+In these blocks, the `debug` parameter can be set to True for more explicit messages.
 
 
 
