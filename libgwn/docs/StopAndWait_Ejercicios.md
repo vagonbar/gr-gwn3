@@ -34,17 +34,17 @@
 
   - en la máquina de estados Stop and Wait, ¿cuáles son los símbolos? Estos símbolos no vienen en los mensajes. ¿Cómo resolver esto? 
   - ¿qué es una lista FIFO (First In First Out). ¿Qué otras modalidades existen? ¿Por qué se usa FIFO en el protocolo Stop and Wait?
-  - ¿qué es un "deque"? ¿Por qué se usa esta estructura? Ver documentación de Python, collections.deque.
+  - ¿qué es un "deque"? ¿Por qué se usa esta estructura? Ver documentación de Python, `collections.deque`.
 
 En esta implementación en GWN del protocolo Stop and Wait.
   - ¿en qué módulo está codificada la máquina de estados? ¿De qué módulos depende? ¿Qué hace cada uno?
   - ¿en qué bloque se construye el objeto máquina de estados? ¿Quién le pasa a la máquina de estados los eventos recibidos? ¿Cómo devuelve la máquina de estados sus resultados? ¿Qué campos contiene ese retorno? ¿Qué significa cada uno?
   - ¿Qué relación hay entre el mensaje recibido y el símbolo que se le pasa a la máquina de estados? ¿Dónde se define esa relación?
-  - en la máquina de estados, la función fn_push, antes de encolar un evento, ¿no debería verificar si el buffer está lleno?
-  - la función fn_resend, antes de ejecutarse, ¿no debería verificar que no se han agotado los reintentos?
-  - en el módulo stop_wait_FSM.py existen las funciones de condición (retornan True o False) cn_retries_left y cn_no_retries_left. ¿Por qué son necesarias dos funciones, si una es la opuesta de la otra?
-  - en el módulo stop_wait_FSM.py, en algunas funciones aparece la variable command. ¿Para qué sirve?
-  - las funciones del módulo stop_wait_FSM.py reciben como parámetros (fsm, event, block). ¿Qué es cada uno? ¿Por qué son necesarios?
+  - en la máquina de estados, la función `fn_push`, antes de encolar un evento, ¿no debería verificar si el buffer está lleno?
+  - la función `fn_resend`, antes de ejecutarse, ¿no debería verificar que no se han agotado los reintentos?
+  - en el módulo `stop_wait_FSM.py` existen las funciones de condición (retornan True o False) `cn_retries_left` y `cn_no_retries_left`. ¿Por qué son necesarias dos funciones, si una es la opuesta de la otra?
+  - en el módulo `stop_wait_FSM.py`, en algunas funciones aparece la variable `command`. ¿Para qué sirve?
+  - las funciones del módulo `stop_wait_FSM.py` reciben como parámetros `(fsm, event, block)`. ¿Qué es cada uno? ¿Por qué son necesarios?
 
 
 ### Sobre el protocolo Stop and Wait
@@ -59,7 +59,7 @@ En Stop and Wait intervienen estos parámetros:
   - cantidad de mensajes a enviar.
   - tiempo de ejecución.
 
-**Objetivo:** encontrar una fórmula para la probabilidad de recibir el envío completo de un cierto número de paquetes, en un tiempo máximo total, para una probabilidad de pérdida determinada. Esto dependerá del intervalo entre paquetes, el tiempo antes de cada reintento, la cantidad de reintentos, y el tamaño del buffer. Con esta fórmuula, será posible determinar estos últimos parámetros para asegurar la recepción completa del envío con una cierta probabilidad. 
+**Objetivo:** encontrar una fórmula para la probabilidad de recibir el envío completo de un cierto número de paquetes, en un tiempo máximo total, para una probabilidad de pérdida determinada. Esto dependerá del intervalo entre paquetes, el tiempo antes de cada reintento, la cantidad de reintentos, y el tamaño del buffer. Con esta fórmula, será posible determinar estos últimos parámetros para asegurar la recepción completa del envío con una cierta probabilidad. 
 
 Estudiar la relación entre estos parámetros:
   - fijadas una probabilidad de pérdida, un intervalo y la cantidad de mensajes a enviar, ¿en cuánto se debería fijar el tiempo de ejecución para recibir todos los mensajes? Tratándose de probabilidades de pérdida, no hay un valor único. Para un cierto tiempo de ejecución, ¿cuál sería la probabilidad de completar la ejecución?
@@ -68,12 +68,12 @@ Estudiar la relación entre estos parámetros:
   - para comprobar el agotamiento de los reintentos, ¿cómo deberían fijarse los parámetros anteriores?
   - diseñar experimentos para comprobar las conclusiones de las preguntas anteriores. Tratándose de probabilidades, hacer al menos 5 pruebas con cada configuración y anotar los resultados.
   - determinar un conjunto de valores de parámetros para visualizar en un solo experimento, con una cierta probabilidad, estos fenómenos: 1) todos los paquetes se recibieron; 2) se llenó el buffer; 3) se agotaron los reintentos. Como criterio de aceptación, en 10 pruebas deberían aparecer las tres situaciones al menos una vez.
-  - el grafo de flujo usado en estas pruebas asume pérdida solo en el envío, no en el retorno, por lo que no se pierde ningún ACK. Si para lograr una situación más realista se coloca un canal virtual con pérdida también en el retorno, ¿seguirá funcionando? ¿Qué cambios se esperarían?
+  - el grafo de flujo usado en estas pruebas asume pérdida solo en el envío, no en el retorno, por lo que no se pierde ningún ACK. Si para modelar una situación más realista se coloca un canal virtual con pérdida también en el retorno, ¿seguirá funcionando? ¿Qué cambios se esperarían?
  
- **Sugerencia.** Para cambiar los parámetros de ejecución resulta más práctico usar la prueba QA (módulo python qa_stop_wait_send.py) que el diagrama de flujo GRC (en el GNU Radio Companion, interfaz gráfica).
+ **Sugerencia.** Para cambiar los parámetros de ejecución resulta más práctico usar la prueba QA (módulo python `qa_stop_wait_send.py` que el diagrama de flujo GRC (en el GNU Radio Companion, interfaz gráfica).
  
  **Propuesta.**
- ¿Cómo podría modificarse el módulo qa_stop_wait_send.py para pedir al usuario los valores de los parámetros antes de ejecutarse? Dejar valores sugeridos, si el usiario no los cambia, se toman esos.
+ ¿Cómo podría modificarse el módulo `qa_stop_wait_send.py` para pedir al usuario los valores de los parámetros antes de ejecutarse? Dejar valores sugeridos, si el usiario no los cambia, se toman esos.
  
  
 
