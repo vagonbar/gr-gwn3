@@ -105,11 +105,13 @@ Converta a PDU (Protocol Data Unit) into an event (string or dictionary).
 
 These blocks are adaptated from GR packet blocks, please see [GR packet blocks](GR_packet.md) for a description of changes made in GWN blocks from the original GR blocks.
 
-### Transmission block, `packer_tx_gwn`
+### Transmission block, [`packet_tx_gwn`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.packet_tx_gwn.html)
+ 
 
 Receives a PDU on its input ```in``` port, emits a stream on its output ```out``` port for transmission through a suitable air transmission device or through a Channel Model block for demonstration and testing.
 
-### Reception block, `packet_rx_gwn`
+### Reception block, [`packet_rx_gwn`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.packet_rx_gwn.html)
+ 
 
 Receives on its input ```in``` port a stream from a suitable air reception device or from a Channel Model block, emits a PDU on its output ```pkt out``` port.
 
