@@ -21,6 +21,9 @@
 #
 #
 
+'''GWN version of GR packet_tx.
+'''
+
 from gnuradio import blocks
 from gnuradio import digital
 from gnuradio import fec

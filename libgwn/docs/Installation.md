@@ -6,7 +6,7 @@ These notes offer some additional information on installation, as a complement t
 
 ## GNU Radio
 
-This version of GWN requires GNU Radio 3.8.  To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.php/InstallingGR).
+This version of GWN uses GNU Radio 3.9.  To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.php/InstallingGR).
 
 In Linux Mint 20, GNU Radio can be easily installed with the following commands:
 

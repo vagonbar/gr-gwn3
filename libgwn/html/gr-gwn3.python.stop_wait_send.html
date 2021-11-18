@@ -42,13 +42,103 @@
       </div>
 
       <div class="moduleDocstring">
-        <div><p>An ARQ Stop and Wait sender.</p></div>
+        <div><p>An ARQ Stop and Wait sender, witn an FSM.</p></div>
       </div>
 
       <div id="splitTables">
-        <table class="children sortable" id="id78">
+        <table class="children sortable" id="id77">
   
-  <tr class="class">
+  <tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#fn_send" class="code" data-type="Function">fn_send</a></td>
+    <td><span>Stores event to wait for ACK, sends event, starts timeout.</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#fn_ack_ok" class="code" data-type="Function">fn_ack_ok</a></td>
+    <td><span>ACK received is correct, stop timeout.</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#fn_sendfrombuffer" class="code" data-type="Function">fn_sendfrombuffer</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#fn_resend" class="code" data-type="Function">fn_resend</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#fn_push" class="code" data-type="Function">fn_push</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#fn_stop" class="code" data-type="Function">fn_stop</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#cn_buffer_empty" class="code" data-type="Function">cn_buffer_empty</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#cn_not_buffer_empty" class="code" data-type="Function">cn_not_buffer_empty</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#cn_buffer_full" class="code" data-type="Function">cn_buffer_full</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#cn_not_buffer_full" class="code" data-type="Function">cn_not_buffer_full</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#cn_retries_left" class="code" data-type="Function">cn_retries_left</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#cn_no_retries_left" class="code" data-type="Function">cn_no_retries_left</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#fn_none" class="code" data-type="Function">fn_none</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#fn_error" class="code" data-type="Function">fn_error</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#fn_init" class="code" data-type="Function">fn_init</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#cn_True" class="code" data-type="Function">cn_True</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#cn_False" class="code" data-type="Function">cn_False</a></td>
+    <td><span class="undocumented">Undocumented</span></td>
+  </tr><tr class="function">
+    
+    <td>Function</td>
+    <td><a href="gr-gwn3.python.stop_wait_send.html#myfsm" class="code" data-type="Function">myfsm</a></td>
+    <td><span>Stop and Wait FSM.</span></td>
+  </tr><tr class="class">
     
     <td>Class</td>
     <td><a href="gr-gwn3.python.stop_wait_send.stop_wait_send.html" class="code" data-type="Class">stop_wait_send</a></td>
@@ -62,11 +152,353 @@
 
       <div id="childList">
 
-        
+        <div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.fn_send">
+    
+  </a>
+  <a name="fn_send">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    fn_send(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Stores event to wait for ACK, sends event, starts timeout.</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.fn_ack_ok">
+    
+  </a>
+  <a name="fn_ack_ok">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    fn_ack_ok(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>ACK received is correct, stop timeout.</p></div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.fn_sendfrombuffer">
+    
+  </a>
+  <a name="fn_sendfrombuffer">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    fn_sendfrombuffer(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.fn_resend">
+    
+  </a>
+  <a name="fn_resend">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    fn_resend(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.fn_push">
+    
+  </a>
+  <a name="fn_push">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    fn_push(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.fn_stop">
+    
+  </a>
+  <a name="fn_stop">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    fn_stop(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.cn_buffer_empty">
+    
+  </a>
+  <a name="cn_buffer_empty">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    cn_buffer_empty(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.cn_not_buffer_empty">
+    
+  </a>
+  <a name="cn_not_buffer_empty">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    cn_not_buffer_empty(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.cn_buffer_full">
+    
+  </a>
+  <a name="cn_buffer_full">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    cn_buffer_full(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.cn_not_buffer_full">
+    
+  </a>
+  <a name="cn_not_buffer_full">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    cn_not_buffer_full(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.cn_retries_left">
+    
+  </a>
+  <a name="cn_retries_left">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    cn_retries_left(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.cn_no_retries_left">
+    
+  </a>
+  <a name="cn_no_retries_left">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    cn_no_retries_left(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.fn_none">
+    
+  </a>
+  <a name="fn_none">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    fn_none(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.fn_error">
+    
+  </a>
+  <a name="fn_error">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    fn_error(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.fn_init">
+    
+  </a>
+  <a name="fn_init">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    fn_init(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.cn_True">
+    
+  </a>
+  <a name="cn_True">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    cn_True(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.cn_False">
+    
+  </a>
+  <a name="cn_False">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    cn_False(fsm, event, block):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div class="undocumented">Undocumented</div>
+  </div>
+</div><div class="basefunction">
+  
+  <a name="gr-gwn3.python.stop_wait_send.myfsm">
+    
+  </a>
+  <a name="myfsm">
+    
+  </a>
+  <div class="functionHeader">
+    
+    def
+    myfsm(p_dc={}, debug=(False)):
+    
+  </div>
+  <div class="docstring functionBody">
+    
+    
+    <div><p>Stop and Wait FSM.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">p_dc</td><td>a dictionary of values for the Stop and Wait protocol handling. It updates the default values with whatevers keys are given in argument.</td></tr></table></div>
+  </div>
+</div>
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-14 18:28:45.
+        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-18 16:02:57.
       </address>
 
     </div>

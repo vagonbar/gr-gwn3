@@ -31,7 +31,11 @@ from libgwn.gwnblock_py import mutex_prt          # for tests
 
 
 class event_sink(gwnblock_py):
-    '''Receives an event and shows its content.'''
+    '''Receives an event and shows its content.
+
+    @ivar ev_count: if True, counts evens received.
+    @ivar ev_counter: a counter, for optionally show numer of message received.
+    '''
     def __init__(self, ev_count=False):
       '''Event sink constructor.
 
@@ -39,9 +43,7 @@ class event_sink(gwnblock_py):
       '''
       gwnblock_py.__init__(self, name='event_sink', number_in=1, number_out=0, number_timers=0, number_timeouts=0)
       self.ev_count = ev_count
-      '''If True, counts evens received.'''
       self.ev_counter = 0
-      '''A counter, for optionally show numer of message received.'''
       return
 
 

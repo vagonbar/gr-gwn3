@@ -51,10 +51,10 @@ input_symbol or state. The default transition matches any symbol on any state, a
 
 On receiving a symbol, the FSM looks in the transition tables in the following order::
 
-    1. The transitions table for (input_symbol, current_state).
-    2. The transitions table for (current_state), valid for and any input symbol.
-    3. The default transition.
-    4. If no valid transition is found, the FSM will raise an exception.
+1. The transitions table for (input_symbol, current_state).
+2. The transitions table for (current_state), valid for and any input symbol.
+3. The default transition.
+4. If no valid transition is found, the FSM will raise an exception.
 
 Matched transitions with the former criteria may produce a list of (action, next_state, condition). The condition is evaluated for each tuple in the list, and the first tuple on which the condition is found True is executed, the action function is called, and the next state is set as the current state.
 
@@ -108,6 +108,7 @@ class FSM:
     @ivar current_state: the state on which the machine is right now.
     @ivar next_state: the FSM state to go in a transition.
     @ivar action: a function to excecute on transition.
+    @ivar condition: a boolean function or expression; only if True the transition is executed.
     @ivar mem: memory, a data structure; may be one of the built-in containers (dict, list, set, tuple), a container datatype in module C{collections}, or other.
     @ivar dc: a dictionary of user defined variables to attach to the FSM.
     @ivar debug: If True prints debug messages.

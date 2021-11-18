@@ -1,3 +1,6 @@
+[GWN3, GNU Wireless Network 3](https://github.com/vagonbar/gr-gwn3)
+
+
 # GWN Stop & Wait, preguntas y ejercicios
 
 [Tallerine telecomunicaciones inalámbricas](https://eva.fing.edu.uy/course/view.php?id=1248).
@@ -44,7 +47,7 @@ En esta implementación en GWN del protocolo Stop and Wait.
   - la función `fn_resend`, antes de ejecutarse, ¿no debería verificar que no se han agotado los reintentos?
   - en el módulo `stop_wait_FSM.py` existen las funciones de condición (retornan True o False) `cn_retries_left` y `cn_no_retries_left`. ¿Por qué son necesarias dos funciones, si una es la opuesta de la otra?
   - en el módulo `stop_wait_FSM.py`, en algunas funciones aparece la variable `command`. ¿Para qué sirve?
-  - las funciones del módulo `stop_wait_FSM.py` reciben como parámetros `(fsm, event, block)`. ¿Qué es cada uno? ¿Por qué son necesarios?
+  - las funciones del módulo `stop_wait_send.py` reciben como parámetros `(fsm, event, block)`. ¿Qué es cada uno? ¿Por qué son necesarios?
 
 
 ### Sobre el protocolo Stop and Wait
@@ -68,7 +71,8 @@ Estudiar la relación entre estos parámetros:
   - para comprobar el agotamiento de los reintentos, ¿cómo deberían fijarse los parámetros anteriores?
   - diseñar experimentos para comprobar las conclusiones de las preguntas anteriores. Tratándose de probabilidades, hacer al menos 5 pruebas con cada configuración y anotar los resultados.
   - determinar un conjunto de valores de parámetros para visualizar en un solo experimento, con una cierta probabilidad, estos fenómenos: 1) todos los paquetes se recibieron; 2) se llenó el buffer; 3) se agotaron los reintentos. Como criterio de aceptación, en 10 pruebas deberían aparecer las tres situaciones al menos una vez.
-  - el grafo de flujo usado en estas pruebas asume pérdida solo en el envío, no en el retorno, por lo que no se pierde ningún ACK. Si para modelar una situación más realista se coloca un canal virtual con pérdida también en el retorno, ¿seguirá funcionando? ¿Qué cambios se esperarían?
+
+El grafo de flujo usado en estas pruebas asume pérdida solo en el envío, no en el retorno, por lo que no se pierde ningún ACK. Si para modelar una situación más realista se coloca un canal virtual con pérdida también en el retorno, ¿seguirá funcionando? ¿Qué cambios se esperarían?
  
  **Sugerencia.** Para cambiar los parámetros de ejecución resulta más práctico usar la prueba QA (módulo python `qa_stop_wait_send.py` que el diagrama de flujo GRC (en el GNU Radio Companion, interfaz gráfica).
  
@@ -76,4 +80,5 @@ Estudiar la relación entre estos parámetros:
  ¿Cómo podría modificarse el módulo `qa_stop_wait_send.py` para pedir al usuario los valores de los parámetros antes de ejecutarse? Dejar valores sugeridos, si el usiario no los cambia, se toman esos.
  
  
+[Back to README](../../README.md)
 

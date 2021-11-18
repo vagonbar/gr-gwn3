@@ -236,15 +236,26 @@ class stop_wait_send(gwnblock_py):
     '''An ARQ Stop and wait event sender.
 
     Receives an event, starts a timeout, writes this event on output port 1, and waits for an ACK to the message sent. On receiving the appropriate ACK, sends next message. On timeout, resends the unacknowledged message. Received messages are buffered in a FIFO list.
-    @param ack_name: the name of the acknowledge event waited for.
-    @param max_retries: number of times to resend event if ACK not received.
-    @param tout_name: the name of the timer event waited for.
-    @param timeout: the timeout in seconds.
-    @param buffer_len: the buffer capacity, i.e. the maximum length of the list; 0  means no limit.
+    @ivar ack_name: the name of the acknowledge event waited for.
+    @ivar max_retries: number of times to resend event if ACK not received.
+    @ivar tout_name: the name of the timer event waited for.
+    @ivar timeout: the timeout in seconds.
+    @ivar buffer_len: the buffer capacity, i.e. the maximum length of the list; 0  means no limit.
+    @ivar debug: if True prints debug messages.
+    @ivar fsm: a pointer to the Stop and Wait FSM.
     '''
 
     def __init__(self, ack_name='CtrlAck', max_retries=3, 
             tout_name='TimerACKTout', timeout=1.0, buffer_len=3, debug=False):
+        '''Stop and Wait send constructor.
+
+        @param ack_name: the name of the acknowledge event waited for.
+        @param max_retries: number of times to resend event if ACK not received.
+        @param tout_name: the name of the timer event waited for.
+        @param timeout: the timeout in seconds.
+        @param buffer_len: the buffer capacity, i.e. the maximum length of the list; 0  means no limit.
+        @param debug: if True prints debug messages.
+        '''
         gwnblock_py.__init__(self, name='stop_wait_send', 
             number_in=1, number_out=1, number_timers=0, number_timeouts=1)
 

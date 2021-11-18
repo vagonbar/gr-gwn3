@@ -32,6 +32,9 @@ from libgwn.gwnblock_py import mutex_prt          # for tests
 
 class event_source(gwnblock_py):
     '''Emits a number of user defined events at regular intervals.
+
+    @ivar ev_dc: event to emit, a dictionary.
+    @ivar seq_nr: an optional sequence number to include in event to emit.
     '''
     def __init__(self, ev_count=10,interval=1.0,ev_dc={}):
       '''Event source constructor.
@@ -44,9 +47,7 @@ class event_source(gwnblock_py):
       gwnblock_py.__init__(self, name='event_source', number_in=0, number_out=1, number_timers=1, number_timeouts=0)
 
       self.ev_dc = ev_dc
-      '''Event to emit, a dictionary.'''
       self.seq_nr = 0
-      '''An optional sequence number to include in event to emit.'''
 
       ## initialize timers, start
       self.timers[0].retry = ev_count

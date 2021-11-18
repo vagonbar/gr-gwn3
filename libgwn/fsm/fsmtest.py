@@ -20,11 +20,10 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 #
 
+''' FSM for testing, tests transitions, functions, conditions.
 
-''' FSM for testing, tests (tries to) all features.
+A simple FSM to test transitions one by one, see if conditions enable a transition, and exec function.
 '''
-
-
 
 
 from libgwn.fsm.gwnfsm import FSM
@@ -82,6 +81,11 @@ def cn_4_false(fsm):
 
 
 def myfsm():
+    '''Definition of this particular FSM.
+
+    @rtype: FSM object.
+    @return: a pointer to an FSM object.
+    '''
     f = FSM('INIT')
 
     f.set_default_transition(fn_error, 'INIT')

@@ -36,6 +36,7 @@ import pickle
 
 import threading
 lock_obj = threading.Lock()
+'''To lock thread for mutually exclusive printing.'''
 
 
 
@@ -414,6 +415,11 @@ class GWNTimer(GWNPort, threading.Thread):
 class gwnblock_py(gr.basic_block):
     '''The GWN basic block, from which all GWN blocks inherit.
 
+    @ivar ports_in: a list of input port objects. 
+    @ivar ports_out: a list of output port objects.
+    @ivar timeouts: a list of timeout objects.
+    @ivar timers: a lkist of timer objects.
+    @ivar debug: if True prints debug messages.
     '''
     def __init__(self, name='', number_in=0, number_out=0, \
             number_timers=0, number_timeouts=0):
@@ -434,7 +440,7 @@ class gwnblock_py(gr.basic_block):
         self.ports_out = []
         self.timeouts = []
         self.timers = []
-        self.finished = False
+        #self.finished = False
         self.debug = False
 
         self.set_timeout_size(number_timeouts)  # timeout input ports
@@ -449,11 +455,19 @@ class gwnblock_py(gr.basic_block):
     # they must be here for compatibility, even if no stream is present
 
     def forecast(self, noutput_items, ninput_items_required):
+        '''GNU Radio function for gr.basic_block.
+
+        Must be here for compatibility, even if no stream is present.
+        '''
         #setup size of input_items[i] for work call
         for i in range(len(ninput_items_required)):
             ninput_items_required[i] = noutput_items
 
     def general_work(self, input_items, output_items):
+        '''GNU Radio function for gr.basic_block.
+
+        Must be here for compatibility, even if no stream is present.
+        '''
         output_items[0][:] = input_items[0]
         consume(0, len(input_items[0]))
         #self.consume_each(len(input_items[0]))

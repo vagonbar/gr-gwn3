@@ -42,37 +42,37 @@
       </div>
 
       <div class="moduleDocstring">
-        <div><p>Outputs received event on port 0 or 1 according to event field values.</p><p>Receives an event on its input port, sends this event on either output port 0 or output port 1, according to parameters field_nm_0, field_val_0, field_nm_1, field_val_1. An event which contains {field_nm_0:field_val_0} is sent on output port 0; an event with {field_nm_1:field_val_1} is sent on output port 1. If event does not meet any of those criteria, no event is sent on either output port.</p></div>
+        <div><p>Outputs received event on port 0 or 1 according to event field values.</p><p>Receives an event on its input port, sends this event on either output port 0 or output port 1, according to parameters field_nm_0, field_val_0, field_nm_1, field_val_1. An event which contains <code>{field_nm_0:field_val_0}</code> is sent on output port 0; an event with <code>{field_nm_1:field_val_1}</code> is sent on output port 1. If event does not meet any of those criteria, no event is sent on either output port.</p><table class="fieldTable"></table></div>
       </div>
 
       <div id="splitTables">
         <table class="children sortable" id="id24">
   
-  <tr class="method">
-    
-    <td>Method</td>
-    <td><a href="gr-gwn3.python.event_router.event_router.html#__init__" class="code" data-type="Method">__init__</a></td>
-    <td><span>Event router constructor.</span></td>
-  </tr><tr class="instancevariable">
+  <tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.python.event_router.event_router.html#field_nm_0" class="code" data-type="Instance Variable">field_nm_0</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>field name 0, key of event dictionary.</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.python.event_router.event_router.html#field_val_0" class="code" data-type="Instance Variable">field_val_0</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>field value 0, value of field_mn_0 in event dictionary.</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.python.event_router.event_router.html#field_nm_1" class="code" data-type="Instance Variable">field_nm_1</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>field name 1, key of event dictionary.</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.python.event_router.event_router.html#field_val_1" class="code" data-type="Instance Variable">field_val_1</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>field value 1, value of field_mn_1 in event dictionary.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.event_router.event_router.html#__init__" class="code" data-type="Method">__init__</a></td>
+    <td><span>Event router constructor.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
@@ -90,42 +90,37 @@
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#ports_in" class="code" data-type="Instance Variable">ports_in</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a list of input port objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#ports_out" class="code" data-type="Instance Variable">ports_out</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a list of output port objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#timeouts" class="code" data-type="Instance Variable">timeouts</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a list of timeout objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#timers" class="code" data-type="Instance Variable">timers</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="baseinstancevariable">
-    
-    <td>Instance Variable</td>
-    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#finished" class="code" data-type="Instance Variable">finished</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a lkist of timer objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#debug" class="code" data-type="Instance Variable">debug</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>if True prints debug messages.</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#forecast" class="code" data-type="Method">forecast</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>GNU Radio function for gr.basic_block.</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#general_work" class="code" data-type="Method">general_work</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>GNU Radio function for gr.basic_block.</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
@@ -185,7 +180,63 @@
 
       <div id="childList">
 
-        <div class="basemethod">
+        <div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.event_router.event_router.field_nm_0">
+    
+  </a>
+  <a name="field_nm_0">
+    
+  </a>
+  <div class="functionHeader">
+    field_nm_0 =
+  </div>
+  <div class="functionBody">
+    <div>field name 0, key of event dictionary.</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.event_router.event_router.field_val_0">
+    
+  </a>
+  <a name="field_val_0">
+    
+  </a>
+  <div class="functionHeader">
+    field_val_0 =
+  </div>
+  <div class="functionBody">
+    <div>field value 0, value of field_mn_0 in event dictionary.</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.event_router.event_router.field_nm_1">
+    
+  </a>
+  <a name="field_nm_1">
+    
+  </a>
+  <div class="functionHeader">
+    field_nm_1 =
+  </div>
+  <div class="functionBody">
+    <div>field name 1, key of event dictionary.</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.event_router.event_router.field_val_1">
+    
+  </a>
+  <a name="field_val_1">
+    
+  </a>
+  <div class="functionHeader">
+    field_val_1 =
+  </div>
+  <div class="functionBody">
+    <div>field value 1, value of field_mn_1 in event dictionary.</div>
+  </div>
+</div><div class="basemethod">
   
   <a name="gr-gwn3.python.event_router.event_router.__init__">
     
@@ -203,62 +254,6 @@
     <div class="interfaceinfo">overrides <a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#__init__" class="code" data-type="Method">gr-gwn3.libgwn.gwnblock_py.gwnblock_py.__init__</a></div>
     
     <div><p>Event router constructor.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">field_nm_0</td><td>field name 0, key of event dictionary.</td></tr><tr><td></td><td class="fieldArg">field_val_0</td><td>field value 0, value of field_mn_0 in event dictionary.</td></tr><tr><td></td><td class="fieldArg">field_nm_1</td><td>field name 1, key of event dictionary.</td></tr><tr><td></td><td class="fieldArg">field_val_1</td><td>field value 1, value of field_mn_1 in event dictionary.</td></tr></table></div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="gr-gwn3.python.event_router.event_router.field_nm_0">
-    
-  </a>
-  <a name="field_nm_0">
-    
-  </a>
-  <div class="functionHeader">
-    field_nm_0 =
-  </div>
-  <div class="functionBody">
-    <div class="undocumented">Undocumented</div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="gr-gwn3.python.event_router.event_router.field_val_0">
-    
-  </a>
-  <a name="field_val_0">
-    
-  </a>
-  <div class="functionHeader">
-    field_val_0 =
-  </div>
-  <div class="functionBody">
-    <div class="undocumented">Undocumented</div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="gr-gwn3.python.event_router.event_router.field_nm_1">
-    
-  </a>
-  <a name="field_nm_1">
-    
-  </a>
-  <div class="functionHeader">
-    field_nm_1 =
-  </div>
-  <div class="functionBody">
-    <div class="undocumented">Undocumented</div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="gr-gwn3.python.event_router.event_router.field_val_1">
-    
-  </a>
-  <a name="field_val_1">
-    
-  </a>
-  <div class="functionHeader">
-    field_val_1 =
-  </div>
-  <div class="functionBody">
-    <div class="undocumented">Undocumented</div>
   </div>
 </div><div class="basemethod">
   
@@ -283,7 +278,7 @@
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-14 18:28:45.
+        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-18 16:02:57.
       </address>
 
     </div>

@@ -42,27 +42,27 @@
       </div>
 
       <div class="moduleDocstring">
-        <div><p>Receives an event and shows its content.</p></div>
+        <div><p>Receives an event and shows its content.</p><table class="fieldTable"></table></div>
       </div>
 
       <div id="splitTables">
         <table class="children sortable" id="id27">
   
-  <tr class="method">
-    
-    <td>Method</td>
-    <td><a href="gr-gwn3.python.event_sink.event_sink.html#__init__" class="code" data-type="Method">__init__</a></td>
-    <td><span>Event sink constructor.</span></td>
-  </tr><tr class="instancevariable">
+  <tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.python.event_sink.event_sink.html#ev_count" class="code" data-type="Instance Variable">ev_count</a></td>
-    <td><span>If True, counts evens received.</span></td>
+    <td><span>if True, counts evens received.</span></td>
   </tr><tr class="instancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.python.event_sink.event_sink.html#ev_counter" class="code" data-type="Instance Variable">ev_counter</a></td>
-    <td><span>A counter, for optionally show numer of message received.</span></td>
+    <td><span>a counter, for optionally show numer of message received.</span></td>
+  </tr><tr class="method">
+    
+    <td>Method</td>
+    <td><a href="gr-gwn3.python.event_sink.event_sink.html#__init__" class="code" data-type="Method">__init__</a></td>
+    <td><span>Event sink constructor.</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
@@ -80,42 +80,37 @@
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#ports_in" class="code" data-type="Instance Variable">ports_in</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a list of input port objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#ports_out" class="code" data-type="Instance Variable">ports_out</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a list of output port objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#timeouts" class="code" data-type="Instance Variable">timeouts</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a list of timeout objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#timers" class="code" data-type="Instance Variable">timers</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="baseinstancevariable">
-    
-    <td>Instance Variable</td>
-    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#finished" class="code" data-type="Instance Variable">finished</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a lkist of timer objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#debug" class="code" data-type="Instance Variable">debug</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>if True prints debug messages.</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#forecast" class="code" data-type="Method">forecast</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>GNU Radio function for gr.basic_block.</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#general_work" class="code" data-type="Method">general_work</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>GNU Radio function for gr.basic_block.</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
@@ -175,7 +170,35 @@
 
       <div id="childList">
 
-        <div class="basemethod">
+        <div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.event_sink.event_sink.ev_count">
+    
+  </a>
+  <a name="ev_count">
+    
+  </a>
+  <div class="functionHeader">
+    ev_count =
+  </div>
+  <div class="functionBody">
+    <div>if True, counts evens received.</div>
+  </div>
+</div><div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.event_sink.event_sink.ev_counter">
+    
+  </a>
+  <a name="ev_counter">
+    
+  </a>
+  <div class="functionHeader">
+    ev_counter =
+  </div>
+  <div class="functionBody">
+    <div>a counter, for optionally show numer of message received.</div> (type: <code>int</code>)
+  </div>
+</div><div class="basemethod">
   
   <a name="gr-gwn3.python.event_sink.event_sink.__init__">
     
@@ -193,34 +216,6 @@
     <div class="interfaceinfo">overrides <a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#__init__" class="code" data-type="Method">gr-gwn3.libgwn.gwnblock_py.gwnblock_py.__init__</a></div>
     
     <div><p>Event sink constructor.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">ev_count</td><td>if True, counts events received and prints this number before the event contents.</td></tr></table></div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="gr-gwn3.python.event_sink.event_sink.ev_count">
-    
-  </a>
-  <a name="ev_count">
-    
-  </a>
-  <div class="functionHeader">
-    ev_count =
-  </div>
-  <div class="functionBody">
-    <div><p>If True, counts evens received.</p></div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="gr-gwn3.python.event_sink.event_sink.ev_counter">
-    
-  </a>
-  <a name="ev_counter">
-    
-  </a>
-  <div class="functionHeader">
-    ev_counter =
-  </div>
-  <div class="functionBody">
-    <div><p>A counter, for optionally show numer of message received.</p></div> (type: <code>int</code>)
   </div>
 </div><div class="basemethod">
   
@@ -245,7 +240,7 @@
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-14 18:28:45.
+        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-18 16:02:57.
       </address>
 
     </div>

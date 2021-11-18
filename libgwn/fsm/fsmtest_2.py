@@ -22,6 +22,8 @@
 
 
 ''' FSM for testing, tests (tries to) all features.
+
+Please see the C{libgwn/images/gwnfsm_test.png} diagram for this FSM.
 '''
 
 import sys, os, traceback, optparse, time, string

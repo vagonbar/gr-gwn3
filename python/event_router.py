@@ -33,7 +33,11 @@ from libgwn.gwnblock_py import mutex_prt          # for tests
 class event_router(gwnblock_py):
     '''Outputs received event on port 0 or 1 according to event field values.
 
-    Receives an event on its input port, sends this event on either output port 0 or output port 1, according to parameters field_nm_0, field_val_0, field_nm_1, field_val_1. An event which contains {field_nm_0:field_val_0} is sent on output port 0; an event with {field_nm_1:field_val_1} is sent on output port 1. If event does not meet any of those criteria, no event is sent on either output port.
+    Receives an event on its input port, sends this event on either output port 0 or output port 1, according to parameters field_nm_0, field_val_0, field_nm_1, field_val_1. An event which contains C{{field_nm_0:field_val_0}} is sent on output port 0; an event with C{{field_nm_1:field_val_1}} is sent on output port 1. If event does not meet any of those criteria, no event is sent on either output port.
+    @ivar field_nm_0: field name 0, key of event dictionary.
+    @ivar field_val_0: field value 0, value of field_mn_0 in event dictionary.
+    @ivar field_nm_1: field name 1, key of event dictionary.
+    @ivar field_val_1: field value 1, value of field_mn_1 in event dictionary.
     '''
 
     def __init__(self, field_nm_0,field_val_0,field_nm_1,field_val_1):

@@ -21,6 +21,10 @@
 #
 #
 
+'''QA for GWN version of GR packet_rx.
+'''
+
+
 from gnuradio import gr, gr_unittest
 # from gnuradio import blocks
 
@@ -39,7 +43,8 @@ import time
 
 
 class qa_packet_rx_gwn(gr_unittest.TestCase):
-
+    '''QA for GWN version of GR packet_rx.
+    '''
     def setUp(self):
         self.tb = gr.top_block()
 

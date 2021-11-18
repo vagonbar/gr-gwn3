@@ -48,9 +48,9 @@ class qa_event_router (gr_unittest.TestCase):
 
         print ("\n=== Test event router")
         blk_src_0 = event_source(ev_count=6, interval=0.5, \
-            ev_dc={'Type':'Data', 'Subtype':'Test_0'} )
+            ev_dc={'Type':'Data', 'Subtype':'Test_0', 'seq_nr':0} )
         blk_src_1 = event_source(ev_count=3, interval=1.0, \
-            ev_dc={'Type':'Data', 'Subtype':'Test_1'} )
+            ev_dc={'Type':'Data', 'Subtype':'Test_1', 'seq_nr':0} )
         blk_pass = event_router('Subtype', 'Test_0', 'Subtype', 'Test_1')
         blk_sink = event_sink(ev_count=True)
         blk_sink_1 = event_sink(ev_count=True)

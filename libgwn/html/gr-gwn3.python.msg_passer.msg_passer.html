@@ -42,22 +42,22 @@
       </div>
 
       <div class="moduleDocstring">
-        <div><p>Receives and sends messages with two timeouts.</p><p>This block receives a message on its input port, and resends it on its output port. It starts resending this messages until a first timeout expires, on which it suspends resending; when a second timeout expires, resending continues.</p></div>
+        <div><p>Receives and sends messages with two timeouts.</p><p>This block receives a message on its input port, and resends it on its output port. It starts resending this messages until a first timeout expires, on which it suspends resending; when a second timeout expires, resending continues.</p><table class="fieldTable"></table></div>
       </div>
 
       <div id="splitTables">
         <table class="children sortable" id="id33">
   
-  <tr class="method">
+  <tr class="instancevariable">
+    
+    <td>Instance Variable</td>
+    <td><a href="gr-gwn3.python.msg_passer.msg_passer.html#transmit" class="code" data-type="Instance Variable">transmit</a></td>
+    <td><span>if True, passes message to next block.</span></td>
+  </tr><tr class="method">
     
     <td>Method</td>
     <td><a href="gr-gwn3.python.msg_passer.msg_passer.html#__init__" class="code" data-type="Method">__init__</a></td>
     <td><span>Message passer constructor.</span></td>
-  </tr><tr class="instancevariable">
-    
-    <td>Instance Variable</td>
-    <td><a href="gr-gwn3.python.msg_passer.msg_passer.html#transmit" class="code" data-type="Instance Variable">transmit</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
   </tr><tr class="method">
     
     <td>Method</td>
@@ -75,42 +75,37 @@
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#ports_in" class="code" data-type="Instance Variable">ports_in</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a list of input port objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#ports_out" class="code" data-type="Instance Variable">ports_out</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a list of output port objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#timeouts" class="code" data-type="Instance Variable">timeouts</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a list of timeout objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#timers" class="code" data-type="Instance Variable">timers</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
-  </tr><tr class="baseinstancevariable">
-    
-    <td>Instance Variable</td>
-    <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#finished" class="code" data-type="Instance Variable">finished</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>a lkist of timer objects.</span></td>
   </tr><tr class="baseinstancevariable">
     
     <td>Instance Variable</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#debug" class="code" data-type="Instance Variable">debug</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>if True prints debug messages.</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#forecast" class="code" data-type="Method">forecast</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>GNU Radio function for gr.basic_block.</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
     <td><a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#general_work" class="code" data-type="Method">general_work</a></td>
-    <td><span class="undocumented">Undocumented</span></td>
+    <td><span>GNU Radio function for gr.basic_block.</span></td>
   </tr><tr class="basemethod">
     
     <td>Method</td>
@@ -170,7 +165,21 @@
 
       <div id="childList">
 
-        <div class="basemethod">
+        <div class="baseinstancevariable">
+  
+  <a name="gr-gwn3.python.msg_passer.msg_passer.transmit">
+    
+  </a>
+  <a name="transmit">
+    
+  </a>
+  <div class="functionHeader">
+    transmit =
+  </div>
+  <div class="functionBody">
+    <div>if True, passes message to next block.</div> (type: <code>bool</code>)
+  </div>
+</div><div class="basemethod">
   
   <a name="gr-gwn3.python.msg_passer.msg_passer.__init__">
     
@@ -188,20 +197,6 @@
     <div class="interfaceinfo">overrides <a href="gr-gwn3.libgwn.gwnblock_py.gwnblock_py.html#__init__" class="code" data-type="Method">gr-gwn3.libgwn.gwnblock_py.gwnblock_py.__init__</a></div>
     
     <div><p>Message passer constructor.</p><table class="fieldTable"><tr class="fieldStart"><td class="fieldName">Parameters</td><td class="fieldArg">tout_stop</td><td>a timeout to stop resending, in seconds. @param tout_restart_ a timeout to restart resending, in seconds.</td></tr></table></div>
-  </div>
-</div><div class="baseinstancevariable">
-  
-  <a name="gr-gwn3.python.msg_passer.msg_passer.transmit">
-    
-  </a>
-  <a name="transmit">
-    
-  </a>
-  <div class="functionHeader">
-    transmit =
-  </div>
-  <div class="functionBody">
-    <div class="undocumented">Undocumented</div> (type: <code>bool</code>)
   </div>
 </div><div class="basemethod">
   
@@ -226,7 +221,7 @@
 
       </div>
       <address>
-        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-14 18:28:45.
+        <a href="index.html">API Documentation</a> for GWN 3, generated by <a href="https://github.com/twisted/pydoctor/">pydoctor</a> at 2021-11-18 16:02:57.
       </address>
 
     </div>

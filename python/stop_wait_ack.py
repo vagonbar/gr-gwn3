@@ -33,11 +33,16 @@ from libgwn.gwnblock_py import mutex_prt          # for tests
 
 
 ev_to_ack={'Type':'Data', 'Subtype':'Data'}, 
+'''Event received to acknowledge, a dictionary.'''
 ack_to_send={'Type':'Ctrl', 'Subtype':'ACK'},
+'''Event to send as ACK for event received, a dictionary.'''
 
 class stop_wait_ack(gwnblock_py):
     '''Stop and Wait ACK block, sends ACK on expected event.
 
+    @ivar ev_to_ack: a dictionary of fields to recognize events to acknowledge.
+    @ivar ack_to_send: a dictionary of fields to generate ACK event to send back.
+    @ivar debug: if True, prints debug messages.
     '''
     def __init__(self, 
             ev_to_ack={'Type':'Data', 'Subtype':'Data'}, 
@@ -47,6 +52,7 @@ class stop_wait_ack(gwnblock_py):
 
       @param ev_to_ack: a dictionary of fields to recognize events to acknowledge.
       @param ack_to_send: a dictionary of fields to generate ACK event to send back.
+      @param debug: if True, prints debug messages.
       '''
       gwnblock_py.__init__(self, name='stop_wait_ack', number_in=1, number_out=2, number_timers=0, number_timeouts=0)
 

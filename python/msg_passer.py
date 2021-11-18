@@ -34,6 +34,7 @@ class msg_passer(gwnblock_py):
     '''Receives and sends messages with two timeouts.
 
     This block receives a message on its input port, and resends it on its output port. It starts resending this messages until a first timeout expires, on which it suspends resending; when a second timeout expires, resending continues.
+    @ivar transmit: if True, passes message to next block.
     '''
     def __init__(self, tout_stop=5.0, tout_restart=8.0):
       '''Message passer constructor.

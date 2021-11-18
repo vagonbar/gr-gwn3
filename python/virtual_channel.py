@@ -34,12 +34,15 @@ from libgwn.gwnblock_py import mutex_prt          # for tests
 class virtual_channel(gwnblock_py):
     '''Receives and resends a message with a probability loss.
 
+    @ivar prob_loss: probability of not resending the received message.
+    @ivar debug: if True prints debug messages.
     '''
 
     def __init__(self, prob_loss=0.0, debug=False):
       '''Virtual channel constructor.
 
       @param prob_loss: probability of not resending the received message.
+      @param debug: if True prints debug messages.
       '''
       gwnblock_py.__init__(self, name='virtual_channel', number_in=1, number_out=1, number_timers=0, number_timeouts=0)
       self.prob_loss = float(prob_loss)
