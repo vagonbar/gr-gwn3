@@ -1,7 +1,7 @@
 [GWN3, GNU Wireless Network 3](https://github.com/vagonbar/gr-gwn3)
 
 # GWN3 Quick Start
-GR: [GNU Radio](https://www.gnuradio.org/). Version 3.8 required.
+GR: [GNU Radio](https://www.gnuradio.org/). This version of GWN uses GNU Radio version 3.9.
 
 GRC: GNU Radio Companion, the GR graphic environment.
 

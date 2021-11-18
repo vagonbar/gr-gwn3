@@ -11,7 +11,9 @@ A new GWN block may be easily created by a script called `gwn_modtool`, the equi
 
 GWN provides a template block with a Finite State Machine (FSM), which can be used to create a complementary block and associate it to the new block. This allows for an easy way to extend GWN with new blocks apt for data network communications.
 
-The GWN toolkit was tested in real world communication among computers using USRP hardware devices.
+.. ..
+<!-- The GWN toolkit was tested in real world communication among computers using USRP hardware devices.
+-->
 
 ## An example flowgraph
 

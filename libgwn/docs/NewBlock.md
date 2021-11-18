@@ -1,12 +1,11 @@
 [GWN3, GNU Wireless Network 3](https://github.com/vagonbar/gr-gwn3)
 
-# The gwn_modtool.py script.
+# Creating a new GWN block
 
-The `gwn_modtool.py` allows to easily create and delete GWN blocks, in a way similar to the GNU Radio C{gr_modtool} script.
+The `gwn_modtool.py` allows to easily create and delete GWN blocks, in a way similar to the GNU Radio `gr_modtool` script.
 
-## Creating a new GWN block
 
-After cloning this repository, a new GWN block can be easily created using Python script ```gwn_modtool.py```. This script must be executed from the ```build``` subdirectory of your project.
+After cloning this repository, a new GWN block can be easily created using Python script `gwn_modtool.py`. This script must be executed from the `build` subdirectory of your project.
 
 The following positional parameters may be given:
 
@@ -21,9 +20,9 @@ Next, the script will ask for the new block's own parameters, a list of Python p
 Then the script will create the new block, with all parameters included, for the programmer to customize. This typically includes:
 
 
-- in the new block python code, code initialization in constructor and code for processing in the ```process_data``` function.
-- in the new block QA, inports for additional blocks, adjustment of parameters, and interconneting blocks in a flowgraph to test the new block capabilities.
-- to make the new block available in GRC (GNU Radio Companion), adjustment of the corresponding YAML file in the ```grc``` subdirectory.
+- in the new block python code, code initialization in constructor and code for processing in the `process_data` function.
+- in the new block QA, imports for additional blocks, adjustment of parameters, and interconneting blocks in a flowgraph to test the new block capabilities.
+- to make the new block available in GRC (GNU Radio Companion), adjustment of the corresponding YAML file in the `grc` subdirectory.
 
 For example, the block msg_passer was created with the following commands:
 
@@ -38,12 +37,12 @@ This indicates one input port, one output port, no timers, two timeouts. When th
 
 After confirmation, the script creates the new block through its files, with names and parameters as indicated by the user.
 
-User defined behavior is then coded into the block, mainly by adapting the process_data function. The user defined parameters will be available in the constructor ```__init__```.
+User defined behavior is then coded into the block, mainly by adapting the `process_data` function. The user defined parameters will be available in the constructor `__init__`.
 
 
-To make the new block available in GRC (GNU Radio Companion), the corresponding YAML file must be edited. The YAML file corresponding to the ```msg_passer``` block recently created may be found in ```grc/gwn3_msg_passer.block.yml```.
+To make the new block available in GRC (GNU Radio Companion), the corresponding YAML file must be edited. The YAML file corresponding to the `msg_passer` block recently created may be found in `grc/gwn3_msg_passer.block.yml`.
 
-To make a pure Python blocks available as a module `in gwn3` package, it must be included in file `gr-gwn3/python/__init__.py` in a line like this:
+To make a pure Python block available as a module `in gwn3` package, it must be included in file `gr-gwn3/python/__init__.py` in a line like this:
 
 ```from .msg_passer import msg_passer```
 

@@ -26,7 +26,7 @@ A list of suggested and usual fields follows::
 
   `duration` : float, a lapse of time.
 
-  `frm_pkt : frame packet, bytes, a binary packed string.
+  `frm_pkt` : frame packet, bytes, a binary packed string.
 
   `frm_len` : int, frame length,
 
@@ -34,7 +34,7 @@ A list of suggested and usual fields follows::
 
   `port` : a port number, to identify port of origin, in Internal types.
 
-  `retry` : boolean, or int for number of retries DEFINE. 
+  `retry` : boolean, or int for number of retries. 
 
 
 ## Demo blocks
@@ -47,7 +47,7 @@ Emits a number of messages at certain intervals, with a payload. Message emitted
 
 ### Message passer, [`msg_sink`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.msg_sink.html)
  
-Receives a message in its input port, sends this message on its output port. Sending is interrupted by a timeout, and restarted after another timeout. Shows use of GWN timouts.
+Receives a message in its input port, sends this message on its output port. Sending is interrupted by a timeout, and restarted after another timeout. Shows use of GWN timeouts.
 
 ### Message sink, [`msg_passer`](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/gr-gwn3.python.msg_passer.html)
 
@@ -55,7 +55,7 @@ Receives messages and shows them. If message is a GWN event (a dictionary) all k
 
 ### Examples
 
-```msg_passer_test```
+```examples/msg_passer_test.grc```
 
 
 
@@ -79,9 +79,9 @@ Receives an event on its input port, sends event on either output port 0 or 1, a
 
 ### Examples
 
-```virtual_channel_test```
+```examples/virtual_channel_test.grc```
 
-```ev_router_test```
+```exmples/ev_router_test.grc```
 
 
 ## Conversion blocks
@@ -96,9 +96,9 @@ Converta a PDU (Protocol Data Unit) into an event (string or dictionary).
 
 ### Examples
 
-```ev_to_pdu_test``` 
+```examples/ev_to_pdu_test.grc``` 
 
-```pdu_to_ev_test```
+```examples/pdu_to_ev_test.grc```
 
 
 ## Transmission and reception blocks
@@ -115,11 +115,11 @@ Receives on its input ```in``` port a stream from a suitable air reception devic
 
 ### Examples
 
-```gr_packet_loopback_hier``` : the GR example ```packet_loopback_hier``` implemented with modified versions of GR ```packet_tx``` and GR ```packet_rx```; small corrections were required to make these blocks run in GNU Radio 3.9.3.
+```examples/gr_packet_loopback_hier.grc``` : the GR example ```packet_loopback_hier``` implemented with modified versions of GR ```packet_tx``` and GR ```packet_rx```; small corrections were required to make these blocks run in GNU Radio 3.9.3.
 
-```gwn_packet_tx_rx_test``` : a simplified version of GR ```gr_packet_loopback_hier``` using GWN packet blocks, preserving graphic outputs.
+```examples/gwn_packet_tx_rx_test.grc``` : a simplified version of GR ```gr_packet_loopback_hier``` using GWN packet blocks, preserving graphic outputs.
 
-```gwn_msg_tx_rx_channel_test``` : transmission and reception of a data packet using only GWN blocks, through a GR channel model block. This example is a startpoint to build appllications in GWN. Virtual Source and Virtual Sink GR blocks can be substituted for interface blocks to suitable air or cable transmission devices.
+```examples/gwn_msg_tx_rx_channel_test.grc``` : transmission and reception of a data packet using only GWN blocks, through a GR channel model block. This example is a startpoint to build appllications in GWN. Virtual Source and Virtual Sink GR blocks can be substituted for interface blocks to suitable air or cable transmission devices.
 
 
 [Back to README](../../README.md)
