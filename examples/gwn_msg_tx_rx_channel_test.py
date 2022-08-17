@@ -6,9 +6,9 @@
 #
 # GNU Radio Python Flow Graph
 # Title: GWN Tx Rx test
-# GNU Radio version: 3.9.3.0
+# GNU Radio version: 3.10.3.0
 
-from distutils.version import StrictVersion
+from packaging.version import Version as StrictVersion
 
 if __name__ == '__main__':
     import ctypes
@@ -92,7 +92,6 @@ class gwn_msg_tx_rx_channel_test(gr.top_block, Qt.QWidget):
             noise_seed=0,
             block_tags=True)
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_cc(1.0)
-
 
 
         ##################################################

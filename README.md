@@ -24,7 +24,7 @@ The following example flowgraph shows transmission and reception of a data packe
 
 ## History
 
-Ths project started several years ago, evolutioning through different stages. The first complete version was gr-gwn, _GNU Radio GNU Wireless Network_, coded in Python 2. A subsequent version, called [gr-gwncppvgb](https://github.com/vagonbar/gr-gwncppvgb) was a port to C++ with some extensions, allowing for the addition of new blocks coded in C++ or Python. GNU Radio imposes limitations on C++ inheritance, which makes development in C++ more difficult and involved. This proved to be a significant drawback for using this toolkit in teaching and prototyping. _GWN3, GNU Wirelss Network version 3_, the present version, is coded in Python 3, which is now the default in GNU Radio. This version includes enhancements and improvements added to the C++ version plus some further additions, thus becoming the most mature and up-to-date version. 
+Ths project started several years ago, evolutioning through different stages. The first complete version was gr-gwn, _GNU Radio GNU Wireless Network_, coded in Python 2. A subsequent version, called gr-gwncppvgb was a port to C++ with some extensions, allowing for the addition of new blocks coded in C++ or Python. GNU Radio imposes limitations on C++ inheritance, which makes development in C++ more difficult and involved. This proved to be a significant drawback for using this toolkit in teaching and prototyping. _GWN3, GNU Wirelss Network version 3_, the present version, is coded in Python 3, which is now the default in GNU Radio. This version includes enhancements and improvements added to the C++ version plus some further additions, thus becoming the most mature and up-to-date version. 
 
 
 ## Documentation
@@ -40,6 +40,21 @@ Ths project started several years ago, evolutioning through different stages. Th
   - [Stop and Wait network protocol FSM blocks](libgwn/docs/StopAndWaitFSM.md)
   - [Stop and Wait, preguntas y ejercicios (en español)](libgwn/docs/StopAndWait_Ejercicios.md)
 - [Code documentation](https://htmlpreview.github.io/?https://github.com/vagonbar/gr-gwn3/blob/master/libgwn/html/index.html)
+
+
+## Contributions
+
+To report errors, comments, requests or other formos of contributing to this project, please see the [Contributions](CONTRIBUTING.md) page. To promote a friendly, respectful communication, we have adopted the following [Code of Conduct](CODE_OF_CONDUCT.md).
+
+
+## License
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version. 
+
+Please see the [License](LICENSE) page.
 
 
 ## Publications

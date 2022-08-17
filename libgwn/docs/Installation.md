@@ -8,7 +8,7 @@ These notes offer some additional information on installation, as a complement t
 
 This version of GWN uses GNU Radio 3.9.  To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.php/InstallingGR).
 
-In Linux Mint 20, GNU Radio can be easily installed with the following commands:
+In Linux Mint 20 and Ubuntu based Linux distributions, GNU Radio can be easily installed with the following commands:
 
 
 ```
@@ -21,6 +21,7 @@ In Linux Mint 20, GNU Radio can be easily installed with the following commands:
 Some additional packages may be required:
 
 ```
+  sudo apt install cmake               # to build the project
   sudo apt install python3-distutils   # for GRC
   sudo apt install xterm               # instead of gnome-terminal
 ```
@@ -34,12 +35,16 @@ The following instructions assume `gr-gwn3` is cloned in the user's home directo
 
 ```
   cd
+  mkdir GNURadio
+  cd GNURadio
+  git clone https://github.com/vagonbar/gr-gwn3
   cd GNURadio/gr-gwn3
   rm -rf build; mkdir build      # only to get rid of old builds
   cd build
   cmake ../
   make
   sudo make install
+  export PYTHONPATH=$PYTHONPATH:~/GNURadio/gr-gwn3
   python3 ../python/qa_msg_passer.py 
 ```
 
@@ -57,7 +62,7 @@ This flowgraph is available in GRC by opening  `examples/msg_passer_test.grc`.
 
 To use GWN in GRC, you must ensure the PYTHONPATH environment variable contains the route to the GWN files, using a command such as:
 ```
-  export PYTHONPATH=$PYTHONPATH:/home/username/gr-gwn3
+  export PYTHONPATH=$PYTHONPATH:/home/username/GNURadio/gr-gwn3
 ```
 This command may be included in your `.bashrc` file, as in the following example:
 
@@ -66,6 +71,11 @@ This command may be included in your `.bashrc` file, as in the following example
 export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python3/dist-packages:/usr/local/lib/python3/dist-packages/gwn3:/home/username/gr-gwn3 
 export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
 ```
+After modifying your `.bashrc` file, please issue the following command to re-read the changes:
+```
+  source ~/.bashrc
+```
+
 
 [Back to README](../../README.md)
 

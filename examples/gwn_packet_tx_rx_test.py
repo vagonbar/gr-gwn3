@@ -6,9 +6,9 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Packet Tx Rx test
-# GNU Radio version: 3.9.3.0
+# GNU Radio version: 3.10.3.0
 
-from distutils.version import StrictVersion
+from packaging.version import Version as StrictVersion
 
 if __name__ == '__main__':
     import ctypes
@@ -293,7 +293,7 @@ class gwn_packet_tx_rx_test(gr.top_block, Qt.QWidget):
             None # parent
         )
         self.qtgui_freq_sink_x_0_0.set_update_time(0.10)
-        self.qtgui_freq_sink_x_0_0.set_y_axis(-140, 10)
+        self.qtgui_freq_sink_x_0_0.set_y_axis((-140), 10)
         self.qtgui_freq_sink_x_0_0.set_y_label('Relative Gain', 'dB')
         self.qtgui_freq_sink_x_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
         self.qtgui_freq_sink_x_0_0.enable_autoscale(False)
@@ -336,7 +336,7 @@ class gwn_packet_tx_rx_test(gr.top_block, Qt.QWidget):
             None # parent
         )
         self.qtgui_freq_sink_x_0.set_update_time(0.10)
-        self.qtgui_freq_sink_x_0.set_y_axis(-140, 10)
+        self.qtgui_freq_sink_x_0.set_y_axis((-140), 10)
         self.qtgui_freq_sink_x_0.set_y_label('Relative Gain', 'dB')
         self.qtgui_freq_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
         self.qtgui_freq_sink_x_0.enable_autoscale(False)
@@ -376,8 +376,8 @@ class gwn_packet_tx_rx_test(gr.top_block, Qt.QWidget):
             None # parent
         )
         self.qtgui_const_sink_x_0_0_0.set_update_time(0.10)
-        self.qtgui_const_sink_x_0_0_0.set_y_axis(-2, 2)
-        self.qtgui_const_sink_x_0_0_0.set_x_axis(-2, 2)
+        self.qtgui_const_sink_x_0_0_0.set_y_axis((-2), 2)
+        self.qtgui_const_sink_x_0_0_0.set_x_axis((-2), 2)
         self.qtgui_const_sink_x_0_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, "")
         self.qtgui_const_sink_x_0_0_0.enable_autoscale(False)
         self.qtgui_const_sink_x_0_0_0.enable_grid(False)
@@ -418,8 +418,8 @@ class gwn_packet_tx_rx_test(gr.top_block, Qt.QWidget):
             None # parent
         )
         self.qtgui_const_sink_x_0.set_update_time(0.10)
-        self.qtgui_const_sink_x_0.set_y_axis(-2, 2)
-        self.qtgui_const_sink_x_0.set_x_axis(-2, 2)
+        self.qtgui_const_sink_x_0.set_y_axis((-2), 2)
+        self.qtgui_const_sink_x_0.set_x_axis((-2), 2)
         self.qtgui_const_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 'packet_len')
         self.qtgui_const_sink_x_0.enable_autoscale(False)
         self.qtgui_const_sink_x_0.enable_grid(False)
@@ -462,18 +462,15 @@ class gwn_packet_tx_rx_test(gr.top_block, Qt.QWidget):
             taps=[1.0],
             noise_seed=0,
             block_tags=True)
-        self.blocks_random_pdu_0 = blocks.random_pdu(20, 200, 0xFF, 2)
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_cc(1.0)
         self.blocks_message_strobe_0 = blocks.message_strobe(pmt.intern("A TEST"), 1000)
         self.blocks_message_debug_0_0_0 = blocks.message_debug(True)
 
 
-
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.blocks_message_strobe_0, 'strobe'), (self.blocks_random_pdu_0, 'generate'))
-        self.msg_connect((self.blocks_random_pdu_0, 'pdus'), (self.gwn3_packet_tx_gwn_0, 'in'))
+        self.msg_connect((self.blocks_message_strobe_0, 'strobe'), (self.gwn3_packet_tx_gwn_0, 'in'))
         self.msg_connect((self.gwn3_packet_rx_gwn_0, 'pkt out'), (self.blocks_message_debug_0_0_0, 'print_pdu'))
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.gwn3_packet_rx_gwn_0, 0))
         self.connect((self.channels_channel_model_0, 0), (self.blocks_multiply_const_vxx_0, 0))

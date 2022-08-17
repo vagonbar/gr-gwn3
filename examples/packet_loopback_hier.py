@@ -6,9 +6,9 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Packet Loopback Hier
-# GNU Radio version: 3.9.3.0
+# GNU Radio version: 3.10.3.0
 
-from distutils.version import StrictVersion
+from packaging.version import Version as StrictVersion
 
 if __name__ == '__main__':
     import ctypes
@@ -39,6 +39,7 @@ import signal
 from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
+from gnuradio import pdu
 from gnuradio.qtgui import Range, RangeWidget
 from PyQt5 import QtCore
 from packet_rx import packet_rx  # grc-generated hier_block
@@ -95,15 +96,15 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
         self.k = k = 7
         self.hdr_format = hdr_format = digital.header_format_counter(digital.packet_utils.default_access_code, 3, Const_PLD.bits_per_symbol())
         self.eb = eb = 0.22
-        self.tx_rrc_taps = tx_rrc_taps = firdes.root_raised_cosine(nfilts, nfilts,1.0, eb, 5*sps*nfilts)
+        self.tx_rrc_taps = tx_rrc_taps = firdes.root_raised_cosine(nfilts, nfilts,1.0, eb, (5*sps*nfilts))
         self.time_offset = time_offset = 1.0
-        self.rx_rrc_taps = rx_rrc_taps = firdes.root_raised_cosine(nfilts, nfilts*sps,1.0, eb, 11*sps*nfilts)
+        self.rx_rrc_taps = rx_rrc_taps = firdes.root_raised_cosine(nfilts, nfilts*sps,1.0, eb, (11*sps*nfilts))
         self.noise = noise = 0.0
         self.freq_offset = freq_offset = 0
         self.enc_hdr = enc_hdr = fec.repetition_encoder_make(8000, rep)
         self.enc = enc = fec.cc_encoder_make(8000,k, rate, polys, 0, fec.CC_TERMINATED, False)
         self.dec_hdr = dec_hdr = fec.repetition_decoder.make(hdr_format.header_nbits(),rep, 0.5)
-        self.dec = dec = fec.cc_decoder.make(8000,k, rate, polys, 0, -1, fec.CC_TERMINATED, False)
+        self.dec = dec = fec.cc_decoder.make(8000,k, rate, polys, 0, (-1), fec.CC_TERMINATED, False)
         self.amp = amp = 1.0
         self.Const_HDR = Const_HDR = digital.constellation_calcdist(digital.psk_2()[0], digital.psk_2()[1],
         2, 1, digital.constellation.AMPLITUDE_NORMALIZATION).base()
@@ -113,7 +114,7 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
         # Blocks
         ##################################################
         self._time_offset_range = Range(0.99, 1.01, 0.00001, 1.0, 200)
-        self._time_offset_win = RangeWidget(self._time_offset_range, self.set_time_offset, 'Time Offset', "counter_slider", float, QtCore.Qt.Horizontal)
+        self._time_offset_win = RangeWidget(self._time_offset_range, self.set_time_offset, "Time Offset", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_grid_layout.addWidget(self._time_offset_win, 0, 2, 1, 1)
         for r in range(0, 1):
             self.top_grid_layout.setRowStretch(r, 1)
@@ -162,21 +163,21 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
         for c in range(1, 2):
             self.top_grid_layout.setColumnStretch(c, 1)
         self._noise_range = Range(0, 5, 0.01, 0.0, 200)
-        self._noise_win = RangeWidget(self._noise_range, self.set_noise, 'Noise Amp', "counter_slider", float, QtCore.Qt.Horizontal)
+        self._noise_win = RangeWidget(self._noise_range, self.set_noise, "Noise Amp", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_grid_layout.addWidget(self._noise_win, 0, 0, 1, 1)
         for r in range(0, 1):
             self.top_grid_layout.setRowStretch(r, 1)
         for c in range(0, 1):
             self.top_grid_layout.setColumnStretch(c, 1)
         self._freq_offset_range = Range(-0.5, 0.5, 0.0001, 0, 200)
-        self._freq_offset_win = RangeWidget(self._freq_offset_range, self.set_freq_offset, 'Freq. Offset', "counter_slider", float, QtCore.Qt.Horizontal)
+        self._freq_offset_win = RangeWidget(self._freq_offset_range, self.set_freq_offset, "Freq. Offset", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_grid_layout.addWidget(self._freq_offset_win, 0, 1, 1, 1)
         for r in range(0, 1):
             self.top_grid_layout.setRowStretch(r, 1)
         for c in range(1, 2):
             self.top_grid_layout.setColumnStretch(c, 1)
         self._amp_range = Range(0, 2, 0.01, 1.0, 200)
-        self._amp_win = RangeWidget(self._amp_range, self.set_amp, 'Amplitude', "counter_slider", float, QtCore.Qt.Horizontal)
+        self._amp_win = RangeWidget(self._amp_range, self.set_amp, "Amplitude", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_layout.addWidget(self._amp_win)
         self.qtgui_time_sink_x_1_0_0_1 = qtgui.time_sink_c(
             125, #size
@@ -348,7 +349,7 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
             None # parent
         )
         self.qtgui_freq_sink_x_0_0.set_update_time(0.10)
-        self.qtgui_freq_sink_x_0_0.set_y_axis(-140, 10)
+        self.qtgui_freq_sink_x_0_0.set_y_axis((-140), 10)
         self.qtgui_freq_sink_x_0_0.set_y_label('Relative Gain', 'dB')
         self.qtgui_freq_sink_x_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
         self.qtgui_freq_sink_x_0_0.enable_autoscale(False)
@@ -391,7 +392,7 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
             None # parent
         )
         self.qtgui_freq_sink_x_0.set_update_time(0.10)
-        self.qtgui_freq_sink_x_0.set_y_axis(-140, 10)
+        self.qtgui_freq_sink_x_0.set_y_axis((-140), 10)
         self.qtgui_freq_sink_x_0.set_y_label('Relative Gain', 'dB')
         self.qtgui_freq_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, 0.0, 0, "")
         self.qtgui_freq_sink_x_0.enable_autoscale(False)
@@ -431,8 +432,8 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
             None # parent
         )
         self.qtgui_const_sink_x_0_0_0.set_update_time(0.10)
-        self.qtgui_const_sink_x_0_0_0.set_y_axis(-2, 2)
-        self.qtgui_const_sink_x_0_0_0.set_x_axis(-2, 2)
+        self.qtgui_const_sink_x_0_0_0.set_y_axis((-2), 2)
+        self.qtgui_const_sink_x_0_0_0.set_x_axis((-2), 2)
         self.qtgui_const_sink_x_0_0_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, "")
         self.qtgui_const_sink_x_0_0_0.enable_autoscale(False)
         self.qtgui_const_sink_x_0_0_0.enable_grid(False)
@@ -473,8 +474,8 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
             None # parent
         )
         self.qtgui_const_sink_x_0.set_update_time(0.10)
-        self.qtgui_const_sink_x_0.set_y_axis(-2, 2)
-        self.qtgui_const_sink_x_0.set_x_axis(-2, 2)
+        self.qtgui_const_sink_x_0.set_y_axis((-2), 2)
+        self.qtgui_const_sink_x_0.set_x_axis((-2), 2)
         self.qtgui_const_sink_x_0.set_trigger_mode(qtgui.TRIG_MODE_FREE, qtgui.TRIG_SLOPE_POS, 0.0, 0, 'packet_len')
         self.qtgui_const_sink_x_0.enable_autoscale(False)
         self.qtgui_const_sink_x_0.enable_grid(False)
@@ -508,6 +509,7 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
 
         self._qtgui_const_sink_x_0_win = sip.wrapinstance(self.qtgui_const_sink_x_0.qwidget(), Qt.QWidget)
         self.tab0_layout_2.addWidget(self._qtgui_const_sink_x_0_win)
+        self.pdu_random_pdu_0 = pdu.random_pdu(20, 200, 0xFF, 2)
         self.packet_tx_0 = packet_tx(
             hdr_const=Const_HDR,
             hdr_enc=enc_hdr,
@@ -534,19 +536,17 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
             taps=[1.0],
             noise_seed=0,
             block_tags=True)
-        self.blocks_random_pdu_0 = blocks.random_pdu(20, 200, 0xFF, 2)
         self.blocks_multiply_const_vxx_0 = blocks.multiply_const_cc(amp)
         self.blocks_message_strobe_0 = blocks.message_strobe(pmt.intern("TEST"), 1000)
         self.blocks_message_debug_0_0_0 = blocks.message_debug(True)
 
 
-
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.blocks_message_strobe_0, 'strobe'), (self.blocks_random_pdu_0, 'generate'))
-        self.msg_connect((self.blocks_random_pdu_0, 'pdus'), (self.packet_tx_0, 'in'))
+        self.msg_connect((self.blocks_message_strobe_0, 'strobe'), (self.pdu_random_pdu_0, 'generate'))
         self.msg_connect((self.packet_rx_0, 'pkt out'), (self.blocks_message_debug_0_0_0, 'print_pdu'))
+        self.msg_connect((self.pdu_random_pdu_0, 'pdus'), (self.packet_tx_0, 'in'))
         self.connect((self.blocks_multiply_const_vxx_0, 0), (self.packet_rx_0, 0))
         self.connect((self.channels_channel_model_0, 0), (self.blocks_multiply_const_vxx_0, 0))
         self.connect((self.channels_channel_model_0, 0), (self.qtgui_const_sink_x_0, 0))
@@ -580,8 +580,8 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
 
     def set_sps(self, sps):
         self.sps = sps
-        self.set_rx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts*self.sps, 1.0, self.eb, 11*self.sps*self.nfilts))
-        self.set_tx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts, 1.0, self.eb, 5*self.sps*self.nfilts))
+        self.set_rx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts*self.sps, 1.0, self.eb, (11*self.sps*self.nfilts)))
+        self.set_tx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts, 1.0, self.eb, (5*self.sps*self.nfilts)))
         self.packet_rx_0.set_sps(self.sps)
         self.packet_tx_0.set_sps(self.sps)
 
@@ -608,8 +608,8 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
 
     def set_nfilts(self, nfilts):
         self.nfilts = nfilts
-        self.set_rx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts*self.sps, 1.0, self.eb, 11*self.sps*self.nfilts))
-        self.set_tx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts, 1.0, self.eb, 5*self.sps*self.nfilts))
+        self.set_rx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts*self.sps, 1.0, self.eb, (11*self.sps*self.nfilts)))
+        self.set_tx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts, 1.0, self.eb, (5*self.sps*self.nfilts)))
 
     def get_k(self):
         return self.k
@@ -630,8 +630,8 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
 
     def set_eb(self, eb):
         self.eb = eb
-        self.set_rx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts*self.sps, 1.0, self.eb, 11*self.sps*self.nfilts))
-        self.set_tx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts, 1.0, self.eb, 5*self.sps*self.nfilts))
+        self.set_rx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts*self.sps, 1.0, self.eb, (11*self.sps*self.nfilts)))
+        self.set_tx_rrc_taps(firdes.root_raised_cosine(self.nfilts, self.nfilts, 1.0, self.eb, (5*self.sps*self.nfilts)))
         self.packet_rx_0.set_eb(self.eb)
 
     def get_tx_rrc_taps(self):
