@@ -6,7 +6,7 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Packet Loopback Hier
-# GNU Radio version: 3.10.3.0
+# GNU Radio version: 3.10.5.1
 
 from packaging.version import Version as StrictVersion
 
@@ -113,6 +113,7 @@ class packet_loopback_hier(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+
         self._time_offset_range = Range(0.99, 1.01, 0.00001, 1.0, 200)
         self._time_offset_win = RangeWidget(self._time_offset_range, self.set_time_offset, "Time Offset", "counter_slider", float, QtCore.Qt.Horizontal)
         self.top_grid_layout.addWidget(self._time_offset_win, 0, 2, 1, 1)

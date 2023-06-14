@@ -1,6 +1,7 @@
 options:
   parameters:
     author: ''
+    catch_exceptions: 'True'
     category: '[GRC Hier Blocks]'
     cmake_opt: ''
     comment: ''
@@ -50,47 +51,14 @@ blocks:
     affinity: ''
     alias: ''
     comment: ''
+    en_uvec: 'True'
   states:
     bus_sink: false
     bus_source: false
     bus_structure: null
-    coordinate: [1027, 142]
+    coordinate: [1040, 80.0]
     rotation: 0
     state: true
-- name: blocks_pdu_to_tagged_stream_0
-  id: blocks_pdu_to_tagged_stream
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    tag: packet_len
-    type: byte
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [453, 139]
-    rotation: 0
-    state: enabled
-- name: blocks_tagged_stream_to_pdu_0
-  id: blocks_tagged_stream_to_pdu
-  parameters:
-    affinity: ''
-    alias: ''
-    comment: ''
-    maxoutbuf: '0'
-    minoutbuf: '0'
-    tag: packet_len
-    type: byte
-  states:
-    bus_sink: false
-    bus_source: false
-    bus_structure: null
-    coordinate: [705, 139]
-    rotation: 0
-    state: enabled
 - name: gwn3_ev_to_pdu_0
   id: gwn3_ev_to_pdu
   parameters:
@@ -124,12 +92,47 @@ blocks:
     coordinate: [15, 123]
     rotation: 0
     state: enabled
+- name: pdu_pdu_to_tagged_stream_0
+  id: pdu_pdu_to_tagged_stream
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tag: packet_len
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [456, 140.0]
+    rotation: 0
+    state: true
+- name: pdu_tagged_stream_to_pdu_0
+  id: pdu_tagged_stream_to_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tag: packet_len
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [720, 140.0]
+    rotation: 0
+    state: true
 
 connections:
-- [blocks_pdu_to_tagged_stream_0, '0', blocks_tagged_stream_to_pdu_0, '0']
-- [blocks_tagged_stream_to_pdu_0, pdus, blocks_message_debug_0, print_pdu]
-- [gwn3_ev_to_pdu_0, pdu, blocks_pdu_to_tagged_stream_0, pdus]
+- [gwn3_ev_to_pdu_0, pdu, pdu_pdu_to_tagged_stream_0, pdus]
 - [gwn3_msg_source_0, out_0, gwn3_ev_to_pdu_0, in_0]
+- [pdu_pdu_to_tagged_stream_0, '0', pdu_tagged_stream_to_pdu_0, '0']
+- [pdu_tagged_stream_to_pdu_0, pdus, blocks_message_debug_0, print_pdu]
 
 metadata:
   file_format: 1
+  grc_version: 3.10.5.1

@@ -23,6 +23,7 @@ options:
     sizing_mode: fixed
     thread_safe_setters: ''
     title: GWN Tx Rx test
+    window_size: (1000,1000)
   states:
     bus_sink: false
     bus_source: false
@@ -132,7 +133,7 @@ blocks:
     alias: ''
     comment: ''
     ev_count: '5'
-    ev_dc: '"My payload"'
+    ev_dc: '{"type":"Data", "subtype":"Data","payload":"A TEST message"}'
     interval: '1.0'
     maxoutbuf: '0'
     minoutbuf: '0'
@@ -230,3 +231,4 @@ connections:
 
 metadata:
   file_format: 1
+  grc_version: 3.10.5.1

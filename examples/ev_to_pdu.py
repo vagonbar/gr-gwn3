@@ -6,9 +6,9 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Event to PDU
-# GNU Radio version: 3.9.3.0
+# GNU Radio version: 3.10.5.1
 
-from distutils.version import StrictVersion
+from packaging.version import Version as StrictVersion
 
 if __name__ == '__main__':
     import ctypes
@@ -30,6 +30,7 @@ from PyQt5 import Qt
 from argparse import ArgumentParser
 from gnuradio.eng_arg import eng_float, intx
 from gnuradio import eng_notation
+from gnuradio import gr, pdu
 import gwn3
 
 
@@ -77,21 +78,21 @@ class ev_to_pdu(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+
+        self.pdu_tagged_stream_to_pdu_0 = pdu.tagged_stream_to_pdu(gr.types.byte_t, 'packet_len')
+        self.pdu_pdu_to_tagged_stream_0 = pdu.pdu_to_tagged_stream(gr.types.byte_t, 'packet_len')
         self.gwn3_msg_source_0 = gwn3.msg_source(10,1,'MESSAGE')
         self.gwn3_ev_to_pdu_0 = gwn3.ev_to_pdu()
-        self.blocks_tagged_stream_to_pdu_0 = blocks.tagged_stream_to_pdu(blocks.byte_t, 'packet_len')
-        self.blocks_pdu_to_tagged_stream_0 = blocks.pdu_to_tagged_stream(blocks.byte_t, 'packet_len')
         self.blocks_message_debug_0 = blocks.message_debug(True)
-
 
 
         ##################################################
         # Connections
         ##################################################
-        self.msg_connect((self.blocks_tagged_stream_to_pdu_0, 'pdus'), (self.blocks_message_debug_0, 'print_pdu'))
-        self.msg_connect((self.gwn3_ev_to_pdu_0, 'pdu'), (self.blocks_pdu_to_tagged_stream_0, 'pdus'))
+        self.msg_connect((self.gwn3_ev_to_pdu_0, 'pdu'), (self.pdu_pdu_to_tagged_stream_0, 'pdus'))
         self.msg_connect((self.gwn3_msg_source_0, 'out_0'), (self.gwn3_ev_to_pdu_0, 'in_0'))
-        self.connect((self.blocks_pdu_to_tagged_stream_0, 0), (self.blocks_tagged_stream_to_pdu_0, 0))
+        self.msg_connect((self.pdu_tagged_stream_to_pdu_0, 'pdus'), (self.blocks_message_debug_0, 'print_pdu'))
+        self.connect((self.pdu_pdu_to_tagged_stream_0, 0), (self.pdu_tagged_stream_to_pdu_0, 0))
 
 
     def closeEvent(self, event):
