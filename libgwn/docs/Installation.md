@@ -6,25 +6,7 @@ These notes offer some additional information on installation, as a complement t
 
 ## GNU Radio
 
-This version of GWN uses GNU Radio 3.9.  To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.php/InstallingGR).
-
-In Linux Mint 20 and Ubuntu based Linux distributions, GNU Radio can be easily installed with the following commands:
-
-
-```
-  sudo add-apt-repository ppa:gnuradio/gnuradio-releases
-  sudo apt-get update
-  sudo apt-get install gnuradio
-  gnuradio-companion -h   # shows installed version, e.g. 3.9.3.0
-```
-
-Some additional packages may be required:
-
-```
-  sudo apt install cmake               # to build the project
-  sudo apt install python3-distutils   # for GRC
-  sudo apt install xterm               # instead of gnome-terminal
-```
+To install GNU Radio, plase see [InstallingGR](https://wiki.gnuradio.org/index.php/InstallingGR).
 
 To install in a virtual machine, Linux Mint XFCE offers an Ubuntu based Linux installation with a light graphical environment, XFCE. 
 
