@@ -6,9 +6,9 @@
 #
 # GNU Radio Python Flow Graph
 # Title: PDU to event
-# GNU Radio version: 3.9.3.0
+# GNU Radio version: 3.10.5.1
 
-from distutils.version import StrictVersion
+from packaging.version import Version as StrictVersion
 
 if __name__ == '__main__':
     import ctypes
@@ -76,11 +76,11 @@ class pdu_to_ev(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+
         self.gwn3_pdu_to_ev_0 = gwn3.pdu_to_ev()
         self.gwn3_msg_source_0 = gwn3.msg_source(10,1.0,'MY MESSAGE')
         self.gwn3_msg_sink_0 = gwn3.msg_sink()
         self.gwn3_ev_to_pdu_0 = gwn3.ev_to_pdu()
-
 
 
         ##################################################

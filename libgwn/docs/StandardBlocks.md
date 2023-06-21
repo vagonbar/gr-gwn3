@@ -117,7 +117,7 @@ Receives on its input ```in``` port a stream from a suitable air reception devic
 
 ### Examples
 
-```examples/gr_packet_loopback_hier.grc``` : the GR example ```packet_loopback_hier``` implemented with modified versions of GR ```packet_tx``` and GR ```packet_rx```; small corrections were required to make these blocks run in GNU Radio 3.9.3.
+```examples/gr_packet_loopback_hier.grc``` : the GR example ```packet_loopback_hier``` implemented with modified versions of GR ```packet_tx``` and GR ```packet_rx```; small corrections were required to make these blocks run in GNU Radio 3.9.3.0 and later versions.
 
 ```examples/gwn_packet_tx_rx_test.grc``` : a simplified version of GR ```gr_packet_loopback_hier``` using GWN packet blocks, preserving graphic outputs.
 

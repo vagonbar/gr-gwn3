@@ -2,7 +2,7 @@
 
 # GNU Radio packet blocks
 
-Directory ```libgwn/GR_packet``` contains .py files generated from GR (GNU Radio) .grc files `packet_tx.grc`, `packet_rx_grc` and `packet_loopback_hier.grc`. These .py files were modified by hand with some small corrections to make them run in GNU Radio 3.9.3.0.
+Directory ```libgwn/GR_packet``` contains .py files generated from GR (GNU Radio) .grc files `packet_tx.grc`, `packet_rx_grc` and `packet_loopback_hier.grc`. These .py files were modified by hand with some small corrections.
 
 The files were obtained by loading the .grc files in GRC (GNU Radio Companion), generating the flowgraphs (.py files), and then correcting these .py files. The .py files were stored by GRC in `~/.grc_gnuradio`, and copied here to ensure they will not be inadvertently modified. 
 

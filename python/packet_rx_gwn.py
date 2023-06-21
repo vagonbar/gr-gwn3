@@ -32,7 +32,8 @@ from gnuradio.filter import firdes
 from gnuradio.fft import window
 import sys
 import signal
-
+from gnuradio.gr import types # for types byte_t, float_t
+from gnuradio import pdu   # for pdu_to_tagged_stream, tagged_stream_to_pdu
 
 
 
@@ -145,7 +146,7 @@ class packet_rx_gwn(gr.hier_block2):
         self.digital_corr_est_cc_0 = digital.corr_est_cc(modulated_sync_word, self.sps, mark_delay, 0.999, digital.THRESHOLD_ABSOLUTE)
         self.digital_constellation_soft_decoder_cf_0_0 = digital.constellation_soft_decoder_cf(self.hdr_const)
         self.digital_constellation_soft_decoder_cf_0 = digital.constellation_soft_decoder_cf(self.pld_const)
-        self.blocks_tagged_stream_to_pdu_0 = blocks.tagged_stream_to_pdu(blocks.float_t, "payload symbols")
+        self.blocks_tagged_stream_to_pdu_0 = pdu.tagged_stream_to_pdu(types.float_t, "payload symbols")
         self.blocks_tagged_stream_multiply_length_0 = blocks.tagged_stream_multiply_length(gr.sizeof_float*1, "payload symbols", self.pld_const.bits_per_symbol())
         self.blocks_multiply_by_tag_value_cc_0 = blocks.multiply_by_tag_value_cc("amp_est", 1)
 

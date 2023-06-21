@@ -7,7 +7,7 @@
 # GNU Radio Python Flow Graph
 # Title: Stop and Wait send
 # Author: Stop and Wait send example
-# GNU Radio version: 3.10.3.0
+# GNU Radio version: 3.10.5.1
 
 from packaging.version import Version as StrictVersion
 
@@ -77,6 +77,7 @@ class stop_wait_send(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+
         self.gwn3_virtual_channel_0 = gwn3.virtual_channel(0.5)
         self.gwn3_stop_wait_send_0 = gwn3.stop_wait_send('CtrlAck',5,'TimerACKTout',0.5,3,False)
         self.gwn3_stop_wait_ack_0 = gwn3.stop_wait_ack({'Type': 'Data', 'Subtype': 'Data'},{'Type': 'Ctrl', 'Subtype': 'ACK'},False)

@@ -6,7 +6,7 @@
 #
 # GNU Radio Python Flow Graph
 # Title: Stop and Wait ACK example
-# GNU Radio version: 3.10.3.0
+# GNU Radio version: 3.10.5.1
 
 from packaging.version import Version as StrictVersion
 
@@ -76,6 +76,7 @@ class stop_wait_ack(gr.top_block, Qt.QWidget):
         ##################################################
         # Blocks
         ##################################################
+
         self.gwn3_stop_wait_ack_0 = gwn3.stop_wait_ack({'Type':'Data', 'Subtype':'Data'},{'Type': 'Ctrl', 'Subtype': 'ACK'},False)
         self.gwn3_event_source_0 = gwn3.event_source(5,1.0,{'Type':'Data', 'Subtype':'Data', 'seq_nr':0})
         self.gwn3_event_sink_1 = gwn3.event_sink(True)

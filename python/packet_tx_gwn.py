@@ -33,7 +33,8 @@ from gnuradio.fft import window
 import sys
 import signal
 from gnuradio.filter import pfb
-
+from gnuradio.gr import types  # for types byte_t, float_t
+from gnuradio import pdu    # for pdu_to_tagged_sream, tagged_stream_to_pdu
 
 
 class packet_tx_gwn(gr.hier_block2):
@@ -141,8 +142,8 @@ class packet_tx_gwn(gr.hier_block2):
         self.blocks_tagged_stream_multiply_length_0 = blocks.tagged_stream_multiply_length(gr.sizeof_gr_complex*1, 'packet_len', self.sps)
         self.blocks_repack_bits_bb_0_0 = blocks.repack_bits_bb(8, self.pld_const.bits_per_symbol(), 'packet_len', False, gr.GR_MSB_FIRST)
         self.blocks_repack_bits_bb_0 = blocks.repack_bits_bb(8, self.hdr_const.bits_per_symbol(), 'packet_len', False, gr.GR_MSB_FIRST)
-        self.blocks_pdu_to_tagged_stream_0_0 = blocks.pdu_to_tagged_stream(blocks.byte_t, 'packet_len')
-        self.blocks_pdu_to_tagged_stream_0 = blocks.pdu_to_tagged_stream(blocks.byte_t, 'packet_len')
+        self.blocks_pdu_to_tagged_stream_0_0 = pdu.pdu_to_tagged_stream(types.byte_t, 'packet_len')
+        self.blocks_pdu_to_tagged_stream_0 = pdu.pdu_to_tagged_stream(types.byte_t, 'packet_len')
 
 
 

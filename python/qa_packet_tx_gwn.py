@@ -35,6 +35,7 @@ from event_source import event_source
 
 from gnuradio import channels
 from gnuradio import blocks
+from gnuradio import pdu
 import pmt
 import time
 
@@ -65,7 +66,7 @@ class qa_packet_tx_gwn(gr_unittest.TestCase):
             taps=[1.0],
             noise_seed=0,
             block_tags=True)
-        random_pdu = blocks.random_pdu(20, 200, 0xFF, 2)
+        random_pdu = pdu.random_pdu(20, 200, 0xFF, 2)
         multiply_const = blocks.multiply_const_cc(1.0)
         message_strobe = blocks.message_strobe(pmt.intern("TEST"), 1000)
         message_debug = blocks.message_debug(True)
@@ -76,7 +77,7 @@ class qa_packet_tx_gwn(gr_unittest.TestCase):
         self.tb.connect((pkt_tx, 0), (channel_model, 0))
         self.tb.connect((channel_model, 0), (multiply_const, 0))
         self.tb.connect((multiply_const, 0), (pkt_rx, 0))
-        self.tb.msg_connect((pkt_rx, 'pkt out'), (message_debug, 'print_pdu'))
+        self.tb.msg_connect((pkt_rx, 'pkt out'), (message_debug, 'print'))
         #self.tb.run()
         self.tb.start()
         time.sleep(6)

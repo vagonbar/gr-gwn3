@@ -82,7 +82,7 @@ class gwn_msg_tx_rx_channel_test(gr.top_block, Qt.QWidget):
         self.gwn3_pdu_to_ev_0 = gwn3.pdu_to_ev()
         self.gwn3_packet_tx_gwn_0 = gwn3.packet_tx_gwn( '', '', '', '', '', '', 2)
         self.gwn3_packet_rx_gwn_0 = gwn3.packet_rx_gwn( 0.22, '', '', '', '', '', '', 2 )
-        self.gwn3_event_source_0 = gwn3.event_source(5,1.0,"My payload")
+        self.gwn3_event_source_0 = gwn3.event_source(5,1.0,{"type":"Data", "subtype":"Data","payload":"A TEST message"})
         self.gwn3_event_sink_0 = gwn3.event_sink(True)
         self.gwn3_ev_to_pdu_0 = gwn3.ev_to_pdu()
         self.channels_channel_model_0 = channels.channel_model(
