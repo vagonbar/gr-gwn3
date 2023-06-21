@@ -1,5 +1,6 @@
 # GWN3 : GNU Wireless Network 3
 
+This version of GWN runs in GNU Radio version 3.9.3.0.
 
 GWN, the GNU Wireless Network, is a network development toolkit compatible with GNU Radio. GWN3 is the GNU Wireless Network version 3, coded in Python 3.
 
